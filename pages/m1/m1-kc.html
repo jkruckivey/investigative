@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1: Knowledge Check</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 1: The Investigative Framework</div>
+      <h1>Module 1: Knowledge Check</h1>
+      <p class="page-subtitle">Test your understanding of the investigative framework (unscored)</p>
+    </div>
+
+    <p>The following four questions will help you check your understanding of the key concepts from Module 1. This knowledge check is <strong>not scored</strong>&mdash;it is for your own learning. Take your time and use the feedback to reinforce what you have learned.</p>
+
+    <!-- Question 1 -->
+    <h2>Question 1 of 4</h2>
+    <div id="q1"></div>
+
+    <!-- Question 2 -->
+    <h2>Question 2 of 4</h2>
+    <div id="q2"></div>
+
+    <!-- Question 3 -->
+    <h2>Question 3 of 4</h2>
+    <div id="q3"></div>
+
+    <!-- Question 4 -->
+    <h2>Question 4 of 4</h2>
+    <div id="q4"></div>
+
+    <script>
+      // Q1: Guiding Principles
+      new MultipleChoice({
+        question: 'Which guiding principle requires investigators to approach every case without predetermined conclusions?',
+        options: [
+          {
+            text: 'Confidentiality',
+            correct: false,
+            feedback: 'Not quite. Confidentiality requires that investigation information is shared only on a need-to-know basis. The principle that addresses approaching cases without bias or predetermined conclusions is <strong>Fairness & Impartiality</strong>.'
+          },
+          {
+            text: 'Fairness & Impartiality',
+            correct: true,
+            feedback: 'Correct! Fairness & Impartiality requires investigators to conduct every investigation without bias, prejudice, or predetermined conclusions. All parties must be treated with respect and given a genuine opportunity to be heard.'
+          },
+          {
+            text: 'Thoroughness & Timeliness',
+            correct: false,
+            feedback: 'Not quite. Thoroughness & Timeliness requires investigations to be conducted with sufficient depth and completed within reasonable timeframes. The principle about approaching cases without bias is <strong>Fairness & Impartiality</strong>.'
+          },
+          {
+            text: 'Legal Compliance',
+            correct: false,
+            feedback: 'Not quite. Legal Compliance requires investigations to follow all applicable laws and regulations. The principle that addresses avoiding predetermined conclusions is <strong>Fairness & Impartiality</strong>.'
+          }
+        ]
+      }).render('q1');
+
+      // Q2: Investigation Levels
+      new MultipleChoice({
+        question: 'A report of a minor policy violation by a single employee would most likely be classified as which investigation level?',
+        options: [
+          {
+            text: 'Level 1 (Significant)',
+            correct: false,
+            feedback: 'Not quite. Level 1 is reserved for complex, high-risk matters such as serious harassment, fraud, or major food safety incidents. A minor policy violation would typically be classified as <strong>Level 2 (Minor)</strong>.'
+          },
+          {
+            text: 'Level 2 (Minor)',
+            correct: true,
+            feedback: 'Correct! Level 2 (Minor) applies to lower-risk matters that can be handled by a single investigator using standard procedures. Minor policy violations, routine conduct issues, and non-critical safety incidents are typical Level 2 matters.'
+          },
+          {
+            text: 'Level 3 (No Formal Investigation)',
+            correct: false,
+            feedback: 'Not quite. Level 3 means no formal investigation is conducted, typically because the matter lacks sufficient detail, has already been resolved, or falls outside scope. A report of a policy violation with specific details would usually warrant at least a <strong>Level 2 (Minor)</strong> investigation.'
+          },
+          {
+            text: 'It depends on the investigator\'s preference',
+            correct: false,
+            feedback: 'Not quite. Investigation levels are determined based on the risk, complexity, and severity of the matter during the triage process&mdash;not by investigator preference. A minor policy violation would typically be classified as <strong>Level 2 (Minor)</strong>.'
+          }
+        ]
+      }).render('q2');
+
+      // Q3: Scope
+      new MultipleChoice({
+        question: 'How many functions does the Enterprise-Wide Investigative Procedures SOP apply to?',
+        options: [
+          {
+            text: '4',
+            correct: false,
+            feedback: 'Not quite. The SOP applies to more than four functions. It covers seven functions: Internal Audit (IA), Human Resources (HR), Occupational Health & Safety (OHS), Food Safety & Quality Assurance (FSQA), Animal Care (AC), Legal, and Information Security (IS).'
+          },
+          {
+            text: '5',
+            correct: false,
+            feedback: 'Not quite. The SOP applies to more than five functions. It covers seven functions: Internal Audit (IA), Human Resources (HR), Occupational Health & Safety (OHS), Food Safety & Quality Assurance (FSQA), Animal Care (AC), Legal, and Information Security (IS).'
+          },
+          {
+            text: '7',
+            correct: true,
+            feedback: 'Correct! The SOP applies to seven functions: Internal Audit (IA), Human Resources (HR), Occupational Health & Safety (OHS), Food Safety & Quality Assurance (FSQA), Animal Care (AC), Legal, and Information Security (IS).'
+          },
+          {
+            text: '9',
+            correct: false,
+            feedback: 'Not quite. The SOP applies to seven functions, not nine. The seven functions are: Internal Audit (IA), Human Resources (HR), Occupational Health & Safety (OHS), Food Safety & Quality Assurance (FSQA), Animal Care (AC), Legal, and Information Security (IS).'
+          }
+        ]
+      }).render('q3');
+
+      // Q4: 7-Step Process
+      new MultipleChoice({
+        question: 'What is the final step in the 7-step investigation process?',
+        options: [
+          {
+            text: 'Report & Communicate',
+            correct: false,
+            feedback: 'Not quite. Report & Communicate is Step 6, where the investigation findings are documented and communicated to relevant parties. The final step is <strong>Close & Archive</strong> (Step 7), which involves formally closing the file and ensuring proper records retention.'
+          },
+          {
+            text: 'Analyze & Reach Conclusions',
+            correct: false,
+            feedback: 'Not quite. Analyze & Reach Conclusions is Step 5, where the investigator weighs the evidence and determines findings. The final step is <strong>Close & Archive</strong> (Step 7), which involves formally closing the file and ensuring proper records retention.'
+          },
+          {
+            text: 'Close & Archive',
+            correct: true,
+            feedback: 'Correct! Close & Archive is Step 7 and the final step in the investigation process. It involves formally closing the investigation file, completing the closure checklist, archiving all documentation, and conducting a post-investigation review if applicable.'
+          },
+          {
+            text: 'Triage & Assign Investigator',
+            correct: false,
+            feedback: 'Not quite. Triage & Assign Investigator is Step 2 in the process, which comes very early in the investigation. The final step is <strong>Close & Archive</strong> (Step 7), which involves formally closing the file and ensuring proper records retention.'
+          }
+        ]
+      }).render('q4');
+    </script>
+
+    <div class="callout callout-info" style="margin-top: 2rem;">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>This knowledge check is not scored.</strong> It is designed to reinforce your understanding of the Module 1 concepts. If any answers surprised you, consider reviewing the relevant pages before moving on to Module 2.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

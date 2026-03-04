@@ -1,0 +1,364 @@
+Received: from CH3PR02MB9161.namprd02.prod.outlook.com (2603:10b6:610:149::10)
+ by BN7PR02MB4131.namprd02.prod.outlook.com with HTTPS; Fri, 30 Jan 2026
+ 17:40:57 +0000
+Received: from MWHPR02MB10570.namprd02.prod.outlook.com
+ (2603:10b6:303:282::11) by CH3PR02MB9161.namprd02.prod.outlook.com
+ (2603:10b6:610:149::10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.8; Fri, 30 Jan
+ 2026 17:40:50 +0000
+Received: from MWHPR02MB10570.namprd02.prod.outlook.com
+ ([fe80::3216:9eaa:3cb3:cfd]) by MWHPR02MB10570.namprd02.prod.outlook.com
+ ([fe80::3216:9eaa:3cb3:cfd%4]) with mapi id 15.20.9564.006; Fri, 30 Jan 2026
+ 17:40:50 +0000
+From: "Nash, Gary" <gary.nash@mapleleaf.com>
+To: "Ferrier, Lindsay" <lindsay.ferrier@mapleleaf.com>
+CC: "Torres, Josh" <josh.torres@mapleleaf.com>, "Chapman, Cameron T"
+	<cameron.chapman@mapleleaf.com>
+Subject: Investigation Conclusions - New Category
+Thread-Topic: Investigation Conclusions - New Category
+Thread-Index: AQHckg03duLpt4uhX0qJeXDzQQwSgg==
+Date: Fri, 30 Jan 2026 17:40:50 +0000
+Message-ID:
+ <MWHPR02MB10570053DB72A1BF1613205FDF99FA@MWHPR02MB10570.namprd02.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource:
+ MWHPR02MB10570.namprd02.prod.outlook.com
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-Network-Message-Id:
+ 80fdde95-6e04-4c76-c2bb-08de6026b5ba
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels:
+x-ms-publictraffictype: Email
+x-ms-exchange-organization-originalclientipaddress: 130.41.67.175
+x-ms-exchange-organization-originalserveripaddress: 2603:10b6:303:282::11
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR02MB10570.namprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(31052699007)(39142699007)(69100299015)(366016)(8096899003)(41050700001);DIR:INT;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mapleleaf.com;
+x-ms-office365-filtering-correlation-id: 80fdde95-6e04-4c76-c2bb-08de6026b5ba
+x-ms-traffictypediagnostic:
+ MWHPR02MB10570:EE_|CH3PR02MB9161:EE_|BN7PR02MB4131:EE_
+x-microsoft-antispam:
+ BCL:0;ARA:13230040|31052699007|39142699007|69100299015|366016|8096899003|41050700001;
+x-ms-exchange-crosstenant-network-message-id:
+ 80fdde95-6e04-4c76-c2bb-08de6026b5ba
+x-ms-exchange-crosstenant-originalarrivaltime: 30 Jan 2026 17:40:50.6321 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 9a159892-5bf8-43ff-9476-c3abb9cca801
+x-ms-exchange-transport-crosstenantheadersstamped: CH3PR02MB9161
+x-ms-exchange-transport-endtoendlatency: 00:00:06.7191657
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.006
+x-ms-exchange-atpmessageproperties: SA|SL
+x-ms-exchange-crosstenant-authsource: MWHPR02MB10570.namprd02.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname:
+ z90rNbkOit63RUk69rANnMEkJnGOvnOnxqhu0IYpdzRk3fH+zApIJ2a5ahUMKebUgIlYJwYoxFQQHCOVNLeY8g==
+X-Microsoft-Antispam-Mailbox-Delivery:
+ ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(425001)(930201)(20251009114)(140003)(1420198);
+X-Microsoft-Antispam-Message-Info:
+ 4e9sUe5631M4oXLlu1ignebCX01mIxSWaL4gGCnUbswZLYXMAzvEXJSZwFeyxC58ZSh4ahU6iov1a5ZoIz0SWpJyBE8MfkTqp7xtNNbKYv02brz88P1B37Me8O0XyfaOlNHYSZbmHWnMkaIzCZU9+aqiIiShN54NMvfa8iBzzn1Blv5opzuNzZc6y0gkpAFJSNEFgLP1H76wTJBVCaqaRRiP9a4OH7fvwxFK5qhW6OdAZBdPX24zH2JBFcmyMr2ctJJir7BPRD1hf88CGf/l622gS0G8F2v58MZZXGOJB7LspD+e44tcVgp0VTsARS3CRidshUcWJwjYZByC/yHcIZncKFi/NU9cq2wRk4g5UhParHcrJ23ehktl48m1N1Bt0IfLFJVW48CM4gay6niDjL0XNcKq1wnfHyQctfmkOiwJ/WTSqrlyUDrW2j08p3PC5ZP2MDOlAC+k2bGZKMER1VxpV/7VOkKe82v0g8h61nZXh7wU7lWqEfH0uHSCKP6JF5BiMrTDFhvQlIL+xgURYio86gh5YMb8KxyXn96jrvB0JhuJGsFRiS/CJJj7D4mzPhrN6flzjOfp2wp6wybq+82kTimKU+fZjMAm8HPJhOkHVTogcgngOFuv7AKs7v63DbSavW0LT1La2UL4e7VaZST7Pft0hqOVA7JpcIOhIgvDLATXiKyjnrbr+7Bkk0+dgHImBOijHJW4KKgmBtICYlNPFgnQJ9D94NekhnTh/YMjQmS/UM7MrQyLQqIb7zab1XzHgzfSj7FCUzVuGvw87NhqwzfpSWssou9o4y+X7Lo=
+Content-Type: multipart/alternative;
+	boundary="_000_MWHPR02MB10570053DB72A1BF1613205FDF99FAMWHPR02MB10570na_"
+MIME-Version: 1.0
+
+--_000_MWHPR02MB10570053DB72A1BF1613205FDF99FAMWHPR02MB10570na_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Lindsay,
+
+As we talked about, here's the table showing the three potential conclusion=
+s for any investigations we conduct. You'll see that within Unsubstantiated=
+ there are now two categories, Unsubstantiated - Conclusive and Unsubstanti=
+ated - Inconclusive. This extra category was added to give more context to =
+the results of our team's investigative work. You mentioned, and I agree,  =
+it might be helpful to share this with your investigators ahead of time so =
+they can be aware and categorize their conclusions accurately before their =
+final reports are send to you.
+
+Let me know if you have any questions or concerns.
+
+Conclusions
+Definition
+ Substantiated
+The investigation found that the allegation more likely than not occurred, =
+based on the available evidence.
+Unsubstantiated - Conclusive
+The investigation found sufficient evidence to conclude that the alleged co=
+nduct, more likely than not, did not occur.
+Unsubstantiated - Inconclusive
+The investigation could not determine whether the alleged conduct occurred =
+due to insufficient or conflicting evidence
+
+
+Thanks,
+
+
+
+Gary Nash, CPA, CGMA
+
+Director - Deputy Head of Internal Audit
+
+Maple Leaf Foods Inc
+
+World=92s First Major Carbon Neutral Food Company
+
+Mobile: 416-525-4508
+
+Office: 905-285-5550
+
+Email: gary.nash@mapleleaf.com<mailto:gary.nash@mapleleaf.com>
+
+Confidential: Solicitor-Client Privilege
+
+mapleleaf.com<mailto:Matthew.christopher@mapleleaf.com>
+
+ <https://assets.socialchorus.com/production/28853/images/c2833dba-612e-4c5=
+5-a0d8-bac1b5b2a2ed.png>
+
+
+
+
+
+
+
+
+
+
+
+--_000_MWHPR02MB10570053DB72A1BF1613205FDF99FAMWHPR02MB10570na_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"direction: ltr; font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb=
+(0, 0, 0);" class=3D"elementToProof">
+Hi Lindsay,</div>
+<div style=3D"direction: ltr; font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb=
+(0, 0, 0);">
+<br>
+</div>
+<div style=3D"direction: ltr; font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb=
+(0, 0, 0);" class=3D"elementToProof">
+As we talked about, here's the table showing the three potential conclusion=
+s for any investigations we conduct. You'll see that within
+<u>Unsubstantiated</u>&nbsp;there are now two categories, <u>Unsubstantiate=
+d - Conclusive</u> and
+<u>Unsubstantiated - Inconclusive</u>. This extra category was added to giv=
+e more context to the results of our team's investigative work. You mention=
+ed, and I agree,&nbsp; it might be helpful to share this with your investig=
+ators ahead of time so they can be aware
+ and categorize their conclusions accurately before their final reports are=
+ send to you.</div>
+<div style=3D"direction: ltr; font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb=
+(0, 0, 0);">
+<br>
+</div>
+<div style=3D"direction: ltr; font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb=
+(0, 0, 0);" class=3D"elementToProof">
+Let me know if you have any questions or concerns.</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<table style=3D"width: 611pt; box-sizing: border-box; border-collapse: coll=
+apse; border-spacing: 0px;" data-editing-info=3D"{&quot;topBorderColor&quot=
+;:&quot;#ABABAB&quot;,&quot;bottomBorderColor&quot;:&quot;#ABABAB&quot;,&qu=
+ot;verticalBorderColor&quot;:&quot;#ABABAB&quot;,&quot;hasHeaderRow&quot;:t=
+rue,&quot;hasFirstColumn&quot;:false,&quot;hasBandedRows&quot;:false,&quot;=
+hasBandedColumns&quot;:false,&quot;bgColorEven&quot;:null,&quot;bgColorOdd&=
+quot;:&quot;#ABABAB20&quot;,&quot;headerRowColor&quot;:&quot;#ABABAB&quot;,=
+&quot;tableBorderFormat&quot;:0,&quot;verticalAlign&quot;:null}" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" id=3D"table_0">
+<tbody>
+<tr>
+<th style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); background-color: rgb(171, 171, 171); width: 238.667px; height:=
+ 22px; box-sizing: border-box;" data-editing-info=3D"{}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+Conclusions</div>
+</th>
+<th style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); background-color: rgb(171, 171, 171); width: 485.333px; height:=
+ 22px; box-sizing: border-box;" data-editing-info=3D"{}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+Definition</div>
+</th>
+</tr>
+<tr>
+<td style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); width: 238.667px; height: 25px; box-sizing: border-box;" data-e=
+diting-info=3D"{}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+&nbsp;Substantiated</div>
+</td>
+<td style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); width: 364pt; height: 25px; box-sizing: border-box;" data-editi=
+ng-info=3D"{}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+The investigation found that the allegation&nbsp;more likely than not occur=
+red, based on the available evidence.&nbsp;</div>
+</td>
+</tr>
+<tr>
+<td style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); background-color: rgb(204, 228, 246); color: rgb(0, 0, 0); widt=
+h: 238.667px; height: 48px; box-sizing: border-box;" data-editing-info=3D"{=
+&quot;bgColorOverride&quot;:true}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+Unsubstantiated - Conclusive</div>
+</td>
+<td style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); background-color: rgb(204, 228, 246); color: rgb(0, 0, 0); widt=
+h: 364pt; height: 48px; box-sizing: border-box;" data-editing-info=3D"{&quo=
+t;bgColorOverride&quot;:true}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+The investigation found&nbsp;sufficient evidence to conclude that the alleg=
+ed conduct, more likely than not, did&nbsp;not&nbsp;occur.</div>
+</td>
+</tr>
+<tr>
+<td style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); background-color: rgb(204, 228, 246); color: rgb(0, 0, 0); widt=
+h: 179pt; height: 56px; box-sizing: border-box;" data-editing-info=3D"{&quo=
+t;bgColorOverride&quot;:true}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+Unsubstantiated - Inconclusive&nbsp;</div>
+</td>
+<td style=3D"border-width: 1px; border-style: solid; border-color: rgb(171,=
+ 171, 171); background-color: rgb(204, 228, 246); color: rgb(0, 0, 0); widt=
+h: 364pt; height: 56px; box-sizing: border-box;" data-editing-info=3D"{&quo=
+t;bgColorOverride&quot;:true}">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+The investigation could not determine&nbsp;whether the alleged conduct occu=
+rred due to insufficient or conflicting evidence</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+Thanks,</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div class=3D"elementToProof" id=3D"Signature">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: black;=
+"><b>Gary Nash, CPA, CGMA</b></span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: black;=
+"><b>Director - Deputy Head of Internal Audit</b></span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: rgb(0,=
+ 112, 192);"><b>Maple Leaf Foods Inc</b></span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: rgb(83=
+, 129, 53);"><b><i>World=92s First Major Carbon Neutral Food Company</i></b=
+></span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: black;=
+">Mobile:
+</span><span style=3D"font-family: Rockwell, serif; font-size: 10pt; color:=
+ currentcolor;">416-525-4508</span><span style=3D"font-family: Rockwell, se=
+rif; font-size: 10pt; color: black;">&nbsp;</span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: black;=
+">Office:
+</span><span style=3D"font-family: Rockwell, serif; font-size: 10pt; color:=
+ currentcolor;">905-285-5550</span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: black;=
+">Email:
+</span><span style=3D"font-family: Rockwell, serif; font-size: 10pt; color:=
+ blue;"><u><a style=3D"margin: 0px;" title=3D"mailto:gary.nash@mapleleaf.co=
+m" class=3D"OWAAutoLink" id=3D"OWA5390a090-4b29-5a10-faca-5ae30e82be05" hre=
+f=3D"mailto:gary.nash@mapleleaf.com">gary.nash@mapleleaf.com</a></u></span>=
+</p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 10pt; color: rgb(17=
+3, 173, 173);">Confidential: Solicitor-Client Privilege</span></p>
+<p style=3D"direction: ltr; text-align: left; text-indent: 0px; background-=
+color: rgb(255, 255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Rockwell, serif; font-size: 9pt; color: rgb(5, =
+99, 193);"><a style=3D"margin: 0px;" title=3D"mailto:Matthew.christopher@ma=
+pleleaf.com" class=3D"OWAAutoLink" id=3D"OWA83c8204a-fce0-3657-4353-6bd6d91=
+165e3" href=3D"mailto:Matthew.christopher@mapleleaf.com">mapleleaf.com</a><=
+/span></p>
+<p style=3D"text-align: left; text-indent: 0px; background-color: rgb(255, =
+255, 255); margin: 0in;" class=3D"elementToProof">
+<span style=3D"font-family: Aptos, sans-serif; font-size: 12pt; color: rgb(=
+0, 0, 0);"><img style=3D"width: 291.984px; height: 184.986px; max-width: 64=
+9px; margin: 0px;" height=3D"184" width=3D"291" id=3D"x_x__x0000_i1025" alt=
+=3D"Official Protein Partner logo" src=3D"https://assets.socialchorus.com/p=
+roduction/28853/images/c2833dba-612e-4c55-a0d8-bac1b5b2a2ed.png"></span></p=
+>
+<div style=3D"margin: 0in; font-family: Rockwell, serif; font-size: 10pt; c=
+olor: black;" class=3D"elementToProof">
+<b><br>
+</b></div>
+<p style=3D"line-height: 1.38; margin: 0in;" class=3D"elementToProof"><span=
+ style=3D"font-family: Aptos, sans-serif; font-size: 12pt; color: rgb(0, 0,=
+ 0);"><b><br>
+</b></span></p>
+<div style=3D"margin: 0in; font-family: Rockwell, serif; font-size: 10pt; c=
+olor: rgb(173, 173, 173);" class=3D"elementToProof">
+<br>
+</div>
+<p style=3D"margin: 0in; font-family: Aptos, sans-serif; font-size: 12pt;" =
+class=3D"elementToProof">
+&nbsp;</p>
+</div>
+</body>
+</html>
+
+--_000_MWHPR02MB10570053DB72A1BF1613205FDF99FAMWHPR02MB10570na_--

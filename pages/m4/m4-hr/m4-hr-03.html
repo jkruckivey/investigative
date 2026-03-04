@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope &amp; Planning &mdash; HR</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; HR Track</div>
+      <h1>Scope &amp; Planning</h1>
+      <p class="page-subtitle">Define the investigation scope before collecting evidence</p>
+    </div>
+
+    <p>Before conducting any interviews or gathering evidence, you must prepare a scope document. This establishes the boundaries of your investigation and ensures a focused, defensible process. Refer back to the six essential scope elements from Module 3.</p>
+
+    <h2>Draft the Scope Document</h2>
+
+    <div id="scope-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Complete each field of the investigation scope document for the Night Shift Harassment complaint.',
+        fields: [
+          {
+            label: 'Specific Allegation(s)',
+            type: 'textarea',
+            expected: ['inappropriate comments', 'appearance', 'harassment'],
+            feedback: 'The allegation should clearly state: shift supervisor David Park made repeated inappropriate comments about complainant Sarah Kim\'s appearance over a two-month period, constituting workplace harassment.'
+          },
+          {
+            label: 'Applicable Policies',
+            type: 'textarea',
+            expected: ['harassment', 'code of conduct'],
+            feedback: 'Key policies include the Workplace Harassment Policy and the Code of Conduct. Depending on the organization, the Respectful Workplace Policy and applicable provincial workplace harassment legislation (e.g., Ontario OHSA) may also apply.'
+          },
+          {
+            label: 'Time Period Under Review',
+            type: 'text',
+            expected: ['two months', '2 months', '60 days'],
+            feedback: 'The time period should cover the two-month window during which the alleged harassment occurred, plus a reasonable buffer to capture any earlier incidents that may emerge during interviews.'
+          },
+          {
+            label: 'Individuals to Interview',
+            type: 'textarea',
+            expected: ['Sarah Kim', 'David Park', 'witness'],
+            feedback: 'The interview list should include: Sarah Kim (complainant), David Park (respondent), and the two coworkers identified as witnesses. Additional interviews may be added as the investigation progresses.'
+          },
+          {
+            label: 'Types of Evidence to Collect',
+            type: 'textarea',
+            expected: ['shift schedule', 'record'],
+            feedback: 'Evidence should include: shift schedules (to confirm overlap), interview statements, any written communications (emails, texts, incident reports), HR records for both parties, prior complaint history, and any relevant CCTV footage from common areas.'
+          },
+          {
+            label: 'Target Timeline for Completion',
+            type: 'text',
+            expected: ['14', '21', '30', 'days', 'weeks'],
+            feedback: 'For a Level 2 investigation, the target timeline is typically 14 to 30 days. This allows adequate time for interviews and evidence review while ensuring timely resolution for the complainant.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('scope-activity');
+    </script>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Remember:</strong> The scope document is a living document. If new information emerges during the investigation that falls outside these boundaries, any expansion must be documented and approved before proceeding.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

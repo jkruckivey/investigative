@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 4: Scenario Results</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios</div>
+      <h1>Module 4: Scenario Results</h1>
+      <p class="page-subtitle">Your performance across the investigation scenario</p>
+    </div>
+
+    <p>You have completed your chosen investigation track. Below is a summary of your performance across the scenario activities: classification, scope planning, evidence collection and interviews, analysis, and template completion.</p>
+
+    <div class="score-display" id="score-display">
+      <div class="score-value" id="score-value">--%</div>
+      <div class="score-label">Module 4 Score</div>
+      <div class="score-label" id="score-detail" style="margin-top:0.5rem;"></div>
+    </div>
+
+    <div id="score-breakdown"></div>
+
+    <div id="feedback-section"></div>
+
+    <div class="callout callout-info" id="weight-note">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Module weight:</strong> Module 4 is worth <strong>40%</strong> of your final course grade. This is the largest single component because applying investigative skills to realistic scenarios is the most critical competency this course develops.
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        var scoring;
+        try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+        if (!scoring) {
+          document.getElementById('score-value').textContent = 'N/A';
+          document.getElementById('score-detail').textContent = 'Scoring data unavailable. Complete a scenario track to see your results.';
+          return;
+        }
+
+        var m4Score = scoring.getModuleScore('m4');
+        var earned = m4Score.earned || 0;
+        var possible = m4Score.possible || 0;
+        var percent = scoring.getModulePercent('m4');
+
+        // Update score display
+        var scoreValueEl = document.getElementById('score-value');
+        scoreValueEl.textContent = percent + '%';
+        scoreValueEl.classList.add(percent >= 70 ? 'pass' : 'fail');
+
+        document.getElementById('score-detail').textContent = earned + ' of ' + possible + ' points earned';
+
+        // Build breakdown card
+        var breakdownEl = document.getElementById('score-breakdown');
+        var cardClass = percent >= 90 ? 'card-success' : percent >= 70 ? 'card-accent' : 'card-error';
+        breakdownEl.innerHTML = '<div class="card ' + cardClass + '">' +
+          '<h3>Score Breakdown</h3>' +
+          '<table class="data-table">' +
+          '<thead><tr><th>Activity</th><th>Description</th></tr></thead>' +
+          '<tbody>' +
+          '<tr><td><strong>Classification</strong></td><td>Correctly classifying the investigation level, function, and escalation decision</td></tr>' +
+          '<tr><td><strong>Scope &amp; Planning</strong></td><td>Defining the investigation scope with all essential elements</td></tr>' +
+          '<tr><td><strong>Evidence &amp; Interviews</strong></td><td>Making sound decisions during evidence collection and interview scenarios</td></tr>' +
+          '<tr><td><strong>Analysis &amp; Conclusion</strong></td><td>Reaching the correct conclusion based on the evidence</td></tr>' +
+          '<tr><td><strong>Template Completion</strong></td><td>Completing the investigation summary with accurate information</td></tr>' +
+          '</tbody>' +
+          '</table>' +
+          '</div>';
+
+        // Build feedback
+        var feedbackEl = document.getElementById('feedback-section');
+        var feedbackHtml = '';
+        if (percent >= 90) {
+          feedbackHtml = '<div class="card card-success">' +
+            '<h3>Excellent Performance</h3>' +
+            '<p>You demonstrated strong investigative skills throughout the scenario. You correctly classified the matter, defined an appropriate scope, made sound decisions during evidence collection and interviews, reached the correct conclusion, and completed the investigation summary accurately. You are well prepared to apply the Enterprise-Wide Investigative Procedures in your role.</p>' +
+            '</div>';
+        } else if (percent >= 70) {
+          feedbackHtml = '<div class="card card-accent">' +
+            '<h3>Good Performance</h3>' +
+            '<p>You demonstrated a solid understanding of the investigative process with some areas for improvement. Review the feedback provided on individual activities to strengthen your approach in the areas where you did not earn full marks. Pay particular attention to the areas where your choices did not align with best practices.</p>' +
+            '</div>';
+        } else if (percent >= 50) {
+          feedbackHtml = '<div class="card card-warning">' +
+            '<h3>Needs Improvement</h3>' +
+            '<p>Your performance indicates gaps in applying the investigative framework to realistic scenarios. Consider reviewing Modules 2 and 3 before revisiting this scenario. Key areas to focus on include: the classification framework, scope definition, evidence-based decision making, and reaching conclusions supported by the evidence gathered.</p>' +
+            '</div>';
+        } else {
+          feedbackHtml = '<div class="card card-error">' +
+            '<h3>Significant Improvement Needed</h3>' +
+            '<p>Your performance suggests a need for additional review of the core investigative framework. We recommend reviewing Modules 1 through 3 to reinforce the foundational concepts before attempting the scenario track again. The investigative process requires a structured, evidence-based approach at every stage.</p>' +
+            '</div>';
+        }
+        feedbackEl.innerHTML = feedbackHtml;
+      })();
+    </script>
+
+  </div>
+</body>
+</html>

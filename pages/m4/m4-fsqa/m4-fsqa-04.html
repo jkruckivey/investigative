@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence &amp; Interviews &mdash; FSQA</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; FSQA Track</div>
+      <h1>Evidence &amp; Interviews</h1>
+      <p class="page-subtitle">Trace the contamination source through systematic evidence collection</p>
+    </div>
+
+    <p>The investigation is underway. Your task is to identify the root cause of the <em>Listeria</em> contamination in Batch 447. Each decision you make will affect the quality and thoroughness of your investigation.</p>
+
+    <div id="evidence-scenario"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new BranchScenario({
+        start: 'scene-1',
+        maxPoints: 3,
+        scenes: {
+          'scene-1': {
+            text: '<strong>Step 1: Initial Evidence Collection</strong><br><br>The production line is shut down and your investigation team is assembled. Where do you begin your evidence collection?',
+            choices: [
+              {
+                label: 'A. Review the sanitation and CIP (Clean-in-Place) records for the production line covering the days before and during the Batch 447 run.',
+                next: 'scene-2',
+                points: 1,
+                feedback: 'Good approach. Starting with sanitation and CIP records is systematic and addresses one of the most common vectors for Listeria contamination in food production. These records will reveal whether established sanitation protocols were followed and identify potential gaps in the cleaning process.'
+              },
+              {
+                label: 'B. Interview the newest employee on the production line to determine if their lack of experience caused the contamination.',
+                next: 'scene-2',
+                points: 0,
+                feedback: 'Poor approach. This assumes individual blame before any evidence has been collected. Food safety contamination is far more commonly caused by systemic failures (sanitation gaps, equipment malfunction, process deviations) than by individual error. Starting with a blame-focused interview biases the investigation.'
+              },
+              {
+                label: 'C. Wait for additional lab results from environmental swabs before taking any investigative action.',
+                next: 'scene-2',
+                points: 0,
+                feedback: 'Partial but problematic. While additional lab results are valuable, waiting passively when there are records and evidence available for immediate review introduces unnecessary delay. In a food safety investigation with distributed product, time is critical. You can review records while awaiting lab results.'
+              }
+            ]
+          },
+          'scene-2': {
+            text: '<strong>Step 2: Sanitation Records Finding</strong><br><br>Your review of sanitation records reveals that a scheduled CIP (Clean-in-Place) cycle was skipped on Day 2 of the production run. A handwritten note in the log reads: "CIP delayed due to production schedule pressure — authorized by shift supervisor." What is your next investigative step?',
+            choices: [
+              {
+                label: 'A. Investigate who authorized skipping the CIP cycle, review the authorization chain, and determine whether proper deviation protocols were followed.',
+                next: 'scene-3',
+                points: 1,
+                feedback: 'Good approach. Understanding who authorized the deviation, whether they had the authority to do so, and whether proper deviation procedures were followed is essential for root cause analysis. This traces the decision chain and identifies both the immediate cause and any systemic failures that allowed it.'
+              },
+              {
+                label: 'B. Immediately terminate the shift supervisor who authorized skipping the CIP cycle.',
+                next: 'scene-3',
+                points: 0,
+                feedback: 'Poor approach. Terminating an employee before the investigation is complete is premature and potentially unjust. The investigation has not yet determined whether the skipped CIP cycle was the actual cause of contamination, whether the supervisor was under pressure from management, or whether the facility had a pattern of allowing such deviations. Due process requires completing the investigation first.'
+              },
+              {
+                label: 'C. Focus only on the lab results and ignore the sanitation records since the lab data will tell you the contamination source.',
+                next: 'scene-3',
+                points: 0,
+                feedback: 'Poor approach. Lab results identify the presence and type of contamination but rarely pinpoint the root cause. The skipped CIP cycle is a significant finding that must be investigated. Ignoring documentary evidence in favor of a single data source results in an incomplete investigation that fails to identify systemic failures.'
+              }
+            ]
+          },
+          'scene-3': {
+            text: '<strong>Step 3: Equipment Records Finding</strong><br><br>While reviewing maintenance records, you discover that the pasteurizer on the production line experienced a temperature fluctuation on Day 1 of the Batch 447 run. The temperature dropped below the critical limit for approximately 8 minutes before being corrected. A deviation report was filed but the product was not held for additional testing. How do you proceed?',
+            choices: [
+              {
+                label: 'A. Cross-reference the pasteurizer temperature data with production logs and temperature monitoring records to determine which product was affected during the fluctuation and whether the deviation was properly managed.',
+                next: 'end',
+                points: 1,
+                feedback: 'Good approach. Cross-referencing multiple data sources allows you to determine the full picture: which product was in the pasteurizer during the temperature drop, whether the deviation response was adequate, and whether this contributed to the contamination. A thorough investigation considers multiple contributing factors.'
+              },
+              {
+                label: 'B. Conclude that the temperature fluctuation is the sole cause of contamination and stop investigating other factors.',
+                next: 'end',
+                points: 0,
+                feedback: 'Poor approach. Concluding the investigation prematurely based on a single finding ignores the skipped CIP cycle and potentially other contributing factors. Listeria contamination often results from multiple failures occurring together. A thorough investigation must examine all potential contributing factors before reaching conclusions.'
+              },
+              {
+                label: 'C. Ignore the temperature fluctuation since the skipped CIP cycle already seems like the main issue.',
+                next: 'end',
+                points: 0,
+                feedback: 'Poor approach. Dismissing relevant evidence because another cause "seems" more likely is a common investigation error. The temperature fluctuation may have independently contributed to contamination, or it may have compounded the effect of the sanitation gap. Both findings must be fully investigated.'
+              }
+            ]
+          },
+          'end': {
+            text: '<strong>Evidence Collection Complete</strong><br><br>You have completed the key evidence collection decisions for the Batch 447 investigation. Your score reflects the quality of your investigative approach in tracing the contamination source.',
+            end: true
+          }
+        },
+        onComplete: function(totalPoints, maxPoints) {
+          if (scoring) {
+            scoring.addPoints('m4', totalPoints, maxPoints);
+          }
+          var el = document.getElementById('evidence-scenario');
+          var resultDiv = document.createElement('div');
+          resultDiv.className = 'card ' + (totalPoints >= 2 ? 'card-success' : totalPoints >= 1 ? 'card-warning' : 'card-error');
+          resultDiv.innerHTML = '<strong>Evidence Collection Score: ' + totalPoints + ' of ' + maxPoints + ' points</strong><br>' +
+            (totalPoints === 3 ? 'Excellent. You demonstrated a systematic, thorough approach to tracing the contamination source through multiple evidence streams.' :
+             totalPoints === 2 ? 'Good. You identified key evidence but missed opportunities for a more thorough investigation. Review the feedback on areas for improvement.' :
+             totalPoints === 1 ? 'Fair. Several of your investigative decisions had significant gaps. In food safety investigations, thoroughness is critical for protecting public health.' :
+             'Your evidence collection approach needs significant improvement. Review the feedback for each decision to understand systematic investigation techniques for food safety matters.');
+          el.appendChild(resultDiv);
+        }
+      }).render('evidence-scenario');
+    </script>
+
+  </div>
+</body>
+</html>

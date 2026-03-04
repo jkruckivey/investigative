@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence &amp; Interviews &mdash; HR</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; HR Track</div>
+      <h1>Evidence &amp; Interviews</h1>
+      <p class="page-subtitle">Conduct the investigation through key decision points</p>
+    </div>
+
+    <p>You have reviewed the shift schedules and confirmed that Sarah Kim and David Park worked together on all dates mentioned in the complaint. It is now time to conduct interviews. Your choices at each stage will determine the quality of your investigation.</p>
+
+    <div id="interview-scenario"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new BranchScenario({
+        start: 'scene-1',
+        maxPoints: 3,
+        scenes: {
+          'scene-1': {
+            text: '<strong>Interview 1: Sarah Kim (Complainant)</strong><br><br>You are sitting down with Sarah Kim to conduct the complainant interview. Shift schedules confirm she and David Park worked together on all dates she referenced. How do you open the interview?',
+            choices: [
+              {
+                label: 'A. "Thank you for coming in, Sarah. I\'d like to hear from you directly. Can you walk me through what\'s been happening on the night shift?"',
+                next: 'scene-2',
+                points: 1,
+                feedback: 'Good approach. This is an open-ended, neutral opening that invites the complainant to share their account in their own words without leading or presupposing an outcome. It establishes a respectful, professional tone.'
+              },
+              {
+                label: 'B. "We need to get David in trouble for what he\'s been doing. Tell me everything."',
+                next: 'scene-2',
+                points: 0,
+                feedback: 'Poor approach. This statement presupposes guilt, signals bias, and compromises the investigation\'s neutrality. An investigator must remain impartial and avoid language that suggests a predetermined outcome.'
+              },
+              {
+                label: 'C. "Can you prove these allegations? Do you have any hard evidence?"',
+                next: 'scene-2',
+                points: 0,
+                feedback: 'Poor approach. This shifts the burden of proof to the complainant, which is inappropriate. It creates a hostile interview environment and may discourage the complainant from sharing information. The investigator\'s job is to gather and assess evidence, not demand that complainants prove their case.'
+              }
+            ]
+          },
+          'scene-2': {
+            text: '<strong>Interview 2: Witness Interview</strong><br><br>You are now interviewing one of the coworkers Sarah identified as a witness. The witness confirms hearing David make comments about Sarah\'s appearance on at least three occasions but is visibly reluctant to provide a formal statement. They say: "I don\'t want to get involved. What if David finds out I said something?"',
+            choices: [
+              {
+                label: 'A. Reassure them about the non-retaliation policy and explain that their identity will be kept confidential to the greatest extent possible, while being honest that complete anonymity cannot always be guaranteed.',
+                next: 'scene-3',
+                points: 1,
+                feedback: 'Good approach. This balances transparency with reassurance. Explaining the non-retaliation policy is essential, and being honest about the limits of confidentiality maintains the investigator\'s credibility. Witnesses need to feel safe but also need accurate information.'
+              },
+              {
+                label: 'B. Warn them that failure to cooperate with a workplace investigation could result in disciplinary action.',
+                next: 'scene-3',
+                points: 0,
+                feedback: 'Poor approach. Threatening a reluctant witness with discipline is coercive and creates a hostile environment. While employees may have an obligation to participate, using threats undermines trust and may produce unreliable testimony given under duress.'
+              },
+              {
+                label: 'C. Say "Just nod if it happened. We won\'t tell anyone you were involved, and I won\'t write down your name."',
+                next: 'scene-3',
+                points: 0,
+                feedback: 'Partial but improper approach. While the intent is to make the witness comfortable, "just nod" responses cannot be properly documented, and promising complete anonymity may not be possible. Proper documentation requires attributed statements. This approach also fails to create a proper evidentiary record.'
+              }
+            ]
+          },
+          'scene-3': {
+            text: '<strong>Interview 3: David Park (Respondent)</strong><br><br>You are now conducting the respondent interview with David Park. After being informed of the nature of the complaint (without revealing witness identities), David responds: "That\'s completely false. I have never said anything inappropriate to Sarah or anyone else. She\'s making this up because I gave her a poor performance review last month."',
+            choices: [
+              {
+                label: 'A. Accept his denial and close the investigation, since it is his word against hers.',
+                next: 'end',
+                points: 0,
+                feedback: 'Poor approach. A blanket denial does not end an investigation. The investigator must weigh all evidence, including corroborating witness statements, and cannot simply accept a denial at face value. Closing the investigation prematurely would be a serious procedural failure.'
+              },
+              {
+                label: 'B. Present the specific allegations one by one and ask David to respond to each, including the specific dates and the nature of the comments alleged.',
+                next: 'end',
+                points: 1,
+                feedback: 'Good approach. Presenting specific allegations allows the respondent to address each one individually, which is both fair to the respondent and thorough for the investigation. This approach tests the respondent\'s account against the details and may reveal inconsistencies or provide alternative explanations.'
+              },
+              {
+                label: 'C. Tell David that witnesses have already confirmed everything, so he should just admit what happened.',
+                next: 'end',
+                points: 0,
+                feedback: 'Poor approach. This reveals the existence and conclusions of witness testimony, which compromises witness confidentiality and safety. It also presupposes guilt and attempts to coerce a confession rather than gathering the respondent\'s genuine account of events.'
+              }
+            ]
+          },
+          'end': {
+            text: '<strong>Interview Phase Complete</strong><br><br>You have completed the three key interviews in this investigation. Your score reflects the quality of your investigative approach across these critical decision points.',
+            end: true
+          }
+        },
+        onComplete: function(totalPoints, maxPoints) {
+          if (scoring) {
+            scoring.addPoints('m4', totalPoints, maxPoints);
+          }
+          var el = document.getElementById('interview-scenario');
+          var resultDiv = document.createElement('div');
+          resultDiv.className = 'card ' + (totalPoints >= 2 ? 'card-success' : totalPoints >= 1 ? 'card-warning' : 'card-error');
+          resultDiv.innerHTML = '<strong>Interview Score: ' + totalPoints + ' of ' + maxPoints + ' points</strong><br>' +
+            (totalPoints === 3 ? 'Excellent. You demonstrated strong investigative interview skills across all three interviews.' :
+             totalPoints === 2 ? 'Good. You made sound decisions in most interviews, but review the feedback on the areas where you could improve.' :
+             totalPoints === 1 ? 'Fair. Several of your interview approaches had significant issues. Review the feedback carefully before proceeding.' :
+             'Your interview approaches need significant improvement. Review the feedback for each interview to understand the proper techniques.');
+          el.appendChild(resultDiv);
+        }
+      }).render('interview-scenario');
+    </script>
+
+  </div>
+</body>
+</html>

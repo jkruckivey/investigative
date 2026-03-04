@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope &amp; Planning &mdash; FSQA</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; FSQA Track</div>
+      <h1>Scope &amp; Planning</h1>
+      <p class="page-subtitle">Define the investigation scope for a food safety deviation</p>
+    </div>
+
+    <p>Food safety investigations require a comprehensive scope document that accounts for production processes, sanitation protocols, equipment maintenance, and regulatory requirements. Define the scope for the Batch 447 investigation below.</p>
+
+    <h2>Draft the Scope Document</h2>
+
+    <div id="scope-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Complete each field of the investigation scope document for the Batch 447 contamination.',
+        fields: [
+          {
+            label: 'Specific Allegation(s) / Issue Under Investigation',
+            type: 'textarea',
+            expected: ['Listeria', 'contamination', 'Batch 447'],
+            feedback: 'The issue should clearly state: elevated levels of Listeria monocytogenes detected in Batch 447 of ready-to-eat deli meat produced at the Hamilton facility, requiring root cause identification, source determination, and assessment of the full extent of contamination.'
+          },
+          {
+            label: 'Applicable Regulations and Standards',
+            type: 'textarea',
+            expected: ['CFIA', 'HACCP'],
+            feedback: 'Key regulations include: CFIA Safe Food for Canadians Regulations, the facility\'s HACCP plan, Good Manufacturing Practices (GMP), sanitation standard operating procedures (SSOPs), and applicable Health Canada guidelines for Listeria monocytogenes in ready-to-eat foods.'
+          },
+          {
+            label: 'Time Period Under Review',
+            type: 'textarea',
+            expected: ['3-day', '3 day', 'three day', 'production run'],
+            feedback: 'The primary time period is the 3-day production run for Batch 447. However, the scope should extend to include the sanitation and maintenance activities before, during, and after the run, as well as preceding production batches that may share contamination vectors.'
+          },
+          {
+            label: 'Individuals to Interview',
+            type: 'textarea',
+            expected: ['production', 'QA', 'maintenance'],
+            feedback: 'The interview list should include: production line operators and supervisors for all three shifts, QA/FSQA technicians who conducted testing, maintenance personnel responsible for equipment (especially pasteurizer and CIP systems), sanitation crew members, and the facility manager.'
+          },
+          {
+            label: 'Types of Evidence to Collect',
+            type: 'textarea',
+            expected: ['production log', 'temperature', 'sanitation'],
+            feedback: 'Evidence should include: production logs, temperature monitoring records (pasteurizer, cold chain), sanitation and CIP logs, equipment maintenance records, environmental monitoring results, lab test results (product and environmental swabs), HACCP deviation reports, and shift handover notes.'
+          },
+          {
+            label: 'Target Timeline for Completion',
+            type: 'text',
+            expected: ['30', '60', 'days'],
+            feedback: 'For a Level 1 food safety investigation, the target timeline is typically 30 to 60 days. However, initial findings related to product recall and regulatory reporting must be communicated urgently, well ahead of the full investigation completion.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('scope-activity');
+    </script>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div>
+        <strong>Parallel actions:</strong> In food safety investigations, evidence collection often runs in parallel with containment actions. Do not wait for the investigation to conclude before initiating a recall assessment or CFIA notification. Regulatory timelines do not pause for internal investigations.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigation Procedure at a Glance</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 1: The Investigative Framework</div>
+      <h1>Investigation Procedure at a Glance</h1>
+      <p class="page-subtitle">Click each step to explore the 7-step process</p>
+    </div>
+
+    <p>The Enterprise-Wide Investigative Procedures follow a structured 7-step process from initial intake through final closure. Each step builds on the previous one, ensuring a logical, thorough, and well-documented investigation. Click on any step below to see a summary of its key activities.</p>
+
+    <div class="flowchart" id="flowchart">
+
+      <!-- Step 1 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="1" onclick="toggleStep(this)">
+        <div class="step-number">Step 1</div>
+        <div class="step-title">Intake &amp; Acknowledgement</div>
+      </div>
+      <div class="flow-detail" id="detail-1">
+        <p><strong>Purpose:</strong> Receive and formally document the initial complaint or report.</p>
+        <ul>
+          <li>Complaint received through any reporting channel (EthicsLine, supervisor, HR, direct report, etc.)</li>
+          <li>Intake form completed with initial details: who, what, when, where</li>
+          <li>Acknowledgement sent to the reporter (if not anonymous) confirming receipt</li>
+          <li>Preliminary information gathered to support triage</li>
+          <li>Immediate safety or preservation actions taken if required</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&#9660;</div>
+
+      <!-- Step 2 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="2" onclick="toggleStep(this)">
+        <div class="step-number">Step 2</div>
+        <div class="step-title">Triage &amp; Assign Investigator</div>
+      </div>
+      <div class="flow-detail" id="detail-2">
+        <p><strong>Purpose:</strong> Assess the matter and determine the appropriate investigation level and investigator.</p>
+        <ul>
+          <li>Review initial intake information to assess severity, risk, and complexity</li>
+          <li>Classify the matter as Level 1 (Significant), Level 2 (Minor), or Level 3 (No Formal Investigation)</li>
+          <li>Identify the appropriate function(s) and assign an investigator free of conflicts of interest</li>
+          <li>Determine whether Legal Counsel involvement is required</li>
+          <li>For Level 3 matters, document rationale and close the file</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&#9660;</div>
+
+      <!-- Step 3 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="3" onclick="toggleStep(this)">
+        <div class="step-number">Step 3</div>
+        <div class="step-title">Plan Investigation</div>
+      </div>
+      <div class="flow-detail" id="detail-3">
+        <p><strong>Purpose:</strong> Develop a structured plan that guides the investigation activities.</p>
+        <ul>
+          <li>Define the scope of the investigation: what allegations or issues will be examined</li>
+          <li>Identify the evidence to be collected (documents, records, electronic data, physical evidence)</li>
+          <li>List the witnesses to be interviewed and determine the interview order</li>
+          <li>Establish a timeline with target milestones and a completion date</li>
+          <li>Identify any immediate interim measures needed (e.g., separation of parties, access restrictions)</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&#9660;</div>
+
+      <!-- Step 4 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="4" onclick="toggleStep(this)">
+        <div class="step-number">Step 4</div>
+        <div class="step-title">Collect Evidence &amp; Conduct Interviews</div>
+      </div>
+      <div class="flow-detail" id="detail-4">
+        <p><strong>Purpose:</strong> Gather all relevant evidence and interview witnesses to establish the facts.</p>
+        <ul>
+          <li>Collect documentary evidence: policies, logs, emails, records, video footage, etc.</li>
+          <li>Conduct interviews with the complainant, respondent, and witnesses</li>
+          <li>Use open-ended questions and follow a structured interview protocol</li>
+          <li>Document all interviews with detailed notes or recordings (where legally permitted)</li>
+          <li>Preserve and secure all evidence with a documented chain of custody</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&#9660;</div>
+
+      <!-- Step 5 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="5" onclick="toggleStep(this)">
+        <div class="step-number">Step 5</div>
+        <div class="step-title">Analyze &amp; Reach Conclusions</div>
+      </div>
+      <div class="flow-detail" id="detail-5">
+        <p><strong>Purpose:</strong> Weigh the evidence and reach a conclusion on each allegation.</p>
+        <ul>
+          <li>Review and analyze all collected evidence and interview statements</li>
+          <li>Assess credibility of accounts by considering consistency, corroboration, and plausibility</li>
+          <li>Apply the applicable standard of proof (typically balance of probabilities)</li>
+          <li>Reach a conclusion for each allegation: <strong>Substantiated</strong>, <strong>Unsubstantiated-Conclusive</strong>, or <strong>Unsubstantiated-Inconclusive</strong></li>
+          <li>Identify any systemic issues, patterns, or contributing factors</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&#9660;</div>
+
+      <!-- Step 6 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="6" onclick="toggleStep(this)">
+        <div class="step-number">Step 6</div>
+        <div class="step-title">Report &amp; Communicate</div>
+      </div>
+      <div class="flow-detail" id="detail-6">
+        <p><strong>Purpose:</strong> Document the findings in a formal report and communicate outcomes to relevant parties.</p>
+        <ul>
+          <li>Prepare the investigation report following the SOP template and documentation standards</li>
+          <li>Include: summary of allegations, methodology, evidence reviewed, findings of fact, conclusions, and recommendations</li>
+          <li>Submit the report to the Investigation Lead for review and then to the Decision-Maker</li>
+          <li>Communicate outcomes to the complainant and respondent as appropriate</li>
+          <li>Ensure all communications respect confidentiality requirements</li>
+        </ul>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&#9660;</div>
+
+      <!-- Step 7 -->
+      <div class="flow-step" tabindex="0" role="button" aria-expanded="false" data-step="7" onclick="toggleStep(this)">
+        <div class="step-number">Step 7</div>
+        <div class="step-title">Close &amp; Archive</div>
+      </div>
+      <div class="flow-detail" id="detail-7">
+        <p><strong>Purpose:</strong> Formally close the investigation file and ensure proper records retention.</p>
+        <ul>
+          <li>Confirm that all corrective actions and recommendations have been communicated to the Decision-Maker</li>
+          <li>Complete the investigation closure checklist</li>
+          <li>Archive the complete investigation file (intake form, plan, evidence, interview notes, report)</li>
+          <li>Ensure records are stored securely and in compliance with retention policies and privacy requirements</li>
+          <li>Conduct a post-investigation review or lessons learned, if applicable</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout callout-info" style="margin-top: 1rem;">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>You will explore each step in depth</strong> in Modules 2 through 5. This overview provides the big picture so you can see how each stage connects.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleStep(stepEl) {
+      var stepNum = stepEl.getAttribute('data-step');
+      var detail = document.getElementById('detail-' + stepNum);
+      if (!detail) return;
+
+      var isOpen = detail.classList.contains('show');
+
+      // Close all open details first
+      var allDetails = document.querySelectorAll('.flow-detail');
+      var allSteps = document.querySelectorAll('.flow-step');
+      for (var i = 0; i < allDetails.length; i++) {
+        allDetails[i].classList.remove('show');
+      }
+      for (var j = 0; j < allSteps.length; j++) {
+        allSteps[j].classList.remove('active');
+        allSteps[j].setAttribute('aria-expanded', 'false');
+      }
+
+      // Toggle the clicked one (if it was closed, open it)
+      if (!isOpen) {
+        detail.classList.add('show');
+        stepEl.classList.add('active');
+        stepEl.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Also support keyboard activation
+    document.addEventListener('DOMContentLoaded', function () {
+      var steps = document.querySelectorAll('.flow-step');
+      for (var i = 0; i < steps.length; i++) {
+        steps[i].addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleStep(this);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

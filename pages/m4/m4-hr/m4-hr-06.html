@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Completion &mdash; HR</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; HR Track</div>
+      <h1>Investigation Summary Template</h1>
+      <p class="page-subtitle">Complete the formal investigation summary</p>
+    </div>
+
+    <p>Every investigation must conclude with a formal written summary. This document becomes part of the permanent investigation file and must clearly communicate the findings, conclusions, and recommended actions. Complete the template below based on your investigation of the Night Shift Harassment complaint.</p>
+
+    <h2>Complete the Investigation Summary</h2>
+
+    <div id="template-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Fill in each field of the investigation summary. Your responses should reflect the evidence gathered and conclusions reached throughout this scenario.',
+        fields: [
+          {
+            label: 'Investigation Type',
+            type: 'select',
+            options: ['Workplace Harassment', 'Workplace Violence', 'Discrimination', 'Food Safety', 'Occupational Health & Safety', 'Fraud / Financial Misconduct', 'Data Breach / Privacy', 'Animal Care'],
+            expected: 'Workplace Harassment',
+            feedback: 'Correct. This investigation concerned allegations of workplace harassment by a supervisor toward a subordinate employee.'
+          },
+          {
+            label: 'Conclusion Category',
+            type: 'select',
+            options: ['Substantiated', 'Unsubstantiated — Inconclusive', 'Unsubstantiated — Insufficient Evidence'],
+            expected: 'Substantiated',
+            feedback: 'Correct. Based on corroborating witness statements, the complainant\'s consistent account, and the respondent\'s failure to provide credible alternatives, the allegation is substantiated on a balance of probabilities.'
+          },
+          {
+            label: 'Key Findings Summary',
+            type: 'textarea',
+            expected: ['witness', 'corroborate', 'comment', 'appearance'],
+            feedback: 'A strong findings summary should reference: (1) the complainant\'s consistent and detailed account, (2) independent corroboration from two witnesses, (3) shift schedule confirmation placing both parties together, (4) the respondent\'s blanket denial and debunked retaliation claim, and (5) the conclusion that inappropriate comments about appearance occurred on multiple occasions.'
+          },
+          {
+            label: 'Recommended Actions',
+            type: 'textarea',
+            expected: ['disciplin', 'training', 'monitor'],
+            feedback: 'Recommended actions for a substantiated harassment finding typically include: (1) appropriate disciplinary action for the respondent consistent with the severity, (2) mandatory harassment awareness training for the respondent, (3) review of the complainant\'s shift transfer request, (4) monitoring of the work environment to prevent retaliation, and (5) consideration of broader training for the facility\'s supervisory staff.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('template-activity');
+    </script>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>HR Track complete:</strong> You have worked through the entire investigation lifecycle for a workplace harassment complaint. Your accumulated score from classification, scope planning, interview decisions, analysis, and template completion will be reflected in your Module 4 assessment results.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

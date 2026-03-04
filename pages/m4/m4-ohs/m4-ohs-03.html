@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope &amp; Planning &mdash; OHS</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; OHS Track</div>
+      <h1>Scope &amp; Planning</h1>
+      <p class="page-subtitle">Define the investigation scope for an OHS near-miss</p>
+    </div>
+
+    <p>OHS investigations focus on identifying root causes and systemic issues, not assigning blame. The goal is to prevent recurrence. Define the scope for this near-miss investigation below, keeping in mind the hierarchy of controls: elimination, substitution, engineering controls, administrative controls, and personal protective equipment.</p>
+
+    <h2>Draft the Scope Document</h2>
+
+    <div id="scope-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Complete each field of the investigation scope document for the warehouse near-miss incident.',
+        fields: [
+          {
+            label: 'Specific Incident Under Investigation',
+            type: 'textarea',
+            expected: ['forklift', 'pedestrian', 'near-miss'],
+            feedback: 'The incident description should clearly state: a near-miss incident involving a forklift-pedestrian interaction in the Mississauga distribution warehouse, where a pedestrian worker entered a designated forklift aisle without a high-visibility vest, and the forklift operator swerved to avoid a collision, striking warehouse racking.'
+          },
+          {
+            label: 'Applicable Regulations and Policies',
+            type: 'textarea',
+            expected: ['OHS', 'safety', 'workplace'],
+            feedback: 'Key regulations and policies include: Ontario Occupational Health and Safety Act (OHSA), Workplace Safety regulations regarding powered industrial equipment, the facility\'s forklift safety program, pedestrian-vehicle traffic management plan, PPE policy, and the company\'s near-miss reporting and investigation procedures.'
+          },
+          {
+            label: 'Time Period Under Review',
+            type: 'textarea',
+            expected: ['incident', 'day'],
+            feedback: 'The primary focus is the incident itself, but the scope should extend to review safety practices and controls over the preceding weeks to months to identify patterns, such as whether similar near-misses have occurred or whether safety controls have been progressively degraded.'
+          },
+          {
+            label: 'Individuals to Interview',
+            type: 'textarea',
+            expected: ['James Rivera', 'Anika Patel', 'supervisor'],
+            feedback: 'The interview list should include: James Rivera (forklift operator), Anika Patel (pedestrian worker), the reporting supervisor, other warehouse workers who regularly use the area, the warehouse safety coordinator, and any workers who witnessed the incident or regularly observe the traffic pattern in that aisle.'
+          },
+          {
+            label: 'Types of Evidence to Collect',
+            type: 'textarea',
+            expected: ['CCTV', 'training', 'signage'],
+            feedback: 'Evidence should include: CCTV footage of the incident, warehouse layout and traffic management plans, pedestrian and forklift zone signage and markings, training records for both workers (forklift certification, safety orientation), PPE issuance records, prior near-miss and incident reports for the facility, and a physical inspection of the incident location.'
+          },
+          {
+            label: 'Target Timeline for Completion',
+            type: 'text',
+            expected: ['14', '21', '30', 'days', 'weeks'],
+            feedback: 'For a Level 2 near-miss investigation, the target timeline is typically 14 to 30 days. Immediate hazard controls should be implemented within days if systemic issues are identified, even before the investigation is formally concluded.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('scope-activity');
+    </script>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Systems thinking:</strong> In OHS investigations, the scope should always consider systemic factors&mdash;not just the immediate actions of the individuals involved. Ask: Why was the pedestrian in the forklift aisle? Were the controls adequate? Is there a pattern?
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Routing</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 2: Intake, Classification &amp; Escalation</div>
+      <h1>Function Routing</h1>
+      <p class="page-subtitle">Match investigation scenarios to the correct function</p>
+    </div>
+
+    <p>Step 5 of the Classification Framework requires routing each complaint to the function best positioned to lead the investigation. The correct routing depends on the <strong>nature of the core allegation</strong>. In this activity, you will practice matching common complaint types to the appropriate investigative function.</p>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Instructions:</strong> Click a scenario on the left, then click the matching function on the right. A correct match will highlight in green. An incorrect match will flash red and allow you to try again. Continue until all pairs are matched.
+      </div>
+    </div>
+
+    <div id="function-match"></div>
+
+  </div>
+
+  <script>
+    new MatchPairs({
+      pairs: [
+        { left: 'Employee harassment complaint', right: 'HR' },
+        { left: 'Contamination found in production line', right: 'FSQA' },
+        { left: 'Worker injured by equipment malfunction', right: 'OHS' },
+        { left: 'Suspected financial fraud by department manager', right: 'Internal Audit' },
+        { left: 'Unauthorized access to employee personal data', right: 'Information Security' }
+      ],
+      onComplete: function (correct, total) {
+        /* Practice activity - not scored */
+      }
+    }).render('function-match');
+  </script>
+</body>
+</html>

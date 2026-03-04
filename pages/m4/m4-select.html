@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Investigation Track</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios</div>
+      <h1>Choose Your Investigation Track</h1>
+      <p class="page-subtitle">Apply the enterprise-wide investigative framework to a realistic scenario</p>
+    </div>
+
+    <p>In this module, you will work through a complete investigation scenario from intake to conclusion. Each track presents a different type of investigation that Maple Leaf Foods may encounter. Select the track most relevant to your role.</p>
+
+    <div class="role-cards">
+
+      <div class="role-card" tabindex="0" role="button" aria-label="Select HR track: Night Shift Harassment"
+           onclick="parent.nav.selectRole('hr')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();parent.nav.selectRole('hr');}">
+        <div class="role-icon" aria-hidden="true">&#128101;</div>
+        <div class="role-title">HR: Night Shift Harassment</div>
+        <div class="role-desc">Investigate an employee harassment complaint at a production facility</div>
+      </div>
+
+      <div class="role-card" tabindex="0" role="button" aria-label="Select FSQA track: Batch 447"
+           onclick="parent.nav.selectRole('fsqa')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();parent.nav.selectRole('fsqa');}">
+        <div class="role-icon" aria-hidden="true">&#128300;</div>
+        <div class="role-title">FSQA: Batch 447</div>
+        <div class="role-desc">Investigate a food safety deviation involving a contaminated product batch</div>
+      </div>
+
+      <div class="role-card" tabindex="0" role="button" aria-label="Select OHS track: Warehouse Near-Miss"
+           onclick="parent.nav.selectRole('ohs')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();parent.nav.selectRole('ohs');}">
+        <div class="role-icon" aria-hidden="true">&#9888;</div>
+        <div class="role-title">OHS: Warehouse Near-Miss</div>
+        <div class="role-desc">Investigate a near-miss incident involving forklift operations</div>
+      </div>
+
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>One track required:</strong> You only need to complete one track, but you are welcome to revisit and explore the others after completing the course.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Simulation</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3: Investigation Best Practices</div>
+      <h1>Interview Simulation</h1>
+      <p class="page-subtitle">Practice your interview skills in a realistic scenario</p>
+    </div>
+
+    <div class="henderson-block">
+      <div class="henderson-label">Henderson File</div>
+      <p>You are the assigned investigator on the Henderson File. As part of your investigation into allegations that production supervisor Wei Chen may have directed workers to skip inspection steps, you are about to interview a line worker who was present on the production floor during the period in question. The worker appears nervous as they enter the interview room.</p>
+      <p>Your choices at each stage will be evaluated based on the interview techniques covered in this module. Choose the best approach at each step.</p>
+    </div>
+
+    <div id="interview-scenario"></div>
+
+    <script>
+      new BranchScenario({
+        start: 'scene-1',
+        maxPoints: 3,
+        scenes: {
+          'scene-1': {
+            text: '<h3>Scene 1: Opening the Interview</h3>' +
+                  '<p>The line worker has just taken a seat across from you. They are fidgeting with their hands and avoiding direct eye contact. You need to begin the interview.</p>' +
+                  '<p><strong>How do you open the conversation?</strong></p>',
+            choices: [
+              {
+                label: 'A. "Tell me what you know about Chen falsifying inspection records."',
+                next: 'scene-2',
+                points: 0,
+                feedback: '<strong>Poor approach.</strong> This is a leading question that assumes facts not yet established and names the respondent in a way that may intimidate the witness. It violates the principle of starting with open-ended questions and remaining neutral. An already nervous witness may shut down entirely when confronted this directly.'
+              },
+              {
+                label: 'B. "I\'d like to understand your experience working on the production line. Can you walk me through a typical shift?"',
+                next: 'scene-2',
+                points: 1,
+                feedback: '<strong>Good approach.</strong> This is an open-ended question that puts the witness at ease and follows the funnel technique by starting broad. It allows the worker to share information in their own words without feeling pressured or led toward a particular answer. Building rapport first is especially important with a nervous interviewee.'
+              },
+              {
+                label: 'C. "We know Chen is guilty. We just need your confirmation."',
+                next: 'scene-2',
+                points: 0,
+                feedback: '<strong>Poor approach.</strong> This statement reveals a predetermined conclusion, which is a serious violation of investigator neutrality. It pressures the witness to agree with a conclusion that has not been established and would compromise the credibility of any testimony obtained. An investigation must never begin from a position of assumed guilt.'
+              }
+            ]
+          },
+          'scene-2': {
+            text: '<h3>Scene 2: Following Up on Key Information</h3>' +
+                  '<p>As the interview progresses, the worker begins to open up. They mention that during certain shifts, they noticed that some of the standard inspection steps were being skipped on the production line.</p>' +
+                  '<p><strong>How do you follow up on this important statement?</strong></p>',
+            choices: [
+              {
+                label: 'A. "Who told workers to skip those steps?"',
+                next: 'scene-3',
+                points: 0,
+                feedback: '<strong>Partial, but flawed.</strong> While this question seeks relevant information, it assumes that someone specifically directed workers to skip steps&mdash;a fact the witness has not yet established. This is a leading question that puts words in the witness\'s mouth. The witness may have observed steps being skipped without anyone explicitly directing it.'
+              },
+              {
+                label: 'B. "Can you describe what you observed? When did this happen and who was involved?"',
+                next: 'scene-3',
+                points: 1,
+                feedback: '<strong>Good approach.</strong> This follows the funnel technique perfectly. You are narrowing from the broad statement the witness made to more specific details&mdash;what they observed, when, and who was involved&mdash;without assuming facts or leading toward a particular answer. This allows the witness to provide their own account of what happened.'
+              },
+              {
+                label: 'C. "That\'s exactly what we expected to hear."',
+                next: 'scene-3',
+                points: 0,
+                feedback: '<strong>Poor approach.</strong> This response reveals investigator bias by confirming that the information aligns with a preexisting expectation. It suggests the conclusion has already been determined and may cause the witness to tailor subsequent responses to match what they think the investigator wants to hear, rather than providing their genuine recollection.'
+              }
+            ]
+          },
+          'scene-3': {
+            text: '<h3>Scene 3: Addressing Retaliation Concerns</h3>' +
+                  '<p>Near the end of the interview, the worker pauses and says: "I\'m worried about what happens after this. If Chen or anyone else finds out what I said, things could get really difficult for me on the floor."</p>' +
+                  '<p><strong>How do you respond to this concern?</strong></p>',
+            choices: [
+              {
+                label: 'A. "Don\'t worry about it, just tell us everything."',
+                next: 'end',
+                points: 0,
+                feedback: '<strong>Poor approach.</strong> This is dismissive of a legitimate and serious concern. Simply telling a witness not to worry does not address the underlying fear and does not fulfill the investigator\'s obligation to explain the protections available. A dismissed concern may cause the witness to withhold important information.'
+              },
+              {
+                label: 'B. "I understand your concern. I want to assure you that retaliation for participating in an investigation is strictly prohibited under company policy and applicable law. Your identity will be protected to the extent possible, and if you experience any form of retaliation, you should report it immediately so it can be addressed."',
+                next: 'end',
+                points: 1,
+                feedback: '<strong>Good approach.</strong> This response acknowledges the concern, provides proper reassurance by citing the specific protections available, and gives the witness a clear path to report any retaliation. It demonstrates empathy while maintaining professionalism and fulfilling the investigator\'s obligations.'
+              },
+              {
+                label: 'C. "If you don\'t cooperate, there could be consequences."',
+                next: 'end',
+                points: 0,
+                feedback: '<strong>Poor approach.</strong> This is coercive and inappropriate. Threatening a witness with consequences for not cooperating undermines the voluntary nature of testimony, may constitute witness intimidation, and would seriously compromise the defensibility of the investigation. Even where employees have an obligation to participate, the investigator must not use threats.'
+              }
+            ]
+          },
+          'end': {
+            end: true,
+            text: '<h3>Interview Simulation Complete</h3>' +
+                  '<div id="interview-score-summary"></div>'
+          }
+        },
+        onComplete: function (totalPoints, maxPoints) {
+          var summary = document.getElementById('interview-score-summary');
+          if (!summary) return;
+          var pct = Math.round((totalPoints / maxPoints) * 100);
+          var html = '<p>You earned <strong>' + totalPoints + ' out of ' + maxPoints + '</strong> points (' + pct + '%).</p>';
+          if (totalPoints === maxPoints) {
+            html += '<div class="callout callout-info"><span class="callout-icon" aria-hidden="true">&#9432;</span><div><strong>Excellent work.</strong> You demonstrated strong interview technique throughout the simulation. You opened with an appropriate open-ended question, followed the funnel technique to gather details, and properly addressed the witness\'s retaliation concerns. These skills are essential for conducting credible and defensible investigations.</div></div>';
+          } else if (totalPoints >= 2) {
+            html += '<div class="callout callout-info"><span class="callout-icon" aria-hidden="true">&#9432;</span><div><strong>Good effort.</strong> You made mostly sound choices, but there is room for improvement. Review the feedback on your responses and revisit the interview techniques covered in this module. Pay particular attention to remaining neutral, using the funnel technique, and addressing witness concerns properly.</div></div>';
+          } else {
+            html += '<div class="callout callout-warning"><span class="callout-icon" aria-hidden="true">&#9888;</span><div><strong>Needs improvement.</strong> Several of your choices reflected common interview pitfalls such as leading questions, predetermined conclusions, or inadequate responses to witness concerns. These issues can compromise the credibility and defensibility of an investigation. Review the interview techniques section carefully before proceeding.</div></div>';
+          }
+          summary.innerHTML = html;
+        }
+      }).render('interview-scenario');
+    </script>
+
+  </div>
+</body>
+</html>

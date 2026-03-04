@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Complete</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Enterprise-Wide Investigative Procedures</div>
+      <h1>Course Complete</h1>
+      <p class="page-subtitle">Your final results</p>
+    </div>
+
+    <div id="results-container">
+      <p>Calculating your final score...</p>
+    </div>
+
+    <script>
+      (function () {
+        var container = document.getElementById('results-container');
+
+        // Access scoring from the parent frame or the current window
+        var scoringRef = null;
+        try { scoringRef = parent.scoring; } catch (e) { /* ignore */ }
+        if (!scoringRef && window.scoring) { scoringRef = window.scoring; }
+
+        if (!scoringRef) {
+          container.innerHTML = '<div class="callout callout-warning">' +
+            '<span class="callout-icon" aria-hidden="true">&#9888;</span>' +
+            '<div><strong>Unable to load scores.</strong> The scoring system is not available. Please ensure you are viewing this page within the course framework.</div>' +
+            '</div>';
+          return;
+        }
+
+        var allScores = scoringRef.getAllScores();
+        var finalScore = allScores.final;
+        var passed = allScores.passed;
+
+        // Report final score to SCORM
+        try { scoringRef.reportFinalScore(); } catch (e) { /* ignore */ }
+
+        // Module display names and weights
+        var moduleInfo = {
+          m2: { name: 'Module 2: Intake, Classification & Escalation', weight: 15 },
+          m3: { name: 'Module 3: Investigation Best Practices', weight: 25 },
+          m4: { name: 'Module 4: Function-Specific Scenarios', weight: 40 },
+          m5: { name: 'Module 5: Documentation & Closure', weight: 20 }
+        };
+
+        var html = '';
+
+        // Score display
+        html += '<div class="score-display">';
+        html += '<div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + finalScore + '%</div>';
+        html += '<div class="score-label">Final Weighted Score</div>';
+        html += '</div>';
+
+        // Results breakdown table
+        html += '<h2>Score Breakdown</h2>';
+        html += '<div class="results-table">';
+
+        // Header row
+        html += '<div class="results-row" style="font-weight:700; border-bottom:2px solid #1a1a2e; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.03em; color:#4a4a6a;">';
+        html += '<span class="module-name">Module</span>';
+        html += '<span style="text-align:center;">Score</span>';
+        html += '<span style="text-align:center;">Weight</span>';
+        html += '<span class="module-score">Weighted</span>';
+        html += '</div>';
+
+        var modules = ['m2', 'm3', 'm4', 'm5'];
+        for (var i = 0; i < modules.length; i++) {
+          var mod = modules[i];
+          var info = moduleInfo[mod];
+          var data = allScores[mod];
+          var pct = data.percent;
+          var weighted = Math.round((pct * info.weight) / 100);
+          var scoreClass = pct >= 70 ? 'pass' : 'fail';
+
+          html += '<div class="results-row">';
+          html += '<span class="module-name">' + info.name + '</span>';
+          html += '<span class="module-score ' + scoreClass + '">' + pct + '%</span>';
+          html += '<span style="text-align:center; color:#4a4a6a;">' + info.weight + '%</span>';
+          html += '<span class="module-score">' + weighted + '</span>';
+          html += '</div>';
+        }
+
+        // Total row
+        html += '<div class="results-row total">';
+        html += '<span class="module-name">Final Score</span>';
+        html += '<span></span>';
+        html += '<span style="text-align:center; color:#4a4a6a;">100%</span>';
+        html += '<span class="module-score ' + (passed ? 'pass' : 'fail') + '">' + finalScore + '%</span>';
+        html += '</div>';
+
+        html += '</div>'; // end results-table
+
+        // Pass / Fail message
+        if (passed) {
+          html += '<div class="card card-success" style="margin-top:1.5rem;">';
+          html += '<h3 style="margin-top:0;">Congratulations &mdash; You Passed!</h3>';
+          html += '<p>You have successfully completed the Enterprise-Wide Investigative Procedures course with a score of <strong>' + finalScore + '%</strong>, meeting the 75% passing threshold.</p>';
+          html += '<p>You are now familiar with the standardized investigative framework used across all functions at Maple Leaf Foods. Remember that the SOP document itself is your ongoing reference for conducting investigations. The principles, procedures, and standards covered in this course apply to every investigation you lead or participate in.</p>';
+          html += '<p>Your completion has been recorded.</p>';
+          html += '</div>';
+        } else {
+          html += '<div class="card card-warning" style="margin-top:1.5rem;">';
+          html += '<h3 style="margin-top:0;">Not Yet Passed</h3>';
+          html += '<p>Your final score of <strong>' + finalScore + '%</strong> is below the 75% passing threshold. This means one or more of your module assessments need improvement.</p>';
+          html += '<p>Review the modules where your score was lowest, paying close attention to the key concepts and procedures covered. You may retake the module assessments to improve your score.</p>';
+          html += '<p>If you have questions about any of the material, reach out to your manager or the course administrator for support.</p>';
+          html += '</div>';
+        }
+
+        container.innerHTML = html;
+      })();
+    </script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Completion &mdash; FSQA</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; FSQA Track</div>
+      <h1>Investigation Summary Template</h1>
+      <p class="page-subtitle">Complete the formal investigation summary for a food safety matter</p>
+    </div>
+
+    <p>Every food safety investigation must conclude with a comprehensive written summary that addresses not only the findings and conclusions but also the regulatory actions taken and the corrective measures recommended. Complete the template below based on your investigation of the Batch 447 contamination.</p>
+
+    <h2>Complete the Investigation Summary</h2>
+
+    <div id="template-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Fill in each field of the investigation summary. Your responses should reflect the evidence gathered and conclusions reached throughout this scenario.',
+        fields: [
+          {
+            label: 'Investigation Type',
+            type: 'select',
+            options: ['Food Safety — Product Contamination', 'Food Safety — Process Deviation', 'Workplace Harassment', 'Occupational Health & Safety', 'Fraud / Financial Misconduct', 'Data Breach / Privacy'],
+            expected: 'Food Safety — Product Contamination',
+            feedback: 'Correct. This investigation concerned Listeria monocytogenes contamination in a ready-to-eat meat product, making it a food safety product contamination matter.'
+          },
+          {
+            label: 'Conclusion Category',
+            type: 'select',
+            options: ['Substantiated', 'Unsubstantiated — Inconclusive', 'Unsubstantiated — Insufficient Evidence'],
+            expected: 'Substantiated',
+            feedback: 'Correct. The investigation substantiated the contamination finding and identified multiple contributing root causes including sanitation failures, equipment deviation, and systemic production pressure.'
+          },
+          {
+            label: 'Key Findings Summary',
+            type: 'textarea',
+            expected: ['CIP', 'pasteurizer', 'temperature', 'production pressure'],
+            feedback: 'A strong findings summary should reference: (1) confirmed Listeria contamination in product and environment, (2) skipped CIP cycle on Day 2 due to production pressure, (3) pasteurizer temperature deviation on Day 1 with uncalibrated sensor, (4) systemic pattern of production schedule overriding food safety controls, and (5) inadequate deviation management procedures.'
+          },
+          {
+            label: 'Recommended Corrective Actions',
+            type: 'textarea',
+            expected: ['recall', 'sanitation', 'training', 'CIP'],
+            feedback: 'Recommended actions for a substantiated food safety contamination finding should include: (1) product recall of affected batches, (2) CFIA notification and cooperation, (3) mandatory CIP compliance with no production-override authority, (4) pasteurizer sensor calibration and preventive maintenance schedule review, (5) retraining on food safety deviation procedures, (6) review of production scheduling to eliminate pressure on food safety controls, and (7) enhanced environmental monitoring program.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('template-activity');
+    </script>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>FSQA Track complete:</strong> You have worked through the entire investigation lifecycle for a food safety contamination incident. Your accumulated score from classification, scope planning, evidence collection decisions, analysis, and template completion will be reflected in your Module 4 assessment results.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

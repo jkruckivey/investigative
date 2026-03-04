@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classification Decision &mdash; OHS</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; OHS Track</div>
+      <h1>Classification Decision</h1>
+      <p class="page-subtitle">Classify the warehouse near-miss using the framework</p>
+    </div>
+
+    <p>Apply the Classification Framework to this near-miss incident. Consider the severity dimensions: while no injury occurred, assess the potential severity of the hazard, the scope of the risk, and whether systemic safety controls may be inadequate.</p>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Recall</div>
+      <p>A forklift nearly struck a pedestrian worker in a designated forklift aisle. The pedestrian was not wearing a high-visibility vest. The forklift operator swerved into racking to avoid the collision. CCTV captured the incident. No injuries occurred.</p>
+    </div>
+
+    <h2>Classify This Incident</h2>
+
+    <div id="classification-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Complete the classification form below based on the near-miss incident details.',
+        fields: [
+          {
+            label: 'Investigation Level',
+            type: 'select',
+            options: ['Level 1 — Significant', 'Level 2 — Minor', 'Level 3 — No Formal Investigation'],
+            expected: 'Level 2',
+            feedback: 'Correct. This is a Level 2 (Minor) matter. While it is a near-miss with no actual injury, it involves a serious hazard (forklift-pedestrian interaction) that warrants a formal investigation to identify root causes and prevent recurrence. It does not reach Level 1 because there was no actual injury, no regulatory reporting obligation for a near-miss of this type, and no senior leader involvement.'
+          },
+          {
+            label: 'Primary Function',
+            type: 'select',
+            options: ['OHS', 'HR', 'FSQA', 'Internal Audit', 'Legal', 'Information Security', 'Animal Care'],
+            expected: 'OHS',
+            feedback: 'Correct. This is a workplace safety incident involving equipment hazards and pedestrian separation controls, which falls within OHS\'s investigative mandate.'
+          },
+          {
+            label: 'Escalation Required?',
+            type: 'select',
+            options: ['Yes', 'No'],
+            expected: 'No',
+            feedback: 'Correct. No escalation is required. There was no actual injury, no criminal conduct, no senior leader involvement, and no mandatory regulatory reporting obligation for a near-miss of this type. The investigation can proceed under standard Level 2 procedures.'
+          },
+          {
+            label: 'Justification (explain your classification rationale)',
+            type: 'textarea',
+            expected: ['near-miss', 'no injury', 'forklift', 'safety'],
+            feedback: 'A strong justification should reference: the nature of the hazard (forklift-pedestrian interaction, which has high potential severity), the fact that no actual injury occurred, the availability of evidence (CCTV), the potential for systemic safety control issues, and the absence of escalation triggers.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('classification-activity');
+    </script>
+
+  </div>
+</body>
+</html>

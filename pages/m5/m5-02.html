@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing Investigation Conclusions</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 5: Documentation &amp; Closure</div>
+      <h1>Writing Investigation Conclusions</h1>
+      <p class="page-subtitle">Applying conclusion categories with clear, evidence-based reasoning</p>
+    </div>
+
+    <p>The conclusion is the most consequential section of the investigation report. It determines what happens next&mdash;whether corrective action is taken, whether policies are changed, and whether the organization can defend its decision. A well-written conclusion must clearly identify which conclusion category applies and explain why, with direct references to the evidence.</p>
+
+    <h2>The Three Conclusion Categories</h2>
+
+    <div class="card card-accent">
+      <h3>Substantiated</h3>
+      <p>The evidence establishes, on a balance of probabilities, that the alleged conduct <strong>more likely than not occurred</strong>. This does not require certainty&mdash;only that the weight of evidence tips in favor of the allegation being true.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Unsubstantiated &ndash; Conclusive</h3>
+      <p>The evidence establishes, on a balance of probabilities, that the alleged conduct <strong>more likely than not did NOT occur</strong>. The investigation was able to reach a definitive determination that the conduct did not take place.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Unsubstantiated &ndash; Inconclusive</h3>
+      <p>The evidence is <strong>insufficient to determine</strong>, on a balance of probabilities, whether the alleged conduct occurred or did not occur. This may happen when there are conflicting accounts with no corroborating evidence, when key evidence has been lost or destroyed, or when witnesses are unavailable.</p>
+    </div>
+
+    <h2>Conclusion Writing Practice</h2>
+
+    <p>Read the following investigation scenario carefully, then complete the conclusion fields below. Your conclusion should identify the correct conclusion category and provide a statement that references the standard of proof and cites the specific evidence.</p>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Scenario &mdash; Employee Theft Investigation</div>
+      <p><strong>Allegation:</strong> An employee in the warehouse department has been taking company product without authorization.</p>
+      <p><strong>Evidence collected:</strong></p>
+      <ul>
+        <li><strong>CCTV footage:</strong> Security camera recordings from three separate dates show the employee placing product into a personal bag near the loading dock at the end of their shift.</li>
+        <li><strong>Inventory records:</strong> Inventory discrepancy reports show shortages of the specific product on dates that correspond to the CCTV footage.</li>
+        <li><strong>Interview with the employee (respondent):</strong> The employee denies taking any product. When shown the CCTV footage, the employee was unable to provide an alternative explanation for the observed conduct.</li>
+        <li><strong>Witness statement:</strong> A coworker reported seeing the employee leave the building with a bag that appeared to contain product on at least two occasions.</li>
+      </ul>
+    </div>
+
+    <div id="conclusion-activity"></div>
+
+    <script>
+      new FillTemplate({
+        intro: 'Based on the evidence above, complete the conclusion for this investigation.',
+        fields: [
+          {
+            label: 'Conclusion Category',
+            type: 'select',
+            options: ['Substantiated', 'Unsubstantiated \u2013 Conclusive', 'Unsubstantiated \u2013 Inconclusive'],
+            expected: 'Substantiated',
+            feedback: 'Correct. The CCTV footage, corroborating inventory records, and witness statement collectively establish that the conduct more likely than not occurred. The respondent\'s inability to explain the CCTV footage further supports this conclusion.'
+          },
+          {
+            label: 'Conclusion Statement (reference the standard of proof and cite specific evidence)',
+            type: 'textarea',
+            expected: ['more likely than not', 'CCTV', 'inventory'],
+            feedback: 'A strong conclusion statement should reference the "balance of probabilities" or "more likely than not" standard and cite the specific evidence: CCTV footage showing the employee taking product on three dates, inventory records confirming corresponding shortages, a corroborating witness statement, and the respondent\'s inability to provide an alternative explanation. Example: "Based on the balance of probabilities, this allegation is Substantiated. CCTV footage from three separate dates shows the employee placing product into a personal bag. Inventory discrepancy reports confirm shortages on those same dates. A coworker corroborated observing the employee leaving with product. The respondent denied the conduct but was unable to offer an alternative explanation for the footage. Taken together, this evidence establishes that the alleged conduct more likely than not occurred."'
+          }
+        ],
+        onComplete: function (earned, possible) {
+          /* Practice activity, not scored */
+        }
+      }).render('conclusion-activity');
+    </script>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Writing tip:</strong> A strong conclusion statement follows a consistent structure: (1) state the conclusion category, (2) reference the standard of proof, (3) cite the key pieces of evidence that support the determination, and (4) address any conflicting evidence and explain why it does not change the outcome.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

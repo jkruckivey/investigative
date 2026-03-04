@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence &amp; Interviews &mdash; OHS</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; OHS Track</div>
+      <h1>Evidence &amp; Interviews</h1>
+      <p class="page-subtitle">Investigate the root cause of the near-miss through evidence and interviews</p>
+    </div>
+
+    <p>Your investigation is underway. The goal is to identify root causes and systemic issues that contributed to this near-miss, not to assign individual blame. Each decision you make will affect whether you uncover the true systemic factors at play.</p>
+
+    <div id="investigation-scenario"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new BranchScenario({
+        start: 'scene-1',
+        maxPoints: 3,
+        scenes: {
+          'scene-1': {
+            text: '<strong>Step 1: Where to Start</strong><br><br>You have access to CCTV footage, the near-miss report filed by the supervisor, and both workers are available for interview. What is your first investigative step?',
+            choices: [
+              {
+                label: 'A. Review the CCTV footage before conducting any interviews, so you can establish the factual sequence of events objectively.',
+                next: 'scene-2',
+                points: 1,
+                feedback: 'Good approach. Reviewing objective evidence (CCTV) before interviews allows you to establish the facts independently, prevents interview questions from being based on assumptions, and provides a reference against which interview accounts can be compared. This is a best practice in OHS investigations.'
+              },
+              {
+                label: 'B. Interview Anika Patel (the pedestrian worker) first to find out why she was in the forklift aisle.',
+                next: 'scene-2',
+                points: 0,
+                feedback: 'Partial but not ideal. While interviewing Patel is necessary, doing so before reviewing the CCTV means you are entering the interview without a clear understanding of the facts. You may inadvertently ask leading questions or miss important details visible on the footage. Evidence review should precede interviews when possible.'
+              },
+              {
+                label: 'C. Immediately discipline Anika Patel for violating the pedestrian safety rules by being in the forklift aisle without a high-visibility vest.',
+                next: 'scene-2',
+                points: 0,
+                feedback: 'Poor approach. Disciplining a worker before investigating the root cause is premature, focuses on individual blame rather than systemic issues, and may discourage future near-miss reporting. The investigation has not yet determined why Patel was in the aisle or whether the safety controls were adequate.'
+              }
+            ]
+          },
+          'scene-2': {
+            text: '<strong>Step 2: CCTV Findings</strong><br><br>Your review of the CCTV footage reveals something important: Anika Patel entered the forklift aisle at a specific point where the "Forklift Traffic Only" signage was completely obscured by pallets that had been stacked in front of it. From her approach angle, the warning sign was not visible. What do you investigate next?',
+            choices: [
+              {
+                label: 'A. Conduct a comprehensive review of all pedestrian/forklift separation controls throughout the warehouse, including signage, barriers, floor markings, and designated pedestrian routes.',
+                next: 'scene-3',
+                points: 1,
+                feedback: 'Good approach. This systemic review looks beyond the single incident location to evaluate whether the overall traffic management system is adequate. If signage was obscured at one point, there may be similar issues elsewhere. A comprehensive review identifies all control gaps, not just the one that happened to contribute to this incident.'
+              },
+              {
+                label: 'B. Conclude that the incident was Anika Patel\'s fault for not being more careful, since she should have known the aisle was for forklifts only.',
+                next: 'scene-3',
+                points: 0,
+                feedback: 'Poor approach. This focuses on individual blame and ignores the systemic failure: the safety signage was obscured. Effective OHS investigation recognizes that workers will make errors, and the control system must be designed to prevent errors from resulting in incidents. If a sign is not visible, the control has failed regardless of what the worker "should have known."'
+              },
+              {
+                label: 'C. Only investigate this one signage location and fix it, since you have identified the specific problem.',
+                next: 'scene-3',
+                points: 0,
+                feedback: 'Partial but insufficient. Fixing only the immediate signage issue addresses the symptom but not the systemic problem. If pallets can obstruct safety signage at one location, the same could be true at other locations. A thorough investigation examines the system, not just the single point of failure.'
+              }
+            ]
+          },
+          'scene-3': {
+            text: '<strong>Step 3: Interview Findings</strong><br><br>During interviews, multiple warehouse workers independently reveal that they regularly use the same route Patel used as a shortcut through the forklift aisle. They explain that the designated pedestrian route adds approximately 3 minutes to their walk and goes through a congested staging area. Several workers say: "Everyone uses that shortcut. We\'ve been doing it for months." How do you proceed?',
+            choices: [
+              {
+                label: 'A. Investigate the systemic issue: Is the designated pedestrian route practical and well-designed? Are the separation controls (barriers, signage, floor markings) adequate? Why has this unsafe behaviour become normalized?',
+                next: 'end',
+                points: 1,
+                feedback: 'Good approach. This recognizes that when many workers independently adopt the same unsafe behaviour, the problem is almost certainly systemic, not individual. Investigating the practicality of the designated route, the adequacy of physical controls, and the normalization of risk-taking addresses the true root causes and leads to effective corrective actions.'
+              },
+              {
+                label: 'B. Issue written warnings to all workers who have been using the shortcut to reinforce the pedestrian route rule.',
+                next: 'end',
+                points: 0,
+                feedback: 'Partial but insufficient. Issuing warnings addresses the behaviour but not the root cause. If the designated route is impractical and the separation controls are inadequate, warnings will not prevent future incidents. Workers will revert to the shortcut as soon as the enforcement pressure fades. This approach relies on the weakest level of control (administrative) while ignoring the opportunity to implement stronger controls.'
+              },
+              {
+                label: 'C. Conclude the investigation since you have found the root cause: workers taking a shortcut through the forklift aisle.',
+                next: 'end',
+                points: 0,
+                feedback: 'Poor approach. The worker shortcut is a symptom, not the root cause. The root cause analysis should ask: Why is the shortcut more attractive than the designated route? Why are there no physical barriers preventing pedestrian access to the forklift aisle? Why was the signage easily obscured? Why did the behaviour become normalized without being identified? Stopping at the surface level misses the opportunity to implement systemic corrective actions.'
+              }
+            ]
+          },
+          'end': {
+            text: '<strong>Evidence Collection Complete</strong><br><br>You have completed the key investigative decisions for the warehouse near-miss. Your score reflects whether your approach identified systemic root causes rather than focusing on individual blame.',
+            end: true
+          }
+        },
+        onComplete: function(totalPoints, maxPoints) {
+          if (scoring) {
+            scoring.addPoints('m4', totalPoints, maxPoints);
+          }
+          var el = document.getElementById('investigation-scenario');
+          var resultDiv = document.createElement('div');
+          resultDiv.className = 'card ' + (totalPoints >= 2 ? 'card-success' : totalPoints >= 1 ? 'card-warning' : 'card-error');
+          resultDiv.innerHTML = '<strong>Investigation Score: ' + totalPoints + ' of ' + maxPoints + ' points</strong><br>' +
+            (totalPoints === 3 ? 'Excellent. You demonstrated strong systems-thinking skills, focusing on root causes and systemic controls rather than individual blame.' :
+             totalPoints === 2 ? 'Good. You identified some systemic factors but missed opportunities for a more thorough root cause analysis. Review the feedback for improvement areas.' :
+             totalPoints === 1 ? 'Fair. Your investigation tended toward individual blame rather than systemic analysis. OHS investigations are most effective when they focus on system-level improvements.' :
+             'Your investigative approach focused too heavily on individual blame. Effective OHS investigation requires systems thinking. Review the feedback for each decision to understand the systemic approach.');
+          el.appendChild(resultDiv);
+        }
+      }).render('investigation-scenario');
+    </script>
+
+  </div>
+</body>
+</html>

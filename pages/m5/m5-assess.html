@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 5 Assessment</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 5: Documentation &amp; Closure</div>
+      <h1>Module 5 Assessment</h1>
+      <p class="page-subtitle">Scored assessment &mdash; worth 20% of your final grade</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div>
+        <strong>This assessment is scored.</strong> Your score on these 5 questions contributes 20% of your final course grade. Read each question carefully and select the best answer. You will receive feedback after each question, but you cannot change your answer once selected.
+      </div>
+    </div>
+
+    <h2>Question 1 of 5</h2>
+    <div id="q1"></div>
+
+    <h2>Question 2 of 5</h2>
+    <div id="q2"></div>
+
+    <h2>Question 3 of 5</h2>
+    <div id="q3"></div>
+
+    <h2>Question 4 of 5</h2>
+    <div id="q4"></div>
+
+    <h2>Question 5 of 5</h2>
+    <div id="q5"></div>
+
+    <div id="assessment-result" style="margin-top: 2rem;"></div>
+
+    <script>
+      (function () {
+        var earned = 0;
+        var answered = 0;
+        var total = 5;
+
+        function checkComplete() {
+          if (answered < total) return;
+
+          // Report score to scoring manager
+          try { parent.scoring.setModuleScore('m5', earned, total); } catch(e) { if(window.scoring) scoring.setModuleScore('m5', earned, total); }
+
+          var pct = Math.round((earned / total) * 100);
+          var passed = pct >= 70;
+          var resultEl = document.getElementById('assessment-result');
+          resultEl.innerHTML =
+            '<div class="score-display">' +
+              '<div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + pct + '%</div>' +
+              '<div class="score-label">' + earned + ' of ' + total + ' correct</div>' +
+            '</div>' +
+            '<div class="card ' + (passed ? 'card-success' : 'card-warning') + '">' +
+              (passed
+                ? '<strong>Well done!</strong> You have demonstrated a solid understanding of investigation documentation and closure procedures. Your score has been recorded.'
+                : '<strong>You did not pass this assessment.</strong> Review the Module 5 material on report structure, conclusion categories, communication requirements, Level 3 closure, and records retention, then try again.') +
+            '</div>';
+
+          resultEl.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        new MultipleChoice({
+          question: 'Which of the following should NOT appear in an investigation report?',
+          options: [
+            { text: 'A chronological account of the events based on evidence', correct: false, feedback: 'Not quite. A chronological factual account is appropriate for the Findings of Fact section. The correct answer is personal opinions about the respondent\'s character. Reports must be factual and evidence-based, never opinion-based.' },
+            { text: 'Personal opinions about the respondent\'s character', correct: true, feedback: 'Correct. Investigation reports must be factual, not opinion-based. Personal opinions about character have no place in a report. Every statement should be grounded in evidence, and conclusions should use the standard conclusion categories.' },
+            { text: 'References to specific pieces of evidence that support the conclusion', correct: false, feedback: 'Not quite. Referencing specific evidence is essential for supporting the conclusion. The correct answer is personal opinions about the respondent\'s character. Reports must be factual and evidence-based.' },
+            { text: 'Recommendations for corrective actions', correct: false, feedback: 'Not quite. Recommendations are a standard section of the report. The correct answer is personal opinions about the respondent\'s character. Reports must be factual, not opinion-based.' }
+          ],
+          onComplete: function (correct) {
+            if (correct) earned++;
+            answered++;
+            checkComplete();
+          }
+        }).render('q1');
+
+        new MultipleChoice({
+          question: 'What is the minimum retention period for investigation files at Maple Leaf Foods?',
+          options: [
+            { text: '1 year', correct: false, feedback: 'Incorrect. One year is far too short. Investigation files must be retained for a minimum of 7 years from the date of file closure.' },
+            { text: '3 years', correct: false, feedback: 'Incorrect. Three years does not meet the minimum requirement. Investigation files must be retained for a minimum of 7 years from the date of file closure.' },
+            { text: '7 years', correct: true, feedback: 'Correct. Investigation files must be retained for a minimum of 7 years from the date of file closure. Some matters may require longer retention, and files subject to litigation holds must be retained indefinitely until the hold is released.' },
+            { text: '10 years', correct: false, feedback: 'Incorrect. While some matters may require retention beyond the minimum, the standard minimum retention period is 7 years, not 10.' }
+          ],
+          onComplete: function (correct) {
+            if (correct) earned++;
+            answered++;
+            checkComplete();
+          }
+        }).render('q2');
+
+        new MultipleChoice({
+          question: 'Who receives the full investigation report?',
+          options: [
+            { text: 'The complainant', correct: false, feedback: 'Incorrect. The complainant receives a summary of the outcome and any actions that affect them directly, but never the full report. The decision-maker receives the full investigation report.' },
+            { text: 'The respondent', correct: false, feedback: 'Incorrect. The respondent receives findings relevant to them and any corrective actions, but not the full report. The decision-maker receives the full investigation report.' },
+            { text: 'The decision-maker', correct: true, feedback: 'Correct. The decision-maker always receives the full investigation report, including all findings, analysis, conclusions, and recommendations. Legal Counsel also receives the full report for Level 1 investigations.' },
+            { text: 'All employees in the affected department', correct: false, feedback: 'Incorrect. Investigation reports are confidential and are never shared broadly. The decision-maker receives the full report. Other parties receive only the information relevant to them on a need-to-know basis.' }
+          ],
+          onComplete: function (correct) {
+            if (correct) earned++;
+            answered++;
+            checkComplete();
+          }
+        }).render('q3');
+
+        new MultipleChoice({
+          question: 'When closing a Level 3 matter, what must be documented?',
+          options: [
+            { text: 'Only the original complaint and the decision not to investigate', correct: false, feedback: 'Incorrect. A Level 3 closure requires more than just the complaint and decision. The complete documentation must include the complaint, the assessment process, the reason no investigation was conducted, any preliminary steps taken, and how the matter was resolved or addressed.' },
+            { text: 'The complaint, assessment process, reason no investigation was conducted, and resolution', correct: true, feedback: 'Correct. A Level 3 closure file must document the complaint received, the assessment process followed, the specific reason no formal investigation was conducted, any preliminary steps taken during the assessment, and how the matter was resolved or addressed.' },
+            { text: 'Nothing &mdash; Level 3 matters do not require documentation', correct: false, feedback: 'Incorrect. Even Level 3 matters require documentation. The closure file must include the complaint, assessment process, rationale for not investigating, preliminary steps taken, and the resolution.' },
+            { text: 'A full investigation report following the standard seven-section structure', correct: false, feedback: 'Incorrect. A full seven-section report is for Level 1 and Level 2 investigations. Level 3 matters require a closure file documenting the complaint, assessment, rationale, preliminary steps, and resolution.' }
+          ],
+          onComplete: function (correct) {
+            if (correct) earned++;
+            answered++;
+            checkComplete();
+          }
+        }).render('q4');
+
+        new MultipleChoice({
+          question: 'Which conclusion category means "evidence shows the conduct more likely than not did NOT occur"?',
+          options: [
+            { text: 'Substantiated', correct: false, feedback: 'Incorrect. Substantiated means the evidence shows the conduct more likely than not DID occur. The correct answer is Unsubstantiated \u2013 Conclusive, which means the evidence shows the conduct more likely than not did NOT occur.' },
+            { text: 'Unsubstantiated \u2013 Conclusive', correct: true, feedback: 'Correct. Unsubstantiated \u2013 Conclusive means the investigation was able to reach a definitive determination: on a balance of probabilities, the alleged conduct more likely than not did NOT occur.' },
+            { text: 'Unsubstantiated \u2013 Inconclusive', correct: false, feedback: 'Incorrect. Unsubstantiated \u2013 Inconclusive means the evidence is insufficient to determine whether the conduct occurred or not. The correct answer is Unsubstantiated \u2013 Conclusive, which means the evidence affirmatively shows the conduct did not occur.' },
+            { text: 'Not Substantiated', correct: false, feedback: 'Incorrect. "Not Substantiated" is not one of the three standard conclusion categories. The correct answer is Unsubstantiated \u2013 Conclusive, meaning the evidence shows the conduct more likely than not did NOT occur.' }
+          ],
+          onComplete: function (correct) {
+            if (correct) earned++;
+            answered++;
+            checkComplete();
+          }
+        }).render('q5');
+      })();
+    </script>
+
+  </div>
+</body>
+</html>

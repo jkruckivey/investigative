@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigation Report Structure</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 5: Documentation &amp; Closure</div>
+      <h1>Investigation Report Structure</h1>
+      <p class="page-subtitle">Building a clear, defensible investigation report</p>
+    </div>
+
+    <p>The investigation report is the primary record of your work. It documents how the investigation was conducted, what evidence was gathered, and what conclusions were reached. A well-structured report ensures that anyone reviewing the investigation&mdash;whether a decision-maker, legal counsel, or an external reviewer&mdash;can follow the logic from complaint to conclusion.</p>
+
+    <p>Every investigation report at Maple Leaf Foods follows the same seven-section structure. Click each section below to learn what it should contain and how to write it effectively.</p>
+
+    <div id="report-sections"></div>
+
+    <script>
+      new ClickReveal({
+        items: [
+          {
+            title: '1. Executive Summary',
+            content: '<p>The executive summary provides a concise overview of the entire investigation in one to two paragraphs. It is written last but appears first in the report. A busy decision-maker should be able to read the executive summary alone and understand the essential outcome.</p>' +
+                     '<p><strong>Include:</strong></p>' +
+                     '<ul>' +
+                     '<li>The nature of the complaint or allegation</li>' +
+                     '<li>When the complaint was received and when the investigation was initiated</li>' +
+                     '<li>The conclusion reached (Substantiated, Unsubstantiated-Conclusive, or Unsubstantiated-Inconclusive)</li>' +
+                     '<li>A one-sentence summary of the key recommendations</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> Write the executive summary after completing the rest of the report. This ensures it accurately reflects the full scope of findings.</p>'
+          },
+          {
+            title: '2. Investigation Scope',
+            content: '<p>The scope section defines the boundaries of the investigation. It tells the reader exactly what was investigated and, equally important, what was not.</p>' +
+                     '<p><strong>Include:</strong></p>' +
+                     '<ul>' +
+                     '<li>The specific allegations or issues under investigation</li>' +
+                     '<li>The parties involved (complainant, respondent, relevant witnesses)</li>' +
+                     '<li>The time period covered by the investigation</li>' +
+                     '<li>Any limitations on scope and the reasons for those limitations</li>' +
+                     '<li>The investigation level classification (Level 1 or Level 2)</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> Be precise about what was and was not within scope. This prevents misunderstandings about the investigation\'s reach and protects against claims that relevant issues were ignored.</p>'
+          },
+          {
+            title: '3. Methodology',
+            content: '<p>The methodology section describes how the investigation was conducted. It demonstrates that the process was thorough, fair, and followed the enterprise-wide procedures.</p>' +
+                     '<p><strong>Include:</strong></p>' +
+                     '<ul>' +
+                     '<li>The documentary and digital evidence reviewed (types and sources, not every document)</li>' +
+                     '<li>The physical evidence examined, if applicable</li>' +
+                     '<li>The individuals interviewed, their roles, and the dates of interviews</li>' +
+                     '<li>Any subject-matter experts consulted</li>' +
+                     '<li>The standard of proof applied (balance of probabilities)</li>' +
+                     '<li>Any challenges or obstacles encountered during the investigation</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> The methodology section builds credibility. A reader should come away confident that the investigation was conducted with appropriate rigor.</p>'
+          },
+          {
+            title: '4. Findings of Fact',
+            content: '<p>This is typically the longest section of the report. It presents the facts established by the evidence, organized either chronologically or by allegation. This section does not interpret or analyze&mdash;it simply states what the evidence shows.</p>' +
+                     '<p><strong>Include:</strong></p>' +
+                     '<ul>' +
+                     '<li>A factual narrative of the events, based on the evidence collected</li>' +
+                     '<li>Direct references to supporting evidence (e.g., "According to the access log dated October 15...")</li>' +
+                     '<li>Where accounts conflict, present both versions without choosing between them (that happens in the Analysis section)</li>' +
+                     '<li>Relevant policies, procedures, or standards that apply to the conduct in question</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> Use neutral, factual language. Report what the evidence shows, not what you believe happened. Avoid characterizations like "obviously" or "clearly."</p>'
+          },
+          {
+            title: '5. Analysis',
+            content: '<p>The analysis section is where the investigator evaluates the evidence and resolves any conflicts or ambiguities. This is the bridge between the factual findings and the conclusion.</p>' +
+                     '<p><strong>Include:</strong></p>' +
+                     '<ul>' +
+                     '<li>Assessment of the credibility of conflicting accounts</li>' +
+                     '<li>Explanation of how corroborating evidence supports or contradicts specific accounts</li>' +
+                     '<li>Application of the standard of proof to the facts</li>' +
+                     '<li>Identification of any patterns, systemic issues, or contributing factors</li>' +
+                     '<li>Discussion of any mitigating or aggravating factors</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> Show your reasoning. The analysis should make it clear why you weighed the evidence the way you did. A well-reasoned analysis is the foundation of a defensible conclusion.</p>'
+          },
+          {
+            title: '6. Conclusion',
+            content: '<p>The conclusion states the investigator\'s determination for each allegation. It must use one of the three standard conclusion categories and clearly explain why that category was selected.</p>' +
+                     '<p><strong>The three conclusion categories:</strong></p>' +
+                     '<ul>' +
+                     '<li><strong>Substantiated:</strong> The evidence establishes, on a balance of probabilities, that the alleged conduct more likely than not occurred.</li>' +
+                     '<li><strong>Unsubstantiated &ndash; Conclusive:</strong> The evidence establishes that the alleged conduct more likely than not did NOT occur.</li>' +
+                     '<li><strong>Unsubstantiated &ndash; Inconclusive:</strong> The evidence is insufficient to determine, on a balance of probabilities, whether the alleged conduct occurred or did not occur.</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> Reference the specific evidence that supports your conclusion. The reader should be able to trace a direct line from the findings of fact, through the analysis, to the conclusion.</p>'
+          },
+          {
+            title: '7. Recommendations',
+            content: '<p>The recommendations section provides the investigator\'s suggestions for actions based on the findings and conclusion. Note that the investigator recommends&mdash;the decision-maker decides.</p>' +
+                     '<p><strong>May include:</strong></p>' +
+                     '<ul>' +
+                     '<li>Disciplinary or corrective actions for the respondent</li>' +
+                     '<li>Policy or procedure changes to prevent recurrence</li>' +
+                     '<li>Additional training or awareness initiatives</li>' +
+                     '<li>Process improvements or enhanced monitoring</li>' +
+                     '<li>Follow-up actions or audits to verify compliance</li>' +
+                     '</ul>' +
+                     '<p><strong>Tip:</strong> Recommendations should be specific, actionable, and proportionate to the findings. Avoid vague suggestions like "address the issue." Instead, specify what action should be taken, by whom, and within what timeframe.</p>'
+          }
+        ]
+      }).render('report-sections');
+    </script>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div>
+        <strong>Critical report-writing rules:</strong> Investigation reports must be <strong>factual, not opinion-based</strong>. Write in clear, plain language that a non-specialist can understand. Organize content chronologically or by allegation. Never use the word "guilty"&mdash;investigations determine whether conduct occurred, not legal guilt. Always use the standard conclusion categories: Substantiated, Unsubstantiated-Conclusive, or Unsubstantiated-Inconclusive.
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Remember:</strong> The investigation report is a living document during the investigation and a permanent record once finalized. It may be reviewed by legal counsel, senior leadership, regulators, or courts. Write every sentence as though it will be read aloud in a proceeding.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

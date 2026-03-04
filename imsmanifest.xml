@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="MLF_InvestigativeProc_2026" version="1.0"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                       http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                       http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+
+  <organizations default="MLF_org">
+    <organization identifier="MLF_org">
+      <title>Enterprise-Wide Investigative Procedures</title>
+      <item identifier="MLF_item_01" identifierref="MLF_resource_01">
+        <title>Enterprise-Wide Investigative Procedures</title>
+        <adlcp:masteryscore>75</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+
+  <resources>
+    <resource identifier="MLF_resource_01" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html"/>
+      <file href="css/style.css"/>
+      <file href="js/scorm-wrapper.js"/>
+      <file href="js/nav.js"/>
+      <file href="js/interactions.js"/>
+      <file href="js/scoring.js"/>
+      <file href="pages/welcome.html"/>
+      <file href="pages/m1/m1-01.html"/>
+      <file href="pages/m1/m1-02.html"/>
+      <file href="pages/m1/m1-03.html"/>
+      <file href="pages/m1/m1-04.html"/>
+      <file href="pages/m1/m1-05.html"/>
+      <file href="pages/m1/m1-06.html"/>
+      <file href="pages/m1/m1-kc.html"/>
+      <file href="pages/m2/m2-01.html"/>
+      <file href="pages/m2/m2-02.html"/>
+      <file href="pages/m2/m2-03.html"/>
+      <file href="pages/m2/m2-04.html"/>
+      <file href="pages/m2/m2-05.html"/>
+      <file href="pages/m2/m2-06.html"/>
+      <file href="pages/m2/m2-07.html"/>
+      <file href="pages/m2/m2-assess.html"/>
+      <file href="pages/m3/m3-01.html"/>
+      <file href="pages/m3/m3-02.html"/>
+      <file href="pages/m3/m3-03.html"/>
+      <file href="pages/m3/m3-04.html"/>
+      <file href="pages/m3/m3-05.html"/>
+      <file href="pages/m3/m3-06.html"/>
+      <file href="pages/m3/m3-07.html"/>
+      <file href="pages/m3/m3-08.html"/>
+      <file href="pages/m3/m3-assess.html"/>
+      <file href="pages/m4/m4-select.html"/>
+      <file href="pages/m4/m4-hr/m4-hr-01.html"/>
+      <file href="pages/m4/m4-hr/m4-hr-02.html"/>
+      <file href="pages/m4/m4-hr/m4-hr-03.html"/>
+      <file href="pages/m4/m4-hr/m4-hr-04.html"/>
+      <file href="pages/m4/m4-hr/m4-hr-05.html"/>
+      <file href="pages/m4/m4-hr/m4-hr-06.html"/>
+      <file href="pages/m4/m4-fsqa/m4-fsqa-01.html"/>
+      <file href="pages/m4/m4-fsqa/m4-fsqa-02.html"/>
+      <file href="pages/m4/m4-fsqa/m4-fsqa-03.html"/>
+      <file href="pages/m4/m4-fsqa/m4-fsqa-04.html"/>
+      <file href="pages/m4/m4-fsqa/m4-fsqa-05.html"/>
+      <file href="pages/m4/m4-fsqa/m4-fsqa-06.html"/>
+      <file href="pages/m4/m4-ohs/m4-ohs-01.html"/>
+      <file href="pages/m4/m4-ohs/m4-ohs-02.html"/>
+      <file href="pages/m4/m4-ohs/m4-ohs-03.html"/>
+      <file href="pages/m4/m4-ohs/m4-ohs-04.html"/>
+      <file href="pages/m4/m4-ohs/m4-ohs-05.html"/>
+      <file href="pages/m4/m4-ohs/m4-ohs-06.html"/>
+      <file href="pages/m4/m4-assess.html"/>
+      <file href="pages/m5/m5-01.html"/>
+      <file href="pages/m5/m5-02.html"/>
+      <file href="pages/m5/m5-03.html"/>
+      <file href="pages/m5/m5-04.html"/>
+      <file href="pages/m5/m5-05.html"/>
+      <file href="pages/m5/m5-06.html"/>
+      <file href="pages/m5/m5-assess.html"/>
+      <file href="pages/completion.html"/>
+    </resource>
+  </resources>
+</manifest>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 2 Assessment</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 2: Intake, Classification &amp; Escalation</div>
+      <h1>Module 2 Assessment</h1>
+      <p class="page-subtitle">Scored assessment &mdash; 15% of final grade &mdash; 70% required to proceed</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div>
+        <strong>This is a scored assessment.</strong> This assessment is worth 15% of your final course grade. You must score at least 70% (at least 5 out of 6 correct) to unlock the next module. Read each question carefully before selecting your answer.
+      </div>
+    </div>
+
+    <h2>Question 1 of 6</h2>
+    <div id="q1"></div>
+
+    <h2>Question 2 of 6</h2>
+    <div id="q2"></div>
+
+    <h2>Question 3 of 6</h2>
+    <div id="q3"></div>
+
+    <h2>Question 4 of 6</h2>
+    <div id="q4"></div>
+
+    <h2>Question 5 of 6</h2>
+    <div id="q5"></div>
+
+    <h2>Question 6 of 6</h2>
+    <div id="q6"></div>
+
+    <button class="btn btn-primary btn-large" id="submit-assessment" style="margin-top: 1.5rem; width: 100%;">Submit Assessment</button>
+
+    <div id="assessment-result" style="margin-top: 1.5rem;"></div>
+
+  </div>
+
+  <script>
+    (function () {
+      var totalQuestions = 6;
+      var answered = 0;
+      var earned = 0;
+      var submitted = false;
+
+      var results = {};
+
+      function trackAnswer(qNum, isCorrect, points) {
+        if (results[qNum] !== undefined) return;
+        results[qNum] = { correct: isCorrect, points: points };
+        answered++;
+        if (isCorrect) earned++;
+      }
+
+      /* Q1 */
+      new MultipleChoice({
+        question: 'What is the required acknowledgement timeframe for incoming complaints?',
+        options: [
+          { text: '24 hours', correct: false, feedback: 'Incorrect. The required acknowledgement timeframe is 2 business days, not 24 hours.' },
+          { text: '2 business days', correct: true, feedback: 'Correct. All complaints must be formally acknowledged within 2 business days of receipt.' },
+          { text: '5 business days', correct: false, feedback: 'Incorrect. Five business days would be too long. The required timeframe is 2 business days.' },
+          { text: '1 calendar week', correct: false, feedback: 'Incorrect. The required acknowledgement timeframe is 2 business days, not 1 calendar week.' }
+        ],
+        onComplete: function (correct, pts) { trackAnswer(1, correct, pts); }
+      }).render('q1');
+
+      /* Q2 */
+      new MultipleChoice({
+        question: 'Which of the following is NOT an immediate escalation trigger?',
+        options: [
+          { text: 'Alleged criminal conduct', correct: false, feedback: 'Incorrect. Alleged criminal conduct is an immediate escalation trigger.' },
+          { text: 'Minor scheduling dispute', correct: true, feedback: 'Correct. A minor scheduling dispute is not an escalation trigger. It would follow the standard classification process.' },
+          { text: 'Allegations involving VP+ level', correct: false, feedback: 'Incorrect. VP+ level involvement is an immediate escalation trigger.' },
+          { text: 'Imminent safety risk', correct: false, feedback: 'Incorrect. Imminent safety risk is an immediate escalation trigger.' }
+        ],
+        onComplete: function (correct, pts) { trackAnswer(2, correct, pts); }
+      }).render('q2');
+
+      /* Q3 */
+      new MultipleChoice({
+        question: 'Step 3 of the Classification Framework assesses which of the following?',
+        options: [
+          { text: 'Whether the complaint contains enough detail to proceed', correct: false, feedback: 'Incorrect. That is Step 1 (Completeness Check). Step 3 assesses Impact and Severity.' },
+          { text: 'Whether immediate escalation triggers are present', correct: false, feedback: 'Incorrect. That is Step 2 (Immediate Escalation Screening). Step 3 assesses Impact and Severity.' },
+          { text: 'Impact and Severity across five dimensions', correct: true, feedback: 'Correct. Step 3 evaluates the complaint across five severity dimensions: seriousness, scope, regulatory/legal exposure, reputational risk, and financial impact.' },
+          { text: 'Which function should lead the investigation', correct: false, feedback: 'Incorrect. Function routing is Step 5. Step 3 assesses Impact and Severity.' }
+        ],
+        onComplete: function (correct, pts) { trackAnswer(3, correct, pts); }
+      }).render('q3');
+
+      /* Q4 */
+      new MultipleChoice({
+        question: 'A complaint about a single employee arriving late repeatedly would most likely be classified as:',
+        options: [
+          { text: 'Level 1 &mdash; Significant', correct: false, feedback: 'Incorrect. Repeated tardiness by a single employee does not meet the criteria for Level 1 (Significant).' },
+          { text: 'Level 2 &mdash; Minor', correct: false, feedback: 'Not the best answer. While Level 2 is possible for more serious attendance patterns, a single employee arriving late repeatedly is typically a management matter, not a formal investigation.' },
+          { text: 'Level 3 &mdash; No Formal Investigation', correct: true, feedback: 'Correct. Repeated tardiness by a single employee is a low-severity matter that can typically be resolved through management action or coaching without a formal investigation.' },
+          { text: 'This would not enter the classification process at all', correct: false, feedback: 'Incorrect. All complaints received through designated channels enter the classification process, even if they are ultimately classified as Level 3.' }
+        ],
+        onComplete: function (correct, pts) { trackAnswer(4, correct, pts); }
+      }).render('q4');
+
+      /* Q5 */
+      new MultipleChoice({
+        question: 'When multiple functions are involved in an investigation, who typically serves as the lead?',
+        options: [
+          { text: 'The Legal department always leads multi-function investigations', correct: false, feedback: 'Incorrect. Legal provides oversight on Level 1 matters but does not automatically lead every multi-function investigation.' },
+          { text: 'The function most directly related to the core allegation', correct: true, feedback: 'Correct. The lead function is determined by the nature of the core allegation. For example, a food safety matter with falsified records would be led by FSQA, with Internal Audit in a supporting role.' },
+          { text: 'The function that received the complaint first', correct: false, feedback: 'Incorrect. Lead assignment is based on the nature of the allegation, not the order in which it was received.' },
+          { text: 'Internal Audit leads all cross-functional investigations', correct: false, feedback: 'Incorrect. Internal Audit leads when the core allegation relates to financial controls or audit matters, but not all cross-functional investigations.' }
+        ],
+        onComplete: function (correct, pts) { trackAnswer(5, correct, pts); }
+      }).render('q5');
+
+      /* Q6 */
+      new MultipleChoice({
+        question: 'A worker reports that their supervisor physically threatened them. What is the correct immediate action?',
+        options: [
+          { text: 'Begin the standard 5-step classification process', correct: false, feedback: 'Incorrect. A physical threat constitutes an imminent safety risk and potentially criminal conduct, triggering immediate escalation.' },
+          { text: 'Escalate to Level 1 + Legal', correct: true, feedback: 'Correct. A physical threat involves imminent safety risk and potential criminal conduct. This triggers immediate escalation to Level 1 with Legal involvement, bypassing the standard classification steps.' },
+          { text: 'Classify as Level 2 and assign to HR', correct: false, feedback: 'Incorrect. A physical threat is too serious for Level 2. It triggers immediate escalation to Level 1 + Legal.' },
+          { text: 'Ask the worker to try to resolve it with their supervisor first', correct: false, feedback: 'Incorrect. A physical threat must never be handled informally. It requires immediate escalation to Level 1 + Legal.' }
+        ],
+        onComplete: function (correct, pts) { trackAnswer(6, correct, pts); }
+      }).render('q6');
+
+      /* Submit button */
+      document.getElementById('submit-assessment').addEventListener('click', function () {
+        if (submitted) return;
+
+        /* Check that all questions have been answered */
+        if (answered < totalQuestions) {
+          var resultEl = document.getElementById('assessment-result');
+          resultEl.innerHTML = '<div class="callout callout-error"><span class="callout-icon" aria-hidden="true">&#9888;</span><div>Please answer all ' + totalQuestions + ' questions before submitting. You have answered ' + answered + ' of ' + totalQuestions + '.</div></div>';
+          return;
+        }
+
+        submitted = true;
+        this.disabled = true;
+
+        var pct = Math.round((earned / totalQuestions) * 100);
+        var passed = pct >= 70;
+
+        /* Report score to scoring manager */
+        var scoringRef;
+        try { scoringRef = parent.scoring; } catch (e) { scoringRef = null; }
+        if (!scoringRef) { scoringRef = window.scoring; }
+        if (scoringRef && scoringRef.setModuleScore) {
+          scoringRef.setModuleScore('m2', earned, totalQuestions);
+        }
+
+        /* Display results */
+        var resultEl = document.getElementById('assessment-result');
+        var html = '';
+
+        html += '<div class="score-display">';
+        html += '<div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + pct + '%</div>';
+        html += '<div class="score-label">' + earned + ' of ' + totalQuestions + ' correct</div>';
+        html += '</div>';
+
+        if (passed) {
+          html += '<div class="card card-success">';
+          html += '<h3>Assessment Passed</h3>';
+          html += '<p>Congratulations! You scored ' + pct + '%, which meets the 70% threshold required to proceed. You have demonstrated a solid understanding of the intake, classification, and escalation process. Click "Next" to continue to Module 3.</p>';
+          html += '</div>';
+        } else {
+          html += '<div class="card card-error">';
+          html += '<h3>Assessment Not Passed</h3>';
+          html += '<p>You scored ' + pct + '%, which is below the 70% threshold required to proceed. Please review the Module 2 content and pay particular attention to the classification framework steps and escalation triggers. You may re-attempt this assessment after review.</p>';
+          html += '</div>';
+        }
+
+        resultEl.innerHTML = html;
+      });
+    })();
+  </script>
+</body>
+</html>

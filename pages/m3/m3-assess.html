@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 3 Assessment</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3: Investigation Best Practices</div>
+      <h1>Module 3 Assessment</h1>
+      <p class="page-subtitle">Scored assessment &mdash; 25% of your final grade. You must score at least 70% to proceed.</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div>
+        <strong>This is a scored assessment.</strong> Your responses will be recorded and count toward your final course grade. Read each question carefully and select the best answer. You must achieve a score of at least 70% (6 of 8 correct) to pass this module.
+      </div>
+    </div>
+
+    <!-- Question 1 -->
+    <h2>Question 1 of 8</h2>
+    <div id="q1"></div>
+
+    <!-- Question 2 -->
+    <h2>Question 2 of 8</h2>
+    <div id="q2"></div>
+
+    <!-- Question 3 -->
+    <h2>Question 3 of 8</h2>
+    <div id="q3"></div>
+
+    <!-- Question 4 -->
+    <h2>Question 4 of 8</h2>
+    <div id="q4"></div>
+
+    <!-- Question 5 -->
+    <h2>Question 5 of 8</h2>
+    <div id="q5"></div>
+
+    <!-- Question 6 -->
+    <h2>Question 6 of 8</h2>
+    <div id="q6"></div>
+
+    <!-- Question 7 -->
+    <h2>Question 7 of 8</h2>
+    <div id="q7"></div>
+
+    <!-- Question 8 -->
+    <h2>Question 8 of 8</h2>
+    <div id="q8"></div>
+
+    <!-- Results -->
+    <div id="assessment-result" style="margin-top: 2rem;"></div>
+
+    <script>
+      var earned = 0;
+      var answered = 0;
+      var total = 8;
+
+      function checkComplete() {
+        answered++;
+        if (answered >= total) {
+          var pct = Math.round((earned / total) * 100);
+          var passed = pct >= 70;
+          var resultEl = document.getElementById('assessment-result');
+          resultEl.innerHTML =
+            '<div class="card ' + (passed ? 'card-accent' : '') + '" style="border-left: 5px solid ' + (passed ? '#27ae60' : '#c0392b') + '; padding: 1.5rem;">' +
+            '<h2 style="margin-top:0;">Assessment Complete</h2>' +
+            '<p>You scored <strong>' + earned + ' out of ' + total + ' (' + pct + '%)</strong>.</p>' +
+            '<p>' + (passed
+              ? 'Congratulations! You have passed the Module 3 assessment and may proceed to the next module.'
+              : 'You did not achieve the required 70% score. Please review the Module 3 content and try again.') +
+            '</p></div>';
+          resultEl.scrollIntoView({ behavior: 'smooth' });
+
+          // Report score
+          try { parent.scoring.setModuleScore('m3', earned, 8); } catch(e) { if(window.scoring) scoring.setModuleScore('m3', earned, 8); }
+        }
+      }
+
+      /* Q1 */
+      new MultipleChoice({
+        question: 'What is the standard of proof used in workplace investigations at Maple Leaf Foods?',
+        options: [
+          { text: 'Beyond a reasonable doubt', correct: false, feedback: 'Incorrect. "Beyond a reasonable doubt" is the criminal standard. Workplace investigations use a lower threshold.' },
+          { text: 'Balance of probabilities (more likely than not)', correct: true, feedback: 'Correct. Workplace investigations apply the balance of probabilities standard, also known as "preponderance of evidence," which requires a greater than 50% probability that the allegation is true.' },
+          { text: 'Clear and convincing evidence', correct: false, feedback: 'Incorrect. "Clear and convincing evidence" is an intermediate standard not used in Maple Leaf Foods workplace investigations.' },
+          { text: 'Absolute certainty', correct: false, feedback: 'Incorrect. No investigation standard requires absolute certainty. Workplace investigations use the balance of probabilities.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q1');
+
+      /* Q2 */
+      new MultipleChoice({
+        question: 'What is the recommended target timeline for completing a Level 1 (Significant) investigation?',
+        options: [
+          { text: '5&ndash;10 days', correct: false, feedback: 'Incorrect. 5 days is the target for completing the investigation plan, not the entire investigation.' },
+          { text: '15&ndash;30 days', correct: false, feedback: 'Incorrect. 15&ndash;30 days is the target for Level 2 (Standard) investigations.' },
+          { text: '30&ndash;60 days', correct: true, feedback: 'Correct. Level 1 (Significant) investigations target completion within 30&ndash;60 days, reflecting the greater complexity and scope of these matters.' },
+          { text: '90&ndash;120 days', correct: false, feedback: 'Incorrect. While some investigations may require extensions, the target timeline for Level 1 investigations is 30&ndash;60 days.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q2');
+
+      /* Q3 */
+      new MultipleChoice({
+        question: 'Which interview technique principle requires starting with broad questions and gradually narrowing to specific details?',
+        options: [
+          { text: 'The funnel technique', correct: true, feedback: 'Correct. The funnel technique starts with open-ended, broad questions and progressively narrows to more specific, targeted inquiries. This encourages interviewees to share information freely before the interviewer focuses on particular details.' },
+          { text: 'The confrontation technique', correct: false, feedback: 'Incorrect. The confrontation technique is not a recommended investigative interview approach. Investigators should remain neutral, not confrontational.' },
+          { text: 'The leading question technique', correct: false, feedback: 'Incorrect. Leading questions are specifically to be avoided in investigative interviews, as they suggest a particular answer and can compromise the credibility of testimony.' },
+          { text: 'The closed question technique', correct: false, feedback: 'Incorrect. While closed questions have their place, starting with closed questions limits the information an interviewee will provide. The correct approach is the funnel technique.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q3');
+
+      /* Q4 */
+      new MultipleChoice({
+        question: 'Who should be interviewed LAST in a workplace investigation?',
+        options: [
+          { text: 'The complainant', correct: false, feedback: 'Incorrect. The complainant is interviewed first to establish the foundational account of the alleged conduct.' },
+          { text: 'The witnesses', correct: false, feedback: 'Incorrect. Witnesses are interviewed second, after the complainant and before the respondent.' },
+          { text: 'The respondent (subject of the investigation)', correct: true, feedback: 'Correct. The respondent is interviewed last so that the investigator has gathered all available evidence and witness accounts before giving the respondent a full and fair opportunity to respond to the allegations.' },
+          { text: 'The Investigation Lead', correct: false, feedback: 'Incorrect. The Investigation Lead oversees the process but is not typically interviewed as part of the investigation.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q4');
+
+      /* Q5 */
+      new MultipleChoice({
+        question: 'What does an "Unsubstantiated &ndash; Inconclusive" finding mean?',
+        options: [
+          { text: 'The investigation proved the respondent is innocent of all allegations.', correct: false, feedback: 'Incorrect. An Unsubstantiated &ndash; Inconclusive finding does not mean the respondent is innocent. It means the evidence was insufficient to make a determination either way.' },
+          { text: 'The investigation found that the alleged conduct more likely than not occurred.', correct: false, feedback: 'Incorrect. That describes a "Substantiated" finding, not an Unsubstantiated &ndash; Inconclusive finding.' },
+          { text: 'The investigation could not determine whether the alleged conduct occurred due to insufficient or conflicting evidence.', correct: true, feedback: 'Correct. An Unsubstantiated &ndash; Inconclusive finding means the evidence was insufficient or too conflicting to tip the balance of probabilities in either direction. The investigator could not determine what more likely than not occurred.' },
+          { text: 'The investigation found sufficient evidence that the conduct did NOT occur.', correct: false, feedback: 'Incorrect. That describes an "Unsubstantiated &ndash; Conclusive" finding, which is a different conclusion category.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q5');
+
+      /* Q6 */
+      new MultipleChoice({
+        question: 'Which of the following is NOT a recognized type of evidence in workplace investigations?',
+        options: [
+          { text: 'Documentary evidence', correct: false, feedback: 'Incorrect. Documentary evidence (emails, records, logs) is one of the four recognized types.' },
+          { text: 'Speculative evidence', correct: true, feedback: 'Correct. "Speculative evidence" is not a recognized category. The four types of evidence are documentary, physical, digital, and testimonial. Speculation, assumptions, and opinions that are not grounded in observed facts are not evidence.' },
+          { text: 'Digital evidence', correct: false, feedback: 'Incorrect. Digital evidence (system logs, access records) is one of the four recognized types.' },
+          { text: 'Testimonial evidence', correct: false, feedback: 'Incorrect. Testimonial evidence (interview statements) is one of the four recognized types.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q6');
+
+      /* Q7 */
+      new MultipleChoice({
+        question: 'A scope document should include all of the following EXCEPT:',
+        options: [
+          { text: 'Specific allegations being investigated', correct: false, feedback: 'Incorrect. Specific allegations are a required element of the scope document.' },
+          { text: 'Target timeline for completion', correct: false, feedback: 'Incorrect. The target timeline is a required element of the scope document.' },
+          { text: 'Predetermined conclusion', correct: true, feedback: 'Correct. A scope document should never include a predetermined conclusion. The investigation must remain objective and reach its conclusion based on the evidence. The six elements of a scope document are: specific allegations, applicable policies/regulations, time period under review, individuals involved, evidence to be collected, and target timeline.' },
+          { text: 'Applicable policies and regulations', correct: false, feedback: 'Incorrect. Applicable policies and regulations are a required element of the scope document.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q7');
+
+      /* Q8 */
+      new MultipleChoice({
+        question: 'Three independent witnesses corroborate a complaint, but the respondent denies the allegation and no documentary evidence exists. Applying the balance of probabilities standard, what is the most likely conclusion?',
+        options: [
+          { text: 'Unsubstantiated &ndash; Inconclusive, because there is no documentary evidence to confirm the allegation.', correct: false, feedback: 'Incorrect. The balance of probabilities standard does not require documentary evidence. Testimonial evidence from multiple corroborating witnesses can be sufficient on its own to meet the standard.' },
+          { text: 'Unsubstantiated &ndash; Conclusive, because the respondent denied the allegation.', correct: false, feedback: 'Incorrect. A respondent\'s denial, standing alone and unsupported by other evidence, does not outweigh three independent corroborating witness statements. An Unsubstantiated &ndash; Conclusive finding requires evidence that the conduct did NOT occur.' },
+          { text: 'Substantiated, because multiple corroborating witnesses meet the balance of probabilities standard.', correct: true, feedback: 'Correct. Three independent witnesses corroborating the complaint is strong testimonial evidence. The respondent\'s unsupported denial does not outweigh this corroboration. Under the balance of probabilities standard, the allegation is more likely than not true. The absence of documentary evidence does not prevent a substantiated finding when testimonial evidence is strong.' },
+          { text: 'No conclusion can be reached without documentary evidence.', correct: false, feedback: 'Incorrect. Investigations can and do reach conclusions based on testimonial evidence alone. Documentary evidence is one type of evidence, but it is not required for a finding. Strong, corroborated testimonial evidence can meet the balance of probabilities standard.' }
+        ],
+        onComplete: function (correct) { if (correct) earned++; checkComplete(); }
+      }).render('q8');
+    </script>
+
+  </div>
+</body>
+</html>

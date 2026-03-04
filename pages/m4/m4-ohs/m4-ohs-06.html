@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Completion &mdash; OHS</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; OHS Track</div>
+      <h1>Investigation Summary Template</h1>
+      <p class="page-subtitle">Complete the formal investigation summary for an OHS near-miss</p>
+    </div>
+
+    <p>Every OHS investigation must conclude with a formal written summary that identifies root causes and recommends corrective actions focused on systemic improvements. The goal of OHS investigation reporting is to drive prevention, not punishment. Complete the template below.</p>
+
+    <h2>Complete the Investigation Summary</h2>
+
+    <div id="template-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Fill in each field of the investigation summary. Your responses should reflect the systemic root causes and preventive measures identified throughout this investigation.',
+        fields: [
+          {
+            label: 'Investigation Type',
+            type: 'select',
+            options: ['Occupational Health & Safety — Near-Miss', 'Occupational Health & Safety — Injury', 'Workplace Harassment', 'Food Safety', 'Fraud / Financial Misconduct', 'Data Breach / Privacy'],
+            expected: 'Occupational Health & Safety — Near-Miss',
+            feedback: 'Correct. This investigation concerned a near-miss incident involving a forklift-pedestrian interaction in the warehouse, classified as an OHS near-miss investigation.'
+          },
+          {
+            label: 'Conclusion Category',
+            type: 'select',
+            options: ['Substantiated — Systemic Safety Control Failure', 'Substantiated — Individual Violation', 'Unsubstantiated — Inconclusive', 'Unsubstantiated — No Safety Issue Found'],
+            expected: 'Substantiated',
+            feedback: 'Correct. The investigation substantiated a systemic safety control failure with multiple contributing factors including inadequate physical controls, impractical pedestrian routing, obscured signage, and normalized unsafe behaviour.'
+          },
+          {
+            label: 'Key Findings Summary',
+            type: 'textarea',
+            expected: ['signage', 'barrier', 'pedestrian route', 'systemic'],
+            feedback: 'A strong findings summary should reference: (1) safety signage obscured by stored materials at multiple locations, (2) no physical barriers separating forklift and pedestrian zones, (3) an impractical designated pedestrian route that incentivized shortcuts, (4) normalized unsafe behaviour with 7 of 10 workers regularly using the shortcut, (5) unreported prior near-misses indicating under-reporting, and (6) an outdated traffic management plan.'
+          },
+          {
+            label: 'Recommended Corrective Actions',
+            type: 'textarea',
+            expected: ['barrier', 'route', 'signage', 'audit'],
+            feedback: 'Recommended corrective actions should follow the hierarchy of controls: (1) Install physical barriers or guardrails at forklift aisle entry points (engineering control), (2) Redesign the pedestrian route to be practical and direct (elimination/engineering), (3) Audit and restore all safety signage and floor markings (engineering/administrative), (4) Update the traffic management plan to reflect current layout (administrative), (5) Implement regular safety signage audits (administrative), (6) Promote near-miss reporting culture to prevent under-reporting (administrative), and (7) Provide refresher training on pedestrian-forklift safety (administrative/PPE).'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('template-activity');
+    </script>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>OHS Track complete:</strong> You have worked through the entire investigation lifecycle for a near-miss safety incident. Your accumulated score from classification, scope planning, evidence collection, root cause analysis, and template completion will be reflected in your Module 4 assessment results.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

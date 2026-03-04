@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence Weighing Activity</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3: Investigation Best Practices</div>
+      <h1>Evidence Weighing Activity</h1>
+      <p class="page-subtitle">Apply the analysis methodology to the Henderson File</p>
+    </div>
+
+    <div class="henderson-block">
+      <div class="henderson-label">Henderson File</div>
+      <p>You have completed your investigation into the allegations that production supervisor Wei Chen directed workers to skip inspection steps at the Henderson processing facility. You must now weigh all the evidence you have gathered and reach a conclusion.</p>
+    </div>
+
+    <h2>Evidence Summary</h2>
+    <p>Review all five pieces of evidence collected during the investigation:</p>
+
+    <div class="card card-accent">
+      <h3>Evidence 1: Production Logs</h3>
+      <p>Production logs from the Henderson facility show gaps in inspection records during shifts supervised by Wei Chen. The gaps correspond to periods when certain quality inspection steps appear to have been skipped or were not recorded. These gaps do not appear in logs from shifts supervised by other production supervisors.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Evidence 2: Digital Access Logs</h3>
+      <p>System access records confirm that Chen was logged in and actively using the production management system during the time periods when the inspection gaps occurred. This establishes that Chen was present and working during the shifts in question, consistent with the role of the supervising manager.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Evidence 3: Witness Statement</h3>
+      <p>A line worker who was present during the relevant shifts provided a statement corroborating that inspection steps were being skipped. The worker described observing that certain standard checks were routinely bypassed during Chen's shifts and stated that workers understood this to be accepted practice under Chen's supervision.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Evidence 4: Chen's Written Statement</h3>
+      <p>Wei Chen provided a written statement denying any wrongdoing. Chen stated that all inspection steps were followed during their shifts and suggested that any gaps in the logs were the result of documentation errors rather than actual skipped inspections. Chen did not provide any corroborating evidence to support this explanation.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Evidence 5: Quality Assurance Records</h3>
+      <p>Quality assurance records show that no product complaints or quality failures were reported during the period under investigation. No products from the Henderson facility were flagged for quality issues by customers or internal QA reviews during this time.</p>
+    </div>
+
+    <h2>Analysis</h2>
+    <p>Consider the five credibility factors as you weigh this evidence:</p>
+    <ul>
+      <li><strong>Corroboration:</strong> The production logs, digital access logs, and witness statement all point in the same direction. Chen's denial stands alone.</li>
+      <li><strong>Consistency:</strong> The documentary evidence, digital evidence, and testimonial evidence are consistent with each other. Chen's explanation of "documentation errors" is not supported by any other evidence.</li>
+      <li><strong>Motive:</strong> Chen has a clear motive to deny the allegations (self-protection). The witness has no apparent motive to fabricate a statement.</li>
+      <li><strong>Specificity:</strong> The witness provided specific details about which inspection steps were skipped and described the practice as routine during Chen's shifts.</li>
+      <li><strong>Absence of complaints:</strong> The lack of product complaints does not prove inspections were conducted&mdash;it only indicates that no quality failures resulted during this period. Absence of harm does not negate the conduct.</li>
+    </ul>
+
+    <h2>Your Conclusion</h2>
+
+    <div id="conclusion-question"></div>
+
+    <script>
+      new MultipleChoice({
+        question: 'Based on the totality of the evidence presented above, which conclusion category is most appropriate for the Henderson File?',
+        options: [
+          {
+            text: 'Substantiated &mdash; The evidence shows it is more likely than not that inspection steps were skipped under Chen\'s supervision.',
+            correct: true,
+            feedback: '<strong>Correct.</strong> This is a Substantiated finding. Three independent sources of evidence (production logs, digital access records, and a corroborating witness statement) all support the allegation. Chen\'s unsupported denial does not outweigh the combined weight of this evidence. The absence of product complaints does not disprove the underlying conduct. Applying the balance of probabilities standard, the evidence makes it more likely than not that inspection steps were skipped.'
+          },
+          {
+            text: 'Unsubstantiated &mdash; Conclusive: The absence of product complaints proves inspections were actually conducted.',
+            correct: false,
+            feedback: '<strong>Incorrect.</strong> The absence of product complaints does not prove that inspections were conducted. It only means that no quality failures were detected during this period. Multiple other pieces of evidence&mdash;production logs showing gaps, digital records confirming Chen\'s presence, and a corroborating witness&mdash;all support the allegation. An Unsubstantiated &ndash; Conclusive finding would require evidence that affirmatively shows the conduct did NOT occur, which is not the case here.'
+          },
+          {
+            text: 'Unsubstantiated &mdash; Inconclusive: The evidence is conflicting and insufficient to reach a determination.',
+            correct: false,
+            feedback: '<strong>Incorrect.</strong> While Chen\'s denial creates some conflict in the evidence, the investigation is far from a "he said / she said" situation with evenly balanced evidence. Three independent sources corroborate the allegation, and Chen\'s explanation is unsupported. The balance of probabilities standard does not require resolving every conflict&mdash;it requires determining what more likely than not occurred. The evidence here clearly tips in favour of the allegation.'
+          }
+        ]
+      }).render('conclusion-question');
+    </script>
+
+    <div class="callout callout-info" style="margin-top: 1.5rem;">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Key Takeaway:</strong> When multiple independent sources of evidence corroborate an allegation and the respondent's denial is unsupported, the balance of probabilities standard is met. The absence of harm or negative consequences does not negate the conduct itself. A Substantiated finding is appropriate when the overall weight of evidence makes the allegation more likely than not true.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence Collection</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3: Investigation Best Practices</div>
+      <h1>Evidence Collection</h1>
+      <p class="page-subtitle">Gathering, preserving, and documenting evidence with integrity</p>
+    </div>
+
+    <h2>Four Types of Evidence</h2>
+    <p>Investigations rely on evidence to establish facts and support conclusions. Evidence in workplace investigations falls into four categories. Click each type below to learn about its characteristics and collection considerations.</p>
+
+    <div id="evidence-types"></div>
+
+    <script>
+      new ClickReveal({
+        items: [
+          {
+            title: 'Documentary Evidence',
+            content: '<p>Documentary evidence includes any written or recorded material relevant to the investigation. This is often the most plentiful and readily available type of evidence.</p>' +
+                     '<p><strong>Examples:</strong></p>' +
+                     '<ul>' +
+                     '<li>Emails, instant messages, and other electronic communications</li>' +
+                     '<li>Personnel records, performance reviews, and disciplinary files</li>' +
+                     '<li>Policies, procedures, and training records</li>' +
+                     '<li>Production logs, inspection reports, and quality records</li>' +
+                     '<li>Financial records, expense reports, and invoices</li>' +
+                     '</ul>' +
+                     '<p><strong>Collection tip:</strong> Request documents early in the investigation to prevent loss or alteration. Always note the source, date obtained, and custodian of each document.</p>'
+          },
+          {
+            title: 'Physical Evidence',
+            content: '<p>Physical evidence consists of tangible objects or materials that are relevant to the matter under investigation. While less common in some types of workplace investigations, physical evidence can be critical in food safety, occupational health and safety, and animal care matters.</p>' +
+                     '<p><strong>Examples:</strong></p>' +
+                     '<ul>' +
+                     '<li>Equipment, tools, or machinery involved in an incident</li>' +
+                     '<li>Product samples or raw material samples</li>' +
+                     '<li>Photographs of workplace conditions or scenes</li>' +
+                     '<li>Personal protective equipment (PPE) or safety devices</li>' +
+                     '</ul>' +
+                     '<p><strong>Collection tip:</strong> Photograph physical evidence before moving it. Store items securely and document the chain of custody from the moment of collection.</p>'
+          },
+          {
+            title: 'Digital Evidence',
+            content: '<p>Digital evidence encompasses data and records stored in electronic systems. As workplaces become increasingly digital, this type of evidence is growing in importance across all investigation categories.</p>' +
+                     '<p><strong>Examples:</strong></p>' +
+                     '<ul>' +
+                     '<li>System access logs and login/logout records</li>' +
+                     '<li>Badge or keycard access records</li>' +
+                     '<li>Surveillance camera footage</li>' +
+                     '<li>Computer file metadata (creation dates, modification history)</li>' +
+                     '<li>GPS or vehicle tracking data</li>' +
+                     '</ul>' +
+                     '<p><strong>Collection tip:</strong> Engage Information Security or IT early to ensure digital evidence is preserved in its original form. Many digital records are overwritten on a rolling basis, so timely preservation is critical.</p>'
+          },
+          {
+            title: 'Testimonial Evidence',
+            content: '<p>Testimonial evidence consists of statements made by individuals during interviews. This is often the most nuanced type of evidence, as it relies on human recollection and perception, which can vary in reliability.</p>' +
+                     '<p><strong>Examples:</strong></p>' +
+                     '<ul>' +
+                     '<li>Statements from the complainant describing the alleged conduct</li>' +
+                     '<li>Witness accounts of events they observed or heard</li>' +
+                     '<li>The respondent\'s account and response to the allegations</li>' +
+                     '<li>Expert opinions from subject-matter specialists</li>' +
+                     '</ul>' +
+                     '<p><strong>Collection tip:</strong> Document interview statements contemporaneously (during or immediately after the interview). Allow interviewees to review their statements for accuracy. Interview techniques are covered in detail on the next page.</p>'
+          }
+        ]
+      }).render('evidence-types');
+    </script>
+
+    <h2>Chain of Custody Requirements</h2>
+    <p>Chain of custody refers to the documented trail that records the collection, transfer, handling, and storage of evidence throughout the investigation. Maintaining an unbroken chain of custody is essential to demonstrating that evidence has not been tampered with, altered, or compromised.</p>
+
+    <p>For each piece of evidence collected, the investigator must document:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>What was collected</strong></td>
+          <td>A clear description of the item or document, including any identifying numbers or labels</td>
+        </tr>
+        <tr>
+          <td><strong>When it was collected</strong></td>
+          <td>The date and time the evidence was obtained</td>
+        </tr>
+        <tr>
+          <td><strong>From whom / where</strong></td>
+          <td>The source or custodian of the evidence and the location from which it was obtained</td>
+        </tr>
+        <tr>
+          <td><strong>By whom</strong></td>
+          <td>The name of the person who collected or received the evidence</td>
+        </tr>
+        <tr>
+          <td><strong>How it was stored</strong></td>
+          <td>The storage method and location used to secure the evidence</td>
+        </tr>
+        <tr>
+          <td><strong>Any transfers</strong></td>
+          <td>A log of every handoff, including dates, times, and the names of individuals involved in the transfer</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-error">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div>
+        <strong>Preservation Obligations:</strong> Once an investigation is initiated, the organization has an obligation to preserve all evidence that may be relevant to the matter. This includes issuing preservation notices (sometimes called litigation holds) to custodians of potentially relevant records. Failure to preserve evidence can result in adverse inferences in legal proceedings, regulatory sanctions, and damage to the credibility of the investigation. <strong>Never delete, alter, or allow the routine destruction of records that may be relevant to an active investigation.</strong>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Coordinating with IT and Records Management:</strong> Digital evidence and electronically stored documents are often subject to automated retention and deletion policies. As soon as an investigation is initiated, coordinate with Information Security and Records Management to ensure that relevant data is excluded from routine purges and preserved for the duration of the investigation.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

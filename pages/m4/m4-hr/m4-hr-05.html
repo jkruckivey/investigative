@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis &amp; Conclusion &mdash; HR</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; HR Track</div>
+      <h1>Analysis &amp; Conclusion</h1>
+      <p class="page-subtitle">Weigh the evidence and reach a conclusion</p>
+    </div>
+
+    <p>The interview phase is complete. Before reaching a conclusion, review the full body of evidence gathered during this investigation.</p>
+
+    <h2>Evidence Summary</h2>
+
+    <div class="card card-accent">
+      <h3>Complainant Statement (Sarah Kim)</h3>
+      <p>Sarah provided a detailed, consistent account of inappropriate comments made by David Park about her appearance on multiple occasions over a two-month period. She identified specific dates, locations within the facility, and the nature of the comments. Her account remained consistent across initial complaint and formal interview.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Witness Statements</h3>
+      <p>Two coworkers independently corroborated Sarah's account. Witness 1 confirmed hearing David comment on Sarah's appearance on at least three occasions, describing specific comments that aligned with Sarah's account. Witness 2 confirmed overhearing similar comments on two occasions and noted that David's tone was "not professional." Neither witness reported being coached or prompted by Sarah.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Respondent Statement (David Park)</h3>
+      <p>David denied all allegations with a blanket denial: "I have never said anything inappropriate." When presented with specific allegations including dates and details, he did not provide alternative accounts of those interactions or plausible explanations. He suggested the complaint was retaliatory because of a poor performance review he issued to Sarah. However, HR records confirm that Sarah's complaint was initiated before the performance review was delivered.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Documentary Evidence</h3>
+      <p>Shift schedules confirm that Sarah and David worked the same shifts on all dates referenced. HR records show no prior complaints filed by or against either party. The performance review David referenced was dated after Sarah's initial complaint, contradicting his retaliation theory. No relevant CCTV footage was available from the production floor areas where the comments allegedly occurred.</p>
+    </div>
+
+    <h2>Reach Your Conclusion</h2>
+
+    <div id="conclusion-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new MultipleChoice({
+        question: 'Based on corroborating witness statements, the complainant\'s consistent account, the respondent\'s blanket denial without specifics, and the documentary evidence that contradicts the retaliation theory, what is the appropriate conclusion?',
+        options: [
+          {
+            text: 'Substantiated &mdash; The evidence supports the allegations on a balance of probabilities',
+            correct: true,
+            feedback: 'Correct. The allegation is substantiated. Two independent witnesses corroborate the complainant\'s consistent account. The respondent offered only a blanket denial without addressing specific allegations, and his retaliation theory is contradicted by the timeline. On a balance of probabilities, the evidence supports the conclusion that the alleged conduct occurred.'
+          },
+          {
+            text: 'Unsubstantiated &mdash; Inconclusive &mdash; Insufficient evidence to reach a determination',
+            correct: false,
+            feedback: 'Incorrect. This is not an inconclusive case. There are two corroborating witnesses, a consistent complainant account, and a respondent who failed to provide credible alternative explanations. Inconclusive findings are appropriate when evidence is evenly balanced or insufficient; that is not the case here.'
+          },
+          {
+            text: 'Unsubstantiated &mdash; The evidence does not support the allegations',
+            correct: false,
+            feedback: 'Incorrect. The evidence clearly supports the allegations. Multiple witnesses corroborate the complainant\'s account, and the respondent\'s blanket denial and debunked retaliation theory do not outweigh this evidence. An unsubstantiated finding would ignore the weight of corroborating testimony.'
+          },
+          {
+            text: 'Unable to investigate &mdash; The matter should be referred externally',
+            correct: false,
+            feedback: 'Incorrect. There is no basis for external referral. The investigation was conducted successfully with adequate evidence gathered. The matter falls squarely within HR\'s mandate and does not involve criminal conduct requiring external referral.'
+          }
+        ],
+        onComplete: function(correct, points) {
+          if (scoring) {
+            scoring.addPoints('m4', points, 1);
+          }
+        }
+      }).render('conclusion-activity');
+    </script>
+
+  </div>
+</body>
+</html>

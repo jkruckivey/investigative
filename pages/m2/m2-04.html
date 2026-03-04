@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escalation Triggers</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 2: Intake, Classification &amp; Escalation</div>
+      <h1>Escalation Triggers</h1>
+      <p class="page-subtitle">Practice identifying which scenarios require immediate escalation</p>
+    </div>
+
+    <p>Not every complaint follows the standard classification path. Certain conditions require <strong>immediate escalation to Level 1 + Legal</strong>, bypassing the standard severity assessment. In this activity, you will sort scenarios into the correct category based on what you learned about escalation triggers.</p>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Instructions:</strong> Drag each scenario from the "Items to Sort" column into the correct category: either "Immediate Escalation (Level 1 + Legal)" or "Standard Classification Process." Once all items are placed, you will see your results.
+      </div>
+    </div>
+
+    <div id="escalation-sort"></div>
+
+  </div>
+
+  <script>
+    new DragSort({
+      items: [
+        { text: 'Employee alleges their supervisor committed physical assault', category: 'escalate' },
+        { text: 'Complaint involves the Vice President of Operations', category: 'escalate' },
+        { text: 'Anonymous tip alleging systematic regulatory fraud in reporting', category: 'escalate' },
+        { text: 'Worker reports an imminent chemical spill risk in the production area', category: 'escalate' },
+        { text: 'Whistleblower claims retaliation after filing a previous ethics report', category: 'escalate' },
+        { text: 'Employee complains about scheduling unfairness in shift assignments', category: 'standard' },
+        { text: 'Worker reports a minor slip hazard near the break room entrance', category: 'standard' },
+        { text: 'Team member reports a coworker tardiness pattern over the past month', category: 'standard' },
+        { text: 'Supervisor observes a single missed inspection step during routine audit', category: 'standard' }
+      ],
+      categories: [
+        { id: 'escalate', label: 'Immediate Escalation (Level 1 + Legal)' },
+        { id: 'standard', label: 'Standard Classification Process' }
+      ],
+      onComplete: function (correct, total) {
+        /* Practice activity - not scored */
+      }
+    }).render('escalation-sort');
+  </script>
+</body>
+</html>

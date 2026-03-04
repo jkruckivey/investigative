@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis &amp; Conclusion &mdash; OHS</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; OHS Track</div>
+      <h1>Analysis &amp; Conclusion</h1>
+      <p class="page-subtitle">Identify root causes and reach a conclusion</p>
+    </div>
+
+    <p>The evidence collection phase is complete. Before reaching your conclusion, review the full body of evidence gathered during this investigation.</p>
+
+    <h2>Evidence Summary</h2>
+
+    <div class="card card-accent">
+      <h3>CCTV Footage</h3>
+      <p>The footage confirms that Anika Patel entered the forklift aisle at a location where the warning signage was completely obscured by stacked pallets. From her approach direction, no visible warnings indicated she was entering a forklift-only zone. James Rivera was operating the forklift at normal speed and reacted quickly to avoid the collision.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Physical Inspection</h3>
+      <p>A walkthrough of the warehouse revealed three additional locations where safety signage was partially or fully obscured by stored materials. Floor markings delineating forklift zones were faded in several areas. There are no physical barriers separating the forklift aisle from pedestrian areas at any entry point&mdash;only painted lines and signage. The designated pedestrian route requires a 3-minute detour through a congested staging area.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Interview Findings</h3>
+      <p>Seven of ten warehouse workers interviewed confirmed regularly using the forklift aisle as a shortcut. All cited the impractical pedestrian route as the reason. Two workers reported previous near-misses that were not formally reported. The forklift operator, James Rivera, stated the pedestrian appeared suddenly in his path and confirmed he was traveling at normal operational speed. The warehouse safety coordinator acknowledged that signage audits had not been conducted in over six months.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Documentary Evidence</h3>
+      <p>Training records confirm both workers completed their required safety orientations. The warehouse traffic management plan was last updated 18 months ago and does not reflect current warehouse layout changes. Prior near-miss reports for the facility show no reports involving forklift-pedestrian interactions, despite interview evidence that unreported near-misses had occurred.</p>
+    </div>
+
+    <h2>Reach Your Conclusion</h2>
+
+    <div id="conclusion-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new MultipleChoice({
+        question: 'Based on the evidence gathered&mdash;obscured signage, lack of physical barriers, an impractical pedestrian route, normalized unsafe behaviour, unreported prior near-misses, and an outdated traffic management plan&mdash;what is the most appropriate conclusion?',
+        options: [
+          {
+            text: 'Substantiated systemic safety control failure &mdash; Multiple systemic factors contributed to the near-miss, including inadequate physical controls, impractical pedestrian routing, and normalized risk behaviour',
+            correct: true,
+            feedback: 'Correct. The evidence clearly demonstrates systemic failures in the warehouse safety controls: obscured signage, absence of physical barriers, an impractical pedestrian route that incentivized unsafe behaviour, an outdated traffic management plan, and a culture where near-misses went unreported. This is not an individual failure but a systems-level breakdown in safety controls.'
+          },
+          {
+            text: 'Substantiated individual violation &mdash; Anika Patel violated pedestrian safety rules by entering the forklift aisle',
+            correct: false,
+            feedback: 'Incorrect. While Patel did enter the forklift aisle, focusing on individual violation ignores the overwhelming systemic evidence: seven of ten workers regularly used the same shortcut, signage was obscured, no physical barriers existed, and the designated route was impractical. When most workers engage in the same unsafe behaviour, the problem is systemic, not individual.'
+          },
+          {
+            text: 'Unsubstantiated &mdash; No actual injury occurred, so no safety finding is warranted',
+            correct: false,
+            feedback: 'Incorrect. The absence of injury does not mean the investigation lacks findings. Near-miss investigations are specifically designed to identify hazards before injuries occur. The evidence reveals significant systemic safety control failures that, if unaddressed, will likely result in a serious injury in the future.'
+          },
+          {
+            text: 'Substantiated individual violation &mdash; James Rivera was operating the forklift unsafely',
+            correct: false,
+            feedback: 'Incorrect. The CCTV evidence shows Rivera was operating at normal speed and reacted quickly to avoid the collision. There is no evidence of unsafe operation by the forklift driver. The root causes lie in the systemic safety controls, not in the forklift operator\'s behaviour.'
+          }
+        ],
+        onComplete: function(correct, points) {
+          if (scoring) {
+            scoring.addPoints('m4', points, 1);
+          }
+        }
+      }).render('conclusion-activity');
+    </script>
+
+  </div>
+</body>
+</html>

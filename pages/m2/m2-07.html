@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henderson File: Classification</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 2: Intake, Classification &amp; Escalation</div>
+      <h1>Henderson File: Classification</h1>
+      <p class="page-subtitle">Applying the 5-step Classification Framework to the anchor case</p>
+    </div>
+
+    <div class="henderson-block">
+      <div class="henderson-label">Henderson File &mdash; The Complaint</div>
+      <p>An anonymous complaint was submitted through the EthicsLine alleging that <strong>Marcus Chen</strong>, a production shift supervisor at the Henderson Road facility, has been <strong>falsifying production quality logs</strong>. The complaint states that Chen has been signing off on quality inspection records for products that were never properly inspected, and that this has been occurring for approximately three months. The complainant indicates that the affected products are packaged meat items distributed to retail customers.</p>
+    </div>
+
+    <p>Let us walk through the Classification Framework step by step and classify this complaint.</p>
+
+    <h2>Step 1: Completeness Check</h2>
+    <div class="card card-accent">
+      <p><strong>Does the complaint contain sufficient detail?</strong></p>
+      <ul>
+        <li><strong>Who:</strong> Marcus Chen, production shift supervisor &mdash; identified by name and role</li>
+        <li><strong>What:</strong> Falsifying production quality inspection logs &mdash; clear description of the alleged conduct</li>
+        <li><strong>When:</strong> Approximately the past three months &mdash; general timeframe provided</li>
+        <li><strong>Where:</strong> Henderson Road production facility &mdash; specific location identified</li>
+      </ul>
+      <p>The complaint contains sufficient detail across all four elements. Proceed to Step 2.</p>
+    </div>
+
+    <h2>Step 2: Immediate Escalation Screening</h2>
+    <div class="card card-accent">
+      <p><strong>Are any immediate escalation triggers present?</strong></p>
+      <ul>
+        <li>Imminent physical danger? &mdash; Not immediate, but potential food safety risk to consumers exists</li>
+        <li>Alleged criminal conduct? &mdash; Falsification of regulatory records could constitute a criminal offence</li>
+        <li>VP+ level involvement? &mdash; No, the subject is a shift supervisor</li>
+        <li>Regulatory body involvement? &mdash; Not yet, but CFIA regulatory obligations may be triggered</li>
+        <li>Class action exposure? &mdash; Possible if contaminated products reach consumers at scale</li>
+        <li>Whistleblower retaliation? &mdash; No indication of retaliation</li>
+      </ul>
+      <p>The potential food safety implications and possible criminal conduct (record falsification) warrant flagging this for escalation consideration. While not a clear-cut immediate escalation trigger in every category, the combination of food safety risk and record falsification means this complaint should be treated with urgency. Proceed to Step 3 with heightened attention.</p>
+    </div>
+
+    <h2>Step 3: Impact &amp; Severity Assessment</h2>
+    <div class="card card-accent">
+      <table class="data-table" style="margin-bottom:0;">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Rating</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Seriousness</td>
+            <td><strong>3 &mdash; High</strong></td>
+            <td>Falsification of quality records is a serious integrity violation that directly implicates food safety</td>
+          </tr>
+          <tr>
+            <td>Scope</td>
+            <td><strong>3 &mdash; High</strong></td>
+            <td>Affected products are distributed nationally to retail customers; consumers are potentially at risk</td>
+          </tr>
+          <tr>
+            <td>Regulatory / Legal</td>
+            <td><strong>3 &mdash; High</strong></td>
+            <td>Food safety inspection records are subject to CFIA regulatory requirements; falsification may trigger mandatory reporting</td>
+          </tr>
+          <tr>
+            <td>Reputational</td>
+            <td><strong>3 &mdash; High</strong></td>
+            <td>A food safety failure at a major food producer carries significant public and media exposure</td>
+          </tr>
+          <tr>
+            <td>Financial</td>
+            <td><strong>3 &mdash; High</strong></td>
+            <td>Potential product recall, regulatory fines, and litigation exposure represent major financial risk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Step 4: Formal Investigation Determination</h2>
+    <div class="card card-accent">
+      <p>With High ratings across all five severity dimensions, this matter is clearly classified as <strong>Level 1 &mdash; Significant</strong>. A senior investigator will be assigned with Legal oversight from the outset.</p>
+    </div>
+
+    <h2>Step 5: Function Routing</h2>
+    <div class="card card-accent">
+      <p>The core allegation involves falsified quality inspection records for food products. This determines the routing:</p>
+      <ul>
+        <li><strong>Lead function: FSQA</strong> &mdash; The primary concern is food safety and quality assurance, making FSQA the appropriate lead</li>
+        <li><strong>Supporting function: Internal Audit</strong> &mdash; The falsification of records component brings Internal Audit into a supporting role to assess the integrity of documentation and internal controls</li>
+        <li><strong>Legal oversight</strong> &mdash; Required for all Level 1 matters</li>
+      </ul>
+    </div>
+
+    <h2>Your Turn: Confirm the Classification</h2>
+    <p>Complete the fields below to confirm the Henderson File classification. This reinforces the key decisions made at each stage of the framework.</p>
+
+    <div id="henderson-template"></div>
+
+  </div>
+
+  <script>
+    new FillTemplate({
+      intro: 'Based on the walkthrough above, fill in the correct classification details for the Henderson complaint.',
+      fields: [
+        {
+          label: 'Investigation Level (enter "Level 1", "Level 2", or "Level 3")',
+          type: 'text',
+          expected: ['Level 1', 'level 1', '1'],
+          feedback: 'Correct. The Henderson complaint is classified as Level 1 (Significant) due to high severity across all dimensions.'
+        },
+        {
+          label: 'Lead Investigative Function',
+          type: 'select',
+          options: ['HR', 'FSQA', 'OHS', 'Internal Audit', 'Information Security', 'Animal Care', 'Legal'],
+          expected: 'FSQA',
+          feedback: 'Correct. FSQA leads because the core allegation involves food safety and quality inspection records.'
+        },
+        {
+          label: 'Supporting Function',
+          type: 'select',
+          options: ['HR', 'FSQA', 'OHS', 'Internal Audit', 'Information Security', 'Animal Care', 'Legal'],
+          expected: 'Internal Audit',
+          feedback: 'Correct. Internal Audit supports the investigation due to the records falsification component.'
+        }
+      ],
+      onComplete: function (earned, possible) {
+        /* Practice activity - not scored for assessment */
+      }
+    }).render('henderson-template');
+  </script>
+</body>
+</html>

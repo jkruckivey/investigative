@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Roles</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 1: The Investigative Framework</div>
+      <h1>Key Roles in the Investigation Process</h1>
+      <p class="page-subtitle">Understanding who does what during an investigation</p>
+    </div>
+
+    <p>Every investigation involves a number of distinct roles, each with specific responsibilities. Understanding these roles is essential for maintaining the integrity and fairness of the process. Click each role below to learn more about its definition and responsibilities.</p>
+
+    <div id="roles-activity"></div>
+
+    <script>
+      new ClickReveal({
+        items: [
+          {
+            title: 'Complainant / Reporter',
+            content: '<p><strong>Definition:</strong> The individual who brings forward a concern, complaint, or report of a potential policy violation or incident. This may be the person directly affected, a witness, or someone reporting on behalf of another party.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>May report through various channels, including the EthicsLine hotline, direct supervisor, HR, or other designated intake points</li>' +
+                     '<li>May be anonymous or identified</li>' +
+                     '<li>Is protected from retaliation under Maple Leaf Foods policy and applicable law</li>' +
+                     '<li>May be interviewed as part of the investigation to clarify the initial report</li>' +
+                     '</ul>'
+          },
+          {
+            title: 'Respondent / Subject',
+            content: '<p><strong>Definition:</strong> The individual whose conduct or actions are the focus of the investigation. The respondent is the person alleged to have committed the policy violation, misconduct, or action under review.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>Has the right to be informed of the allegations (in appropriate detail and at the appropriate time)</li>' +
+                     '<li>Has the right to respond to the allegations and provide their account</li>' +
+                     '<li>Must be treated fairly and without presumption of guilt throughout the process</li>' +
+                     '<li>May have the right to representation depending on jurisdiction and the nature of the matter</li>' +
+                     '</ul>'
+          },
+          {
+            title: 'Investigator',
+            content: '<p><strong>Definition:</strong> The individual responsible for conducting the investigation. The investigator gathers evidence, conducts interviews, analyzes information, and prepares the investigation report.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>Must be impartial and free of conflicts of interest with respect to the matter, the complainant, and the respondent</li>' +
+                     '<li>May be an internal employee (e.g., from HR, IA, or another function) or an external investigator</li>' +
+                     '<li>Responsible for maintaining confidentiality throughout the process</li>' +
+                     '<li>Must follow the investigation plan and document all activities thoroughly</li>' +
+                     '</ul>'
+          },
+          {
+            title: 'Investigation Lead / Coordinator',
+            content: '<p><strong>Definition:</strong> The individual who oversees the investigation process, ensures adherence to the SOP, and coordinates resources. For Level 1 (Significant) investigations, this role is typically filled by a senior leader or a designated investigation coordinator.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>Assigns the investigator and approves the investigation plan</li>' +
+                     '<li>Monitors progress and ensures timelines are met</li>' +
+                     '<li>Serves as the primary point of escalation for issues that arise during the investigation</li>' +
+                     '<li>Reviews the final investigation report before it is submitted to the decision-maker</li>' +
+                     '</ul>'
+          },
+          {
+            title: 'Decision-Maker',
+            content: '<p><strong>Definition:</strong> The individual or group with the authority to make final decisions based on the investigation findings. This person determines what actions, if any, will be taken as a result of the investigation conclusions.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>Typically a senior leader with authority over the area or individuals involved</li>' +
+                     '<li>Makes decisions independently from the investigator to maintain separation of roles</li>' +
+                     '<li>Considers the investigation report, conclusions, and any recommendations</li>' +
+                     '<li>Determines corrective actions, disciplinary measures, or systemic remedies as appropriate</li>' +
+                     '</ul>'
+          },
+          {
+            title: 'Legal Counsel',
+            content: '<p><strong>Definition:</strong> Internal or external legal advisors who provide guidance on legal implications, regulatory requirements, and risk management throughout the investigation.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>Must be consulted on all Level 1 (Significant) investigations</li>' +
+                     '<li>Advises on legal obligations, privilege considerations, and regulatory notifications</li>' +
+                     '<li>May direct or oversee investigations where legal privilege is required</li>' +
+                     '<li>Helps ensure the investigation process and outcomes are legally defensible</li>' +
+                     '</ul>'
+          },
+          {
+            title: 'Witness',
+            content: '<p><strong>Definition:</strong> Any individual who may have information relevant to the matter under investigation. Witnesses are interviewed to gather facts and corroborate or clarify the accounts of the complainant and respondent.</p>' +
+                     '<p><strong>Key points:</strong></p>' +
+                     '<ul>' +
+                     '<li>May include co-workers, supervisors, or other individuals with direct or indirect knowledge</li>' +
+                     '<li>Must be informed of the confidentiality requirements of the investigation</li>' +
+                     '<li>Should be assured that cooperation with the investigation is expected and that retaliation is prohibited</li>' +
+                     '<li>Their statements are documented and form part of the evidentiary record</li>' +
+                     '</ul>'
+          }
+        ]
+      }).render('roles-activity');
+    </script>
+
+    <div class="callout callout-info" style="margin-top: 1.5rem;">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div>
+        <strong>Separation of roles:</strong> A key principle of the SOP is that the investigator and the decision-maker should be different people. This separation helps ensure objectivity and prevents any single individual from both investigating and adjudicating a matter.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

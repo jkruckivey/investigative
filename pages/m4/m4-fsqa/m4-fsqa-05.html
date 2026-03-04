@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis &amp; Conclusion &mdash; FSQA</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; FSQA Track</div>
+      <h1>Analysis &amp; Conclusion</h1>
+      <p class="page-subtitle">Weigh the evidence and determine root cause</p>
+    </div>
+
+    <p>The evidence collection phase is complete. Before reaching a conclusion, review the full body of evidence gathered during this investigation.</p>
+
+    <h2>Evidence Summary</h2>
+
+    <div class="card card-accent">
+      <h3>Lab Results</h3>
+      <p><em>Listeria monocytogenes</em> was confirmed at elevated levels in multiple samples from Batch 447. Environmental swabs from the production line also returned positive results, particularly in areas downstream of the pasteurizer and near conveyor belt joints that are addressed during CIP cycles.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Sanitation Records</h3>
+      <p>A scheduled CIP cycle was skipped on Day 2 of the 3-day production run. The skip was authorized by the shift supervisor due to production schedule pressure. No formal deviation report was filed for the skipped CIP, and no compensating controls were implemented. Previous months' records show two other instances where CIP cycles were delayed, though not fully skipped.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Equipment Records</h3>
+      <p>The pasteurizer experienced a temperature fluctuation on Day 1, dropping below the critical control limit for approximately 8 minutes. A deviation report was filed, but the affected product was not held for additional testing. Maintenance records show the temperature sensor had been flagged for calibration two weeks prior but the calibration was not completed.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Interview Findings</h3>
+      <p>Production staff confirmed that schedule pressure frequently led to shortened or skipped sanitation cycles. The shift supervisor stated they believed a shortened CIP was acceptable because "we had never had an issue before." Maintenance personnel confirmed the overdue sensor calibration and stated that parts delays contributed to the backlog.</p>
+    </div>
+
+    <h2>Reach Your Conclusion</h2>
+
+    <div id="conclusion-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new MultipleChoice({
+        question: 'Given the skipped CIP cycle, the pasteurizer temperature fluctuation, the positive Listeria results from both product and environment, and the systemic evidence of production pressure overriding food safety controls, what is the appropriate conclusion?',
+        options: [
+          {
+            text: 'Substantiated &mdash; Multiple contributing factors identified through evidence, including both the skipped CIP cycle and the temperature deviation, compounded by systemic production pressure',
+            correct: true,
+            feedback: 'Correct. The investigation substantiates that the Listeria contamination resulted from multiple contributing factors: the skipped CIP cycle allowed environmental contamination to persist, the pasteurizer temperature deviation may have failed to eliminate the pathogen, and systemic production pressure created conditions where food safety controls were routinely compromised. This is a root cause analysis finding, not a single-cause conclusion.'
+          },
+          {
+            text: 'Unsubstantiated &mdash; The contamination source cannot be definitively identified',
+            correct: false,
+            feedback: 'Incorrect. While the exact moment of contamination may be difficult to pinpoint precisely, the investigation has identified clear contributing factors: sanitation failures, equipment deviation, and systemic pressure. A food safety investigation does not require pinpointing a single moment of contamination; identifying the contributing factors and systemic failures is sufficient for a substantiated finding.'
+          },
+          {
+            text: 'Substantiated &mdash; The contamination was caused solely by the shift supervisor skipping the CIP cycle',
+            correct: false,
+            feedback: 'Incorrect. While the skipped CIP cycle is a significant contributing factor, attributing the contamination to a single cause ignores the pasteurizer temperature deviation, the overdue sensor calibration, and the systemic culture of production pressure overriding food safety controls. A thorough root cause analysis must account for all contributing factors.'
+          },
+          {
+            text: 'Substantiated &mdash; The contamination was caused by the pasteurizer malfunction only',
+            correct: false,
+            feedback: 'Incorrect. The pasteurizer temperature fluctuation is one contributing factor, but the investigation revealed multiple factors including the skipped CIP cycle and systemic production pressure. Attributing the cause to a single equipment issue misses the broader systemic failures that the investigation uncovered.'
+          }
+        ],
+        onComplete: function(correct, points) {
+          if (scoring) {
+            scoring.addPoints('m4', points, 1);
+          }
+        }
+      }).render('conclusion-activity');
+    </script>
+
+  </div>
+</body>
+</html>

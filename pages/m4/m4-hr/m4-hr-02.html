@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classification Decision &mdash; HR</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; HR Track</div>
+      <h1>Classification Decision</h1>
+      <p class="page-subtitle">Classify the Night Shift Harassment complaint using the framework</p>
+    </div>
+
+    <p>Based on the complaint details, apply the Classification Framework you learned in Module 2 to classify this matter. Consider the severity dimensions: seriousness of allegation, scope, regulatory and legal exposure, reputational risk, and financial impact.</p>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Recall</div>
+      <p>Sarah Kim alleges that her shift supervisor, David Park, has made inappropriate comments about her appearance over two months. Two witnesses exist but are reluctant to come forward. Sarah has requested a shift transfer.</p>
+    </div>
+
+    <h2>Classify This Complaint</h2>
+
+    <div id="classification-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Complete the classification form below based on the complaint details.',
+        fields: [
+          {
+            label: 'Investigation Level',
+            type: 'select',
+            options: ['Level 1 — Significant', 'Level 2 — Minor', 'Level 3 — No Formal Investigation'],
+            expected: 'Level 2',
+            feedback: 'Correct. This is a Level 2 (Minor) matter: single complainant, single respondent, harassment allegation that does not involve senior leadership or criminal conduct. It is serious enough to require a formal investigation but does not meet Level 1 criteria.'
+          },
+          {
+            label: 'Primary Function',
+            type: 'select',
+            options: ['HR', 'FSQA', 'OHS', 'Internal Audit', 'Legal', 'Information Security', 'Animal Care'],
+            expected: 'HR',
+            feedback: 'Correct. This is a workplace harassment complaint, which falls squarely within HR\'s investigative mandate.'
+          },
+          {
+            label: 'Escalation Required?',
+            type: 'select',
+            options: ['Yes', 'No'],
+            expected: 'No',
+            feedback: 'Correct. While this is a serious matter, it does not meet the escalation triggers: no senior leader involvement, no criminal conduct alleged, no regulatory reporting obligation, and no immediate safety threat beyond what interim measures can address.'
+          },
+          {
+            label: 'Justification (explain your classification rationale)',
+            type: 'textarea',
+            expected: ['harassment', 'single', 'supervisor', 'Level 2'],
+            feedback: 'Good. A strong justification references the nature of the allegation (harassment by a supervisor), the scope (single complainant and respondent), the absence of escalation triggers (no senior leader, no criminal conduct), and the appropriate classification level.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('classification-activity');
+    </script>
+
+  </div>
+</body>
+</html>

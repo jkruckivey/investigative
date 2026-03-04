@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classification Decision &mdash; FSQA</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <script src="../../../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4: Function-Specific Scenarios &mdash; FSQA Track</div>
+      <h1>Classification Decision</h1>
+      <p class="page-subtitle">Classify the Batch 447 contamination using the framework</p>
+    </div>
+
+    <p>Apply the Classification Framework to this food safety matter. Consider all five severity dimensions carefully: the nature of <em>Listeria</em> contamination, the volume of distributed product, regulatory implications, reputational exposure, and potential financial impact.</p>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Recall</div>
+      <p>Elevated <em>Listeria monocytogenes</em> detected in Batch 447 of ready-to-eat deli meat. The 3-day production run yielded approximately 15,000 kg of product already distributed to retail. The production line is shut down.</p>
+    </div>
+
+    <h2>Classify This Matter</h2>
+
+    <div id="classification-activity"></div>
+
+    <script>
+      var scoring;
+      try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
+
+      new FillTemplate({
+        intro: 'Complete the classification form below based on the food safety deviation details.',
+        fields: [
+          {
+            label: 'Investigation Level',
+            type: 'select',
+            options: ['Level 1 — Significant', 'Level 2 — Minor', 'Level 3 — No Formal Investigation'],
+            expected: 'Level 1',
+            feedback: 'Correct. This is a Level 1 (Significant) matter. Listeria contamination in distributed ready-to-eat products poses a serious public health risk, triggers mandatory CFIA reporting, carries significant reputational and financial exposure (potential recall of 15,000 kg), and requires a formal investigation team with Legal oversight.'
+          },
+          {
+            label: 'Primary Function (with support)',
+            type: 'select',
+            options: ['FSQA (with Legal support)', 'HR', 'OHS', 'Internal Audit', 'FSQA only', 'Legal only'],
+            expected: 'FSQA (with Legal support)',
+            feedback: 'Correct. FSQA leads the investigation as the primary function, with Legal providing mandatory oversight given the Level 1 classification and regulatory exposure. Legal involvement is required for all Level 1 matters.'
+          },
+          {
+            label: 'Escalation Required?',
+            type: 'select',
+            options: ['Yes — Regulatory, public health, potential recall', 'Yes — Senior leader involvement', 'No escalation needed'],
+            expected: 'Yes',
+            feedback: 'Correct. This matter requires escalation on multiple grounds: mandatory CFIA regulatory reporting, public health risk from distributed contaminated product, and potential product recall affecting 15,000 kg of product already at retail.'
+          },
+          {
+            label: 'Justification (explain your classification rationale)',
+            type: 'textarea',
+            expected: ['Listeria', 'public health', 'recall', 'regulator'],
+            feedback: 'A strong justification should reference: Listeria contamination in ready-to-eat products as a serious food safety hazard, the public health risk to vulnerable populations, mandatory CFIA reporting obligations, the large volume of distributed product requiring potential recall, and the significant financial and reputational exposure.'
+          }
+        ],
+        onComplete: function(earned, possible) {
+          if (scoring) {
+            scoring.addPoints('m4', earned, possible);
+          }
+        }
+      }).render('classification-activity');
+    </script>
+
+  </div>
+</body>
+</html>
