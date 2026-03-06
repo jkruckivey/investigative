@@ -10,9 +10,9 @@
   --color-bg: #ffffff;
   --color-text: #09264E;
   --color-text-light: #555555;
-  --color-accent: #004AB5;
-  --color-accent-dark: #09264E;
-  --color-accent-light: #e0ecf8;
+  --color-accent: #E6211E;
+  --color-accent-dark: #DC1C18;
+  --color-accent-light: #fce8e8;
   --color-success: #00755A;
   --color-success-light: #e0f2ec;
   --color-error: #E6211E;
@@ -273,7 +273,7 @@ strong { font-weight: 600; }
   line-height: 1.5;
 }
 
-.callout-info { background: var(--color-accent-light); border: 1px solid #b3cde8; }
+.callout-info { background: var(--color-accent-light); border: 1px solid #f5b3b3; }
 .callout-success { background: var(--color-success-light); border: 1px solid #a3d9c9; }
 .callout-warning { background: var(--color-warning-light); border: 1px solid #ffd580; }
 .callout-error { background: var(--color-error-light); border: 1px solid #f5b3b3; }
@@ -322,7 +322,7 @@ strong { font-weight: 600; }
 }
 
 .data-table tr:nth-child(even) { background: var(--color-card-bg); }
-.data-table tr:hover { background: #e0ecf8; }
+.data-table tr:hover { background: #fce8e8; }
 
 /* --- Interactive Components --- */
 
@@ -588,7 +588,7 @@ strong { font-weight: 600; }
 .template-field select:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(0,74,181,0.15);
+  box-shadow: 0 0 0 3px rgba(230,33,30,0.15);
 }
 
 .template-field textarea { min-height: 80px; resize: vertical; }
