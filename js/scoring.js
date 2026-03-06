@@ -35,8 +35,14 @@ var scoring = (function () {
       var data = scorm.getSuspendData();
       if (data && data.scores) {
         scores = data.scores;
+        return;
       }
     }
+    // Fallback: load from localStorage (standalone / LMS suspend data unavailable)
+    try {
+      var stored = localStorage.getItem('ewip_scores');
+      if (stored) { scores = JSON.parse(stored); }
+    } catch (e) { /* localStorage unavailable */ }
   }
 
   function _save() {
@@ -46,6 +52,10 @@ var scoring = (function () {
       data.scores = scores;
       scorm.setSuspendData(data);
     }
+    // Always also save to localStorage as fallback
+    try {
+      localStorage.setItem('ewip_scores', JSON.stringify(scores));
+    } catch (e) { /* localStorage unavailable */ }
   }
 
   function initModule(moduleId, totalPossible) {

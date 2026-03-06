@@ -152,12 +152,19 @@
         var pct = Math.round((earned / totalQuestions) * 100);
         var passed = pct >= 70;
 
-        /* Report score to scoring manager */
-        var scoringRef;
-        try { scoringRef = parent.scoring; } catch (e) { scoringRef = null; }
-        if (!scoringRef) { scoringRef = window.scoring; }
-        if (scoringRef && scoringRef.setModuleScore) {
-          scoringRef.setModuleScore('m2', earned, totalQuestions);
+        /* Report score to scoring manager (parent frame) */
+        var reported = false;
+        try {
+          if (parent && parent !== window && parent.scoring && parent.scoring.setModuleScore) {
+            parent.scoring.setModuleScore('m2', earned, totalQuestions);
+            reported = true;
+          }
+        } catch (e) { /* cross-origin — fall through */ }
+        if (!reported) {
+          /* Fallback: post message to parent for score reporting */
+          try {
+            parent.postMessage({ type: 'moduleScore', module: 'm2', earned: earned, possible: totalQuestions }, '*');
+          } catch (e2) { /* standalone mode */ }
         }
 
         /* Display results */

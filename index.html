@@ -49,6 +49,13 @@
     // Initialize navigation
     nav.init();
 
+    // Listen for score messages from assessment iframes (cross-origin fallback)
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.type === 'moduleScore' && window.scoring) {
+        scoring.setModuleScore(e.data.module, e.data.earned, e.data.possible);
+      }
+    });
+
     // Handle window close — terminate SCORM
     window.addEventListener('beforeunload', function () {
       scormAPI.terminate();

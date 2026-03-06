@@ -80,7 +80,16 @@
           resultEl.scrollIntoView({ behavior: 'smooth' });
 
           // Report score
-          try { parent.scoring.setModuleScore('m3', earned, 8); } catch(e) { if(window.scoring) scoring.setModuleScore('m3', earned, 8); }
+          var reported = false;
+          try {
+            if (parent && parent !== window && parent.scoring && parent.scoring.setModuleScore) {
+              parent.scoring.setModuleScore('m3', earned, 8);
+              reported = true;
+            }
+          } catch(e) { /* cross-origin */ }
+          if (!reported) {
+            try { parent.postMessage({ type: 'moduleScore', module: 'm3', earned: earned, possible: 8 }, '*'); } catch(e2) {}
+          }
         }
       }
 
