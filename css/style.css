@@ -70,6 +70,12 @@ body {
   text-overflow: ellipsis;
 }
 
+.nav-logo {
+  height: 36px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .top-nav .module-tabs {
   display: flex;
   gap: 2px;
