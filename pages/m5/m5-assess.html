@@ -38,37 +38,27 @@
     <h2>Question 5 of 5</h2>
     <div id="q5"></div>
 
-    <div id="assessment-result" style="margin-top: 2rem;"></div>
+    <button class="btn btn-primary btn-large" id="submit-assessment" style="margin-top: 1.5rem; width: 100%;">Submit Assessment</button>
+
+    <div id="assessment-result" style="margin-top: 1.5rem;"></div>
 
     <script>
       (function () {
-        var earned = 0;
+        var totalQuestions = 5;
         var answered = 0;
-        var total = 5;
+        var earned = 0;
+        var submitted = false;
 
-        function checkComplete() {
-          if (answered < total) return;
+        var results = {};
 
-          // Report score to scoring manager
-          try { parent.scoring.setModuleScore('m5', earned, total); } catch(e) { if(window.scoring) scoring.setModuleScore('m5', earned, total); }
-
-          var pct = Math.round((earned / total) * 100);
-          var passed = pct >= 70;
-          var resultEl = document.getElementById('assessment-result');
-          resultEl.innerHTML =
-            '<div class="score-display">' +
-              '<div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + pct + '%</div>' +
-              '<div class="score-label">' + earned + ' of ' + total + ' correct</div>' +
-            '</div>' +
-            '<div class="card ' + (passed ? 'card-success' : 'card-warning') + '">' +
-              (passed
-                ? '<strong>Well done!</strong> You have demonstrated a solid understanding of investigation documentation and closure procedures. Your score has been recorded.'
-                : '<strong>You did not pass this assessment.</strong> Review the Module 5 material on report structure, conclusion categories, communication requirements, Level 3 closure, and records retention, then try again.') +
-            '</div>';
-
-          resultEl.scrollIntoView({ behavior: 'smooth' });
+        function trackAnswer(qNum, isCorrect, points) {
+          if (results[qNum] !== undefined) return;
+          results[qNum] = { correct: isCorrect, points: points };
+          answered++;
+          if (isCorrect) earned++;
         }
 
+        /* Q1 */
         new MultipleChoice({
           question: 'Which of the following should NOT appear in an investigation report?',
           options: [
@@ -77,13 +67,10 @@
             { text: 'References to specific pieces of evidence that support the conclusion', correct: false, feedback: 'Not quite. Referencing specific evidence is essential for supporting the conclusion. The correct answer is personal opinions about the respondent\'s character. Reports must be factual and evidence-based.' },
             { text: 'Recommendations for corrective actions', correct: false, feedback: 'Not quite. Recommendations are a standard section of the report. The correct answer is personal opinions about the respondent\'s character. Reports must be factual, not opinion-based.' }
           ],
-          onComplete: function (correct) {
-            if (correct) earned++;
-            answered++;
-            checkComplete();
-          }
+          onComplete: function (correct, pts) { trackAnswer(1, correct, pts); }
         }).render('q1');
 
+        /* Q2 */
         new MultipleChoice({
           question: 'What is the minimum retention period for investigation files at Maple Leaf Foods?',
           options: [
@@ -92,13 +79,10 @@
             { text: '7 years', correct: true, feedback: 'Correct. Investigation files must be retained for a minimum of 7 years from the date of file closure. Some matters may require longer retention, and files subject to litigation holds must be retained indefinitely until the hold is released.' },
             { text: '10 years', correct: false, feedback: 'Incorrect. While some matters may require retention beyond the minimum, the standard minimum retention period is 7 years, not 10.' }
           ],
-          onComplete: function (correct) {
-            if (correct) earned++;
-            answered++;
-            checkComplete();
-          }
+          onComplete: function (correct, pts) { trackAnswer(2, correct, pts); }
         }).render('q2');
 
+        /* Q3 */
         new MultipleChoice({
           question: 'Who receives the full investigation report?',
           options: [
@@ -107,13 +91,10 @@
             { text: 'The decision-maker', correct: true, feedback: 'Correct. The decision-maker always receives the full investigation report, including all findings, analysis, conclusions, and recommendations. Legal Counsel also receives the full report for Level 1 investigations.' },
             { text: 'All employees in the affected department', correct: false, feedback: 'Incorrect. Investigation reports are confidential and are never shared broadly. The decision-maker receives the full report. Other parties receive only the information relevant to them on a need-to-know basis.' }
           ],
-          onComplete: function (correct) {
-            if (correct) earned++;
-            answered++;
-            checkComplete();
-          }
+          onComplete: function (correct, pts) { trackAnswer(3, correct, pts); }
         }).render('q3');
 
+        /* Q4 */
         new MultipleChoice({
           question: 'When closing a Level 3 matter, what must be documented?',
           options: [
@@ -122,13 +103,10 @@
             { text: 'Nothing &mdash; Level 3 matters do not require documentation', correct: false, feedback: 'Incorrect. Even Level 3 matters require documentation. The closure file must include the complaint, assessment process, rationale for not investigating, preliminary steps taken, and the resolution.' },
             { text: 'A full investigation report following the standard seven-section structure', correct: false, feedback: 'Incorrect. A full seven-section report is for Level 1 and Level 2 investigations. Level 3 matters require a closure file documenting the complaint, assessment, rationale, preliminary steps, and resolution.' }
           ],
-          onComplete: function (correct) {
-            if (correct) earned++;
-            answered++;
-            checkComplete();
-          }
+          onComplete: function (correct, pts) { trackAnswer(4, correct, pts); }
         }).render('q4');
 
+        /* Q5 */
         new MultipleChoice({
           question: 'Which conclusion category means "evidence shows the conduct more likely than not did NOT occur"?',
           options: [
@@ -137,12 +115,64 @@
             { text: 'Unsubstantiated \u2013 Inconclusive', correct: false, feedback: 'Incorrect. Unsubstantiated \u2013 Inconclusive means the evidence is insufficient to determine whether the conduct occurred or not. The correct answer is Unsubstantiated \u2013 Conclusive, which means the evidence affirmatively shows the conduct did not occur.' },
             { text: 'Not Substantiated', correct: false, feedback: 'Incorrect. "Not Substantiated" is not one of the three standard conclusion categories. The correct answer is Unsubstantiated \u2013 Conclusive, meaning the evidence shows the conduct more likely than not did NOT occur.' }
           ],
-          onComplete: function (correct) {
-            if (correct) earned++;
-            answered++;
-            checkComplete();
-          }
+          onComplete: function (correct, pts) { trackAnswer(5, correct, pts); }
         }).render('q5');
+
+        /* Submit button */
+        document.getElementById('submit-assessment').addEventListener('click', function () {
+          if (submitted) return;
+
+          /* Check that all questions have been answered */
+          if (answered < totalQuestions) {
+            var resultEl = document.getElementById('assessment-result');
+            resultEl.innerHTML = '<div class="callout callout-error"><span class="callout-icon" aria-hidden="true">&#9888;</span><div>Please answer all ' + totalQuestions + ' questions before submitting. You have answered ' + answered + ' of ' + totalQuestions + '.</div></div>';
+            return;
+          }
+
+          submitted = true;
+          this.disabled = true;
+
+          var pct = Math.round((earned / totalQuestions) * 100);
+          var passed = pct >= 70;
+
+          /* Report score to scoring manager (parent frame) */
+          var reported = false;
+          try {
+            if (parent && parent !== window && parent.scoring && parent.scoring.setModuleScore) {
+              parent.scoring.setModuleScore('m5', earned, totalQuestions);
+              reported = true;
+            }
+          } catch (e) { /* cross-origin — fall through */ }
+          if (!reported) {
+            try {
+              parent.postMessage({ type: 'moduleScore', module: 'm5', earned: earned, possible: totalQuestions }, '*');
+            } catch (e2) { /* standalone mode */ }
+          }
+
+          /* Display results */
+          var resultEl = document.getElementById('assessment-result');
+          var html = '';
+
+          html += '<div class="score-display">';
+          html += '<div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + pct + '%</div>';
+          html += '<div class="score-label">' + earned + ' of ' + totalQuestions + ' correct</div>';
+          html += '</div>';
+
+          if (passed) {
+            html += '<div class="card card-success">';
+            html += '<h3>Assessment Passed</h3>';
+            html += '<p>Congratulations! You scored ' + pct + '%, which meets the 70% threshold required to proceed. You have demonstrated a solid understanding of investigation documentation and closure procedures.</p>';
+            html += '</div>';
+          } else {
+            html += '<div class="card card-error">';
+            html += '<h3>Assessment Not Passed</h3>';
+            html += '<p>You scored ' + pct + '%, which is below the 70% threshold required to proceed. Please review the Module 5 material on report structure, conclusion categories, communication requirements, Level 3 closure, and records retention, then try again.</p>';
+            html += '<button class="btn btn-primary btn-large" style="margin-top:1rem;width:100%;" onclick="location.reload();">Retry Assessment</button>';
+            html += '</div>';
+          }
+
+          resultEl.innerHTML = html;
+        });
       })();
     </script>
 

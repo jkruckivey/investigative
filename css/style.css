@@ -93,6 +93,11 @@ body {
 .module-tab:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.1); }
 .module-tab.active { color: #fff; background: var(--color-accent); }
 
+/* Locked module tabs */
+.module-tab.locked { opacity: 0.4; cursor: not-allowed; }
+.module-tab.locked:hover { color: rgba(255,255,255,0.6); background: transparent; }
+.module-tab.locked::after { content: ' \1F512'; font-size: 0.6rem; margin-left: 0.25rem; }
+
 /* Progress Bar */
 .progress-bar-wrap {
   background: rgba(255,255,255,0.15);
@@ -764,6 +769,16 @@ strong { font-weight: 600; }
   .top-nav, .bottom-nav, .progress-bar-wrap { display: none; }
   .page { max-width: 100%; padding: 0.5in; }
   .btn { display: none; }
+}
+
+/* --- Content Images --- */
+.page-image {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 /* --- Responsive --- */

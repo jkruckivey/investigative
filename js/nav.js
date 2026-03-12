@@ -69,11 +69,24 @@ var nav = (function () {
     { id: 'completion', label: 'Complete', startPage: 'completion.html' }
   ];
 
-  // Gate checks — module IDs that require a passing score before proceeding
-  var gatedModules = {
-    'm3/m3-01.html': 'm2',  // Must pass M2 to enter M3
-    'm4/m4-select.html': 'm3'  // Must pass M3 to enter M4
+  // Gate checks — defines unlock conditions for each module
+  var moduleGates = {
+    'welcome': { type: 'always' },
+    'm1':      { type: 'always' },
+    'm2':      { type: 'visited', page: 'm1/m1-kc.html' },
+    'm3':      { type: 'score', module: 'm2' },
+    'm4':      { type: 'score', module: 'm3' },
+    'm5':      { type: 'visited', page: 'm4/m4-assess.html' },
+    'completion': { type: 'visited', page: 'm5/m5-assess.html' }
   };
+
+  // Map each module start page to its module id for gate lookups
+  var _startPageToModule = {};
+  (function () {
+    for (var i = 0; i < modules.length; i++) {
+      _startPageToModule[modules[i].startPage] = modules[i].id;
+    }
+  })();
 
   function _buildActiveSequence() {
     activeSequence = [];
@@ -119,13 +132,45 @@ var nav = (function () {
     return activeSequence[currentIndex] || '';
   }
 
+  function isModuleLocked(moduleId) {
+    var gate = moduleGates[moduleId];
+    if (!gate || gate.type === 'always') { return false; }
+    if (gate.type === 'visited') {
+      return !visited[gate.page];
+    }
+    if (gate.type === 'score') {
+      if (window.scoring) {
+        return !scoring.checkGate(gate.module);
+      }
+    }
+    return false;
+  }
+
   function _checkGate(pageId) {
-    var requiredModule = gatedModules[pageId];
-    if (!requiredModule) { return true; }
-    if (window.scoring) {
-      return scoring.checkGate(requiredModule);
+    // Check if this page is a module start page
+    var moduleId = _startPageToModule[pageId];
+    if (moduleId) {
+      return !isModuleLocked(moduleId);
     }
     return true;
+  }
+
+  function _getGateMessage(moduleId) {
+    var gate = moduleGates[moduleId];
+    if (!gate) { return ''; }
+    if (gate.type === 'visited') {
+      // Build a friendly name for the required page
+      var pageName = gate.page;
+      if (pageName === 'm1/m1-kc.html') { return 'You must complete the last page of Module 1 before accessing this module.'; }
+      if (pageName === 'm4/m4-assess.html') { return 'You must complete the Module 4 assessment before accessing this module.'; }
+      if (pageName === 'm5/m5-assess.html') { return 'You must complete the Module 5 assessment before accessing this module.'; }
+      return 'You must visit ' + pageName + ' before accessing this module.';
+    }
+    if (gate.type === 'score') {
+      var threshold = (window.scoring && scoring.gates[gate.module]) || 70;
+      return 'You need to score at least ' + threshold + '% on the ' + gate.module.toUpperCase() + ' assessment before continuing. Please review the material and try the assessment again.';
+    }
+    return '';
   }
 
   function _updateProgress() {
@@ -163,11 +208,13 @@ var nav = (function () {
         break;
       }
     }
-    // Update module tabs
+    // Update module tabs — active state and locked state
     var tabs = document.querySelectorAll('.module-tab');
     for (var t = 0; t < tabs.length; t++) {
       var tab = tabs[t];
-      tab.classList.toggle('active', tab.getAttribute('data-module') === currentModule);
+      var tabModule = tab.getAttribute('data-module');
+      tab.classList.toggle('active', tabModule === currentModule);
+      tab.classList.toggle('locked', isModuleLocked(tabModule));
     }
     // Update page title
     var titleEl = document.getElementById('page-title');
@@ -213,8 +260,10 @@ var nav = (function () {
     if (currentIndex >= activeSequence.length - 1) { return; }
     var nextPage = activeSequence[currentIndex + 1];
     if (!_checkGate(nextPage)) {
-      var mod = gatedModules[nextPage];
-      alert('You need to score at least ' + scoring.gates[mod] + '% on the ' + mod.toUpperCase() + ' assessment before continuing. Please review the material and try the assessment again.');
+      var moduleId = _startPageToModule[nextPage];
+      if (moduleId) {
+        alert(_getGateMessage(moduleId));
+      }
       return;
     }
     currentIndex++;
@@ -231,7 +280,13 @@ var nav = (function () {
   function goToPage(pageId) {
     var idx = activeSequence.indexOf(pageId);
     if (idx === -1) { return false; }
-    if (!_checkGate(pageId)) { return false; }
+    if (!_checkGate(pageId)) {
+      var moduleId = _startPageToModule[pageId];
+      if (moduleId) {
+        alert(_getGateMessage(moduleId));
+      }
+      return false;
+    }
     currentIndex = idx;
     _loadPage(pageId);
     _saveState();
@@ -287,6 +342,7 @@ var nav = (function () {
     getActiveSequence: getActiveSequence,
     getTotalPages: getTotalPages,
     getVisitedCount: getVisitedCount,
+    isModuleLocked: isModuleLocked,
     modules: modules,
     selectedRole: function () { return selectedRole; }
   };

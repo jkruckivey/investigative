@@ -130,6 +130,22 @@
       <p>When a complaint involves multiple functions (for example, a food safety incident that also involves falsified records), a <strong>lead function</strong> is designated based on the primary allegation, with supporting function(s) assigned as needed. The lead function is responsible for coordinating the investigation and consolidating findings.</p>
     </div>
 
+    <h2>Practice: Classification Steps</h2>
+    <p>Match each step number to its corresponding classification activity. Click a step on the left, then click its match on the right.</p>
+    <div id="classification-match"></div>
+    <script src="../../js/interactions.js"></script>
+    <script>
+      new MatchPairs({
+        pairs: [
+          { left: 'Step 1', right: 'Completeness Check' },
+          { left: 'Step 2', right: 'Immediate Escalation Screen' },
+          { left: 'Step 3', right: 'Impact & Severity Assessment' },
+          { left: 'Step 4', right: 'Formal Investigation Determination' },
+          { left: 'Step 5', right: 'Function-Specific Routing' }
+        ]
+      }).render('classification-match');
+    </script>
+
   </div>
 </body>
 </html>

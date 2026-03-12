@@ -132,6 +132,30 @@
       </div>
     </div>
 
+    <h2>Practice: Classify the Evidence</h2>
+    <p>Drag each example into the correct evidence category.</p>
+    <div id="evidence-sort"></div>
+    <script>
+      new DragSort({
+        categories: [
+          { id: 'documentary', label: 'Documentary' },
+          { id: 'physical', label: 'Physical' },
+          { id: 'digital', label: 'Digital' },
+          { id: 'testimonial', label: 'Testimonial' }
+        ],
+        items: [
+          { text: 'Emails between two employees', category: 'documentary' },
+          { text: 'Damaged safety equipment', category: 'physical' },
+          { text: 'Badge access logs', category: 'digital' },
+          { text: 'Witness interview statement', category: 'testimonial' },
+          { text: 'Production inspection report', category: 'documentary' },
+          { text: 'Surveillance camera footage', category: 'digital' },
+          { text: 'Product sample from a contaminated batch', category: 'physical' },
+          { text: 'Complainant\'s account of events', category: 'testimonial' }
+        ]
+      }).render('evidence-sort');
+    </script>
+
   </div>
 </body>
 </html>
