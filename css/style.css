@@ -71,9 +71,10 @@ body {
 }
 
 .nav-logo {
-  height: 36px;
+  height: 48px;
   margin-left: auto;
   flex-shrink: 0;
+  padding: 4px 0;
 }
 
 .top-nav .module-tabs {
