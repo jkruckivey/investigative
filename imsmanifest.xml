@@ -14,9 +14,9 @@
 
   <organizations default="MLF_org">
     <organization identifier="MLF_org">
-      <title>Enterprise-Wide Investigative Procedures</title>
+      <title>Enterprise-Wide Investigative Procedure</title>
       <item identifier="MLF_item_01" identifierref="MLF_resource_01">
-        <title>Enterprise-Wide Investigative Procedures</title>
+        <title>Enterprise-Wide Investigative Procedure</title>
         <adlcp:masteryscore>75</adlcp:masteryscore>
       </item>
     </organization>
