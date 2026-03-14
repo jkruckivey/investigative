@@ -254,10 +254,17 @@ DragSort.prototype.render = function (containerId) {
   }
 
   html += '</div>';
+  html += '<button class="btn btn-secondary" id="' + containerId + '-reset" style="margin-top:0.75rem;">Reset</button>';
   html += '<div id="' + containerId + '-result"></div>';
 
   el.innerHTML = html;
   this._bindDragEvents();
+
+  var self = this;
+  document.getElementById(containerId + '-reset').addEventListener('click', function () {
+    self.placed = 0;
+    self.render(containerId);
+  });
 };
 
 DragSort.prototype._bindDragEvents = function () {

@@ -52,8 +52,12 @@
 
     // Listen for score messages from assessment iframes (cross-origin fallback)
     window.addEventListener('message', function (e) {
-      if (e.data && e.data.type === 'moduleScore' && window.scoring) {
+      if (!e.data || !window.scoring) return;
+      if (e.data.type === 'moduleScore') {
         scoring.setModuleScore(e.data.module, e.data.earned, e.data.possible);
+      }
+      if (e.data.type === 'addModulePoints') {
+        scoring.addPoints(e.data.module, e.data.earned, e.data.possible);
       }
     });
 

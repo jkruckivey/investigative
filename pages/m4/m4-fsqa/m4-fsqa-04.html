@@ -24,6 +24,21 @@
       var scoring;
       try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
 
+      function reportPoints(earned, possible) {
+        var reported = false;
+        try {
+          if (parent && parent !== window && parent.scoring && parent.scoring.addPoints) {
+            parent.scoring.addPoints('m4', earned, possible);
+            reported = true;
+          }
+        } catch (e) { /* cross-origin */ }
+        if (!reported) {
+          try {
+            parent.postMessage({ type: 'addModulePoints', module: 'm4', earned: earned, possible: possible }, '*');
+          } catch (e2) { /* standalone */ }
+        }
+      }
+
       new BranchScenario({
         start: 'scene-1',
         maxPoints: 3,
@@ -103,9 +118,7 @@
           }
         },
         onComplete: function(totalPoints, maxPoints) {
-          if (scoring) {
-            scoring.addPoints('m4', totalPoints, maxPoints);
-          }
+          reportPoints(totalPoints, maxPoints);
           var el = document.getElementById('evidence-scenario');
           var resultDiv = document.createElement('div');
           resultDiv.className = 'card ' + (totalPoints >= 2 ? 'card-success' : totalPoints >= 1 ? 'card-warning' : 'card-error');

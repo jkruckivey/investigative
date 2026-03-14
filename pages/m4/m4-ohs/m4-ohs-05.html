@@ -48,6 +48,21 @@
       var scoring;
       try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
 
+      function reportPoints(earned, possible) {
+        var reported = false;
+        try {
+          if (parent && parent !== window && parent.scoring && parent.scoring.addPoints) {
+            parent.scoring.addPoints('m4', earned, possible);
+            reported = true;
+          }
+        } catch (e) { /* cross-origin */ }
+        if (!reported) {
+          try {
+            parent.postMessage({ type: 'addModulePoints', module: 'm4', earned: earned, possible: possible }, '*');
+          } catch (e2) { /* standalone */ }
+        }
+      }
+
       new MultipleChoice({
         question: 'Based on the evidence gathered&mdash;obscured signage, lack of physical barriers, an impractical pedestrian route, normalized unsafe behaviour, unreported prior near-misses, and an outdated traffic management plan&mdash;what is the most appropriate conclusion?',
         options: [
@@ -73,9 +88,7 @@
           }
         ],
         onComplete: function(correct, points) {
-          if (scoring) {
-            scoring.addPoints('m4', points, 1);
-          }
+          reportPoints(points, 1);
         }
       }).render('conclusion-activity');
     </script>

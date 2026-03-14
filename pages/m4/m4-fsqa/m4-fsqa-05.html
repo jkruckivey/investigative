@@ -48,6 +48,21 @@
       var scoring;
       try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
 
+      function reportPoints(earned, possible) {
+        var reported = false;
+        try {
+          if (parent && parent !== window && parent.scoring && parent.scoring.addPoints) {
+            parent.scoring.addPoints('m4', earned, possible);
+            reported = true;
+          }
+        } catch (e) { /* cross-origin */ }
+        if (!reported) {
+          try {
+            parent.postMessage({ type: 'addModulePoints', module: 'm4', earned: earned, possible: possible }, '*');
+          } catch (e2) { /* standalone */ }
+        }
+      }
+
       new MultipleChoice({
         question: 'Given the skipped CIP cycle, the pasteurizer temperature fluctuation, the positive Listeria results from both product and environment, and the systemic evidence of production pressure overriding food safety controls, what is the appropriate conclusion?',
         options: [
@@ -73,9 +88,7 @@
           }
         ],
         onComplete: function(correct, points) {
-          if (scoring) {
-            scoring.addPoints('m4', points, 1);
-          }
+          reportPoints(points, 1);
         }
       }).render('conclusion-activity');
     </script>

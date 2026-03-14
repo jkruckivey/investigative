@@ -31,6 +31,21 @@
       var scoring;
       try { scoring = parent.scoring; } catch(e) { scoring = window.scoring; }
 
+      function reportPoints(earned, possible) {
+        var reported = false;
+        try {
+          if (parent && parent !== window && parent.scoring && parent.scoring.addPoints) {
+            parent.scoring.addPoints('m4', earned, possible);
+            reported = true;
+          }
+        } catch (e) { /* cross-origin */ }
+        if (!reported) {
+          try {
+            parent.postMessage({ type: 'addModulePoints', module: 'm4', earned: earned, possible: possible }, '*');
+          } catch (e2) { /* standalone */ }
+        }
+      }
+
       new FillTemplate({
         intro: 'Complete the classification form below based on the near-miss incident details.',
         fields: [
@@ -63,9 +78,7 @@
           }
         ],
         onComplete: function(earned, possible) {
-          if (scoring) {
-            scoring.addPoints('m4', earned, possible);
-          }
+          reportPoints(earned, possible);
         }
       }).render('classification-activity');
     </script>
