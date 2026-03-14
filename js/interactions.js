@@ -218,11 +218,26 @@ BranchScenario.prototype._choose = function (choiceEl) {
    ============================================================ */
 function DragSort(config) {
   // config: { items: [{ text, category }], categories: [{ id, label }], onComplete(correct, total) }
-  this.items = config.items || [];
-  this.categories = config.categories || [];
+  // Also accepts shorthand: { buckets: ['Label1','Label2'], items: [{ text, correct: 'Label1' }] }
   this.onComplete = config.onComplete || function () {};
   this.containerId = '';
   this.placed = 0;
+
+  // Normalize shorthand buckets/correct API to categories/category API
+  if (config.buckets && !config.categories) {
+    this.categories = [];
+    for (var b = 0; b < config.buckets.length; b++) {
+      this.categories.push({ id: config.buckets[b], label: config.buckets[b] });
+    }
+    this.items = [];
+    var srcItems = config.items || [];
+    for (var i = 0; i < srcItems.length; i++) {
+      this.items.push({ text: srcItems[i].text, category: srcItems[i].correct || srcItems[i].category });
+    }
+  } else {
+    this.categories = config.categories || [];
+    this.items = config.items || [];
+  }
 }
 
 DragSort.prototype.render = function (containerId) {
@@ -233,7 +248,8 @@ DragSort.prototype.render = function (containerId) {
   // Shuffle items
   var shuffled = this.items.slice().sort(function () { return Math.random() - 0.5; });
 
-  var html = '<div class="drag-container">';
+  var html = '<button class="btn btn-secondary" id="' + containerId + '-reset" style="margin-bottom:0.75rem;">Reset</button>';
+  html += '<div class="drag-container">';
 
   // Source column
   html += '<div class="drag-source">';
@@ -254,7 +270,6 @@ DragSort.prototype.render = function (containerId) {
   }
 
   html += '</div>';
-  html += '<button class="btn btn-secondary" id="' + containerId + '-reset" style="margin-top:0.75rem;">Reset</button>';
   html += '<div id="' + containerId + '-result"></div>';
 
   el.innerHTML = html;
@@ -282,6 +297,22 @@ DragSort.prototype._bindDragEvents = function () {
     });
   }
 
+  // Allow dropping back to source
+  var sourceEl = document.getElementById(this.containerId + '-source');
+  if (sourceEl) {
+    sourceEl.addEventListener('dragover', function (e) { e.preventDefault(); });
+    sourceEl.addEventListener('drop', function (e) {
+      e.preventDefault();
+      var itemId = e.dataTransfer.getData('text/plain');
+      var item = document.getElementById(itemId);
+      if (!item) return;
+      var wasPlaced = item.parentElement && item.parentElement.classList.contains('drop-zone');
+      if (wasPlaced) { self.placed--; }
+      item.classList.remove('correct-place', 'incorrect-place');
+      sourceEl.appendChild(item);
+    });
+  }
+
   var zones = el.querySelectorAll('.drop-zone');
   for (var z = 0; z < zones.length; z++) {
     zones[z].addEventListener('dragover', function (e) {
@@ -297,9 +328,19 @@ DragSort.prototype._bindDragEvents = function () {
       var itemId = e.dataTransfer.getData('text/plain');
       var item = document.getElementById(itemId);
       if (!item) return;
+
+      // If item was already placed in a zone, uncount it
+      var wasPlaced = item.parentElement && item.parentElement.classList.contains('drop-zone');
+      if (wasPlaced) {
+        self.placed--;
+      }
+
+      // Clear previous correct/incorrect styling
+      item.classList.remove('correct-place', 'incorrect-place');
+
       this.appendChild(item);
-      item.draggable = false;
-      item.style.cursor = 'default';
+      // Keep item draggable so it can be repositioned
+      item.draggable = true;
 
       var correctCat = item.getAttribute('data-category');
       var zoneCat = this.getAttribute('data-category-id');
