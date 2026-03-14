@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intake &amp; Acknowledgement</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -103,6 +104,31 @@
         <strong>Remember:</strong> Not every complaint will arrive with complete information. The intake stage is about capturing what is available and initiating the classification process. Gaps in detail will be addressed during the completeness check in the Classification Framework (covered next).
       </div>
     </div>
+
+    <h2>Practice: Complete the Intake Form</h2>
+    <p>Read the complaint narrative below, then fill in the seven intake elements based on the information provided.</p>
+
+    <div class="card" style="border-left: 5px solid #3498db; background: #f0f7fd;">
+      <h3 style="color: #2c3e50;">Complaint Narrative</h3>
+      <p><em>On Monday, March 3, 2025, an employee named Priya Sharma called the HR office at the Mississauga processing plant to report that her shift supervisor, David Okafor, yelled at her in front of the production team during the 6:00 AM shift on Friday, February 28. Priya said two co-workers, Jamal Thompson and Lin Wei, witnessed the incident. Priya provided a photo she took of a text message from David sent later that day, which she described as threatening. Priya provided her employee number (EMP-4421) and cell phone number.</em></p>
+    </div>
+
+    <div id="intake-form"></div>
+
+    <script>
+      new FillTemplate({
+        prompt: 'Complete each field based on the complaint narrative above.',
+        fields: [
+          { label: 'Date & time of report', answer: 'Monday, March 3, 2025, received via phone call to HR', hint: 'When was the complaint received and through which channel?' },
+          { label: 'Complainant identity', answer: 'Priya Sharma, EMP-4421, cell phone on file', hint: 'Name and contact information of the person filing the complaint' },
+          { label: 'Subject of complaint', answer: 'David Okafor, shift supervisor', hint: 'Who is the complaint about?' },
+          { label: 'Nature of allegation', answer: 'Supervisor yelled at employee in front of team; sent a threatening text message', hint: 'What is alleged to have occurred?' },
+          { label: 'Relevant dates & location', answer: 'February 28, 2025, 6:00 AM shift, Mississauga processing plant production area', hint: 'When and where did the alleged events take place?' },
+          { label: 'Witnesses identified', answer: 'Jamal Thompson and Lin Wei (co-workers present during incident)', hint: 'Who is reported to have witnessed the events?' },
+          { label: 'Supporting materials', answer: 'Photo of threatening text message from David Okafor', hint: 'Any documents or evidence provided by the complainant' }
+        ]
+      }).render('intake-form');
+    </script>
 
   </div>
 </body>

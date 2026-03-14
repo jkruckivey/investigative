@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guiding Principles</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -53,6 +54,22 @@
         <strong>Principles in practice:</strong> These five principles will be reinforced throughout the course. As you work through the Henderson File case study, you will see how each principle applies at different stages of the investigation process.
       </div>
     </div>
+
+    <h2>Check Your Understanding</h2>
+    <p>Match each guiding principle to the scenario that best illustrates it.</p>
+    <div id="principles-match"></div>
+
+    <script>
+      new MatchPairs({
+        pairs: [
+          { left: 'Fairness & Impartiality', right: 'An investigator discloses a personal friendship with the respondent and is replaced on the case' },
+          { left: 'Confidentiality', right: 'A witness is told not to discuss the investigation with co-workers to protect evidence integrity' },
+          { left: 'Thoroughness & Timeliness', right: 'An investigator interviews all identified witnesses and meets the 30-day completion target' },
+          { left: 'Consistency', right: 'Two similar harassment complaints at different plants are handled using the same process and documentation standards' },
+          { left: 'Legal Compliance', right: 'An investigator consults Legal Counsel before collecting evidence governed by provincial privacy legislation' }
+        ]
+      }).render('principles-match');
+    </script>
 
   </div>
 </body>

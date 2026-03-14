@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timeline Planning</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -81,6 +82,23 @@
         <strong>Progress Tracking:</strong> The Investigation Lead should conduct regular check-ins with the investigator to monitor progress against milestones. For Level 1 investigations, weekly check-ins are recommended. For Level 2, check-ins at the midpoint and prior to the target completion date are generally sufficient.
       </div>
     </div>
+
+    <h2>Check Your Understanding</h2>
+    <p>Match each investigation level or milestone to its target timeline.</p>
+    <div id="timeline-match"></div>
+
+    <script>
+      new MatchPairs({
+        pairs: [
+          { left: 'Level 1 — Significant', right: '30–60 days' },
+          { left: 'Level 2 — Standard', right: '15–30 days' },
+          { left: 'Investigation Plan', right: 'Within 5 days of assignment' },
+          { left: 'Evidence Collection', right: 'First third of timeline' },
+          { left: 'Interviews', right: 'Middle third of timeline' },
+          { left: 'Analysis & Reporting', right: 'Final third of timeline' }
+        ]
+      }).render('timeline-match');
+    </script>
 
   </div>
 </body>

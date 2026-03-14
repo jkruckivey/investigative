@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Communicating Investigation Outcomes</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -86,6 +87,26 @@
         <strong>Documenting communications:</strong> All outcome communications should be documented. Record the date, the recipient, the information shared, and the method of communication (in-person meeting, written correspondence, etc.). These records become part of the investigation file.
       </div>
     </div>
+
+    <h2>Practice: Who Gets What?</h2>
+    <p>Drag each piece of information to the recipient who should receive it. Some items may seem like they could go to multiple people — choose the recipient for whom it is <strong>most specifically intended</strong>.</p>
+    <div id="comm-sort"></div>
+
+    <script>
+      new DragSort({
+        buckets: ['Decision-Maker', 'Complainant', 'Respondent'],
+        items: [
+          { text: 'The full investigation report with all findings, analysis, and recommendations', correct: 'Decision-Maker' },
+          { text: 'Detailed witness statements and interview transcripts', correct: 'Decision-Maker' },
+          { text: 'Recommendation for specific corrective or disciplinary action', correct: 'Decision-Maker' },
+          { text: 'A summary of whether the allegation was substantiated or not', correct: 'Complainant' },
+          { text: 'Notice of workplace safety measures put in place to protect them', correct: 'Complainant' },
+          { text: 'The specific findings and conclusion related to the allegation against them', correct: 'Respondent' },
+          { text: 'Details of the corrective or disciplinary action that will be imposed on them', correct: 'Respondent' },
+          { text: 'An explanation of their right to respond to the findings before action is taken', correct: 'Respondent' }
+        ]
+      }).render('comm-sort');
+    </script>
 
   </div>
 </body>

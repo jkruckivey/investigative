@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three Investigation Levels</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -118,6 +119,26 @@
         <strong>Even Level 3 matters must be documented.</strong> Even when no formal investigation is conducted, the intake, preliminary review, and rationale for closure must be recorded and archived. This documentation protects the organization if the matter resurfaces or is challenged later.
       </div>
     </div>
+
+    <h2>Classify the Complaint</h2>
+    <p>Read each scenario and drag it into the correct investigation level.</p>
+    <div id="level-sort"></div>
+
+    <script>
+      new DragSort({
+        buckets: ['Level 1 — Significant', 'Level 2 — Standard', 'Level 3 — No Formal Investigation'],
+        items: [
+          { text: 'A plant manager is accused of accepting bribes from a supplier in exchange for passing substandard product', correct: 'Level 1 — Significant' },
+          { text: 'An employee reports that their supervisor made a sexually explicit comment in front of colleagues', correct: 'Level 1 — Significant' },
+          { text: 'An anonymous EthicsLine tip alleges a VP directed staff to falsify safety inspection records', correct: 'Level 1 — Significant' },
+          { text: 'A worker reports a co-worker consistently leaving their station without authorization, causing minor production delays', correct: 'Level 2 — Standard' },
+          { text: 'A team lead is accused of favouring certain employees when assigning overtime shifts', correct: 'Level 2 — Standard' },
+          { text: 'An anonymous tip is received with no names, dates, locations, or specific details that could be investigated', correct: 'Level 3 — No Formal Investigation' },
+          { text: 'A complaint about parking lot assignments is submitted; the matter is already being handled by Facilities', correct: 'Level 3 — No Formal Investigation' },
+          { text: 'A worker reports feeling "generally uncomfortable" but declines to provide any specific incidents or details', correct: 'Level 3 — No Formal Investigation' }
+        ]
+      }).render('level-sort');
+    </script>
 
   </div>
 </body>

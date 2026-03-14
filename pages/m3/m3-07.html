@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Investigation Conclusions</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -70,6 +71,52 @@
         <strong>Precision in Language:</strong> It is essential that investigators use the correct conclusion category and its precise definition. A "Substantiated" finding does not mean the investigator is 100% certain. An "Unsubstantiated &mdash; Inconclusive" finding does not mean the respondent is innocent. Using these terms precisely and explaining what they mean in the investigation report helps all stakeholders understand the outcome and its limitations.
       </div>
     </div>
+
+    <h2>Apply the Conclusion Categories</h2>
+    <p>For each scenario, select the correct conclusion category based on the evidence described.</p>
+
+    <div id="cc-q1"></div>
+    <div id="cc-q2"></div>
+    <div id="cc-q3"></div>
+    <div id="cc-q4"></div>
+
+    <script>
+      new MultipleChoice({
+        question: 'Scenario 1: Three co-workers independently report that a supervisor made a discriminatory remark during a team meeting. The supervisor denies it but provides no supporting evidence. Meeting minutes confirm the meeting took place as described.',
+        options: [
+          { text: 'Substantiated', correct: true, feedback: 'Correct. Multiple independent witnesses corroborate the allegation, the supervisor\'s denial is unsupported, and documentary evidence confirms the context. The balance of probabilities favours the allegation.' },
+          { text: 'Unsubstantiated — Conclusive', correct: false, feedback: 'Incorrect. This would require evidence that the conduct did NOT occur. Here, three witnesses support the allegation.' },
+          { text: 'Unsubstantiated — Inconclusive', correct: false, feedback: 'Incorrect. The evidence is not evenly split — three corroborating witnesses versus an unsupported denial tips the balance clearly.' }
+        ]
+      }).render('cc-q1');
+
+      new MultipleChoice({
+        question: 'Scenario 2: An employee alleges that a colleague accessed their personal files. IT access logs confirm the colleague was logged into a different system at the time and had no access to the files in question.',
+        options: [
+          { text: 'Substantiated', correct: false, feedback: 'Incorrect. The digital evidence contradicts the allegation — the colleague could not have accessed the files.' },
+          { text: 'Unsubstantiated — Conclusive', correct: true, feedback: 'Correct. The IT access logs affirmatively demonstrate that the alleged conduct could not have occurred. The evidence points away from the allegation.' },
+          { text: 'Unsubstantiated — Inconclusive', correct: false, feedback: 'Incorrect. This is not a case of insufficient evidence — the evidence actively disproves the allegation.' }
+        ]
+      }).render('cc-q2');
+
+      new MultipleChoice({
+        question: 'Scenario 3: A complaint alleges that product samples were tampered with overnight. Security camera footage from that night is corrupted and unrecoverable. The complainant and respondent give conflicting accounts, and no other witnesses or evidence exist.',
+        options: [
+          { text: 'Substantiated', correct: false, feedback: 'Incorrect. Without corroborating evidence, the conflicting accounts alone cannot meet the balance of probabilities standard.' },
+          { text: 'Unsubstantiated — Conclusive', correct: false, feedback: 'Incorrect. There is no evidence affirmatively disproving the allegation — the key evidence was lost.' },
+          { text: 'Unsubstantiated — Inconclusive', correct: true, feedback: 'Correct. The critical evidence is unavailable, accounts conflict, and no other evidence resolves the dispute. The balance of probabilities cannot tip in either direction.' }
+        ]
+      }).render('cc-q3');
+
+      new MultipleChoice({
+        question: 'Scenario 4: An employee reports that their manager retaliated against them by changing their schedule after they filed a safety complaint. The manager states the schedule change was part of a department-wide rotation. HR records confirm the rotation was planned and announced two weeks before the safety complaint was filed.',
+        options: [
+          { text: 'Substantiated', correct: false, feedback: 'Incorrect. The documentary evidence shows the schedule change was planned before the complaint, contradicting the retaliation theory.' },
+          { text: 'Unsubstantiated — Conclusive', correct: true, feedback: 'Correct. HR records affirmatively demonstrate that the schedule change was planned and announced before the safety complaint was filed. The evidence shows the alleged retaliation more likely than not did NOT occur.' },
+          { text: 'Unsubstantiated — Inconclusive', correct: false, feedback: 'Incorrect. This is not a case of insufficient evidence. The documentary evidence clearly supports the manager\'s account and disproves the retaliation claim.' }
+        ]
+      }).render('cc-q4');
+    </script>
 
   </div>
 </body>

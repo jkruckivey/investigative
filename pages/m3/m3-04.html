@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interview Techniques</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/interactions.js"></script>
 </head>
 <body>
   <div class="page">
@@ -99,6 +100,26 @@
         <strong>Retaliation Protection:</strong> Every interviewee must be informed that retaliation for participating in an investigation is strictly prohibited under Maple Leaf Foods policy and applicable law. If an interviewee expresses concern about retaliation, take those concerns seriously, document them, and escalate to the Investigation Lead as necessary.
       </div>
     </div>
+
+    <h2>Practice: Spot the Problem</h2>
+    <p>Drag each interview question into the correct category. Appropriate questions are neutral and open-ended; problematic questions are leading, biased, or suggestive.</p>
+    <div id="question-sort"></div>
+
+    <script>
+      new DragSort({
+        buckets: ['Appropriate Questions', 'Problematic Questions'],
+        items: [
+          { text: '"Can you walk me through what happened that morning?"', correct: 'Appropriate Questions' },
+          { text: '"What did you observe during the inspection process?"', correct: 'Appropriate Questions' },
+          { text: '"Who else was present when this occurred?"', correct: 'Appropriate Questions' },
+          { text: '"Is there anything else you think I should know?"', correct: 'Appropriate Questions' },
+          { text: '"Don\'t you think David was being aggressive when he said that?"', correct: 'Problematic Questions' },
+          { text: '"Other witnesses already confirmed this happened — do you agree?"', correct: 'Problematic Questions' },
+          { text: '"Isn\'t it true that you saw Chen skip the safety inspection?"', correct: 'Problematic Questions' },
+          { text: '"Would you say the respondent has a history of this kind of behaviour?"', correct: 'Problematic Questions' }
+        ]
+      }).render('question-sort');
+    </script>
 
   </div>
 </body>
