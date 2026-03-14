@@ -1,0 +1,68 @@
+ENTERPRISE-WIDE INVESTIGATIVE PROCEDURE: THE 7-STEP PROCESS
+Maple Leaf Foods — Training Content for Video Overview
+
+CONTEXT
+This course teaches the standardized investigative procedure that applies across all Maple Leaf Foods functions. Whether you investigate workplace conduct issues, food safety incidents, or occupational health and safety events, this SOP provides the common framework, tools, and quality standards for your work. The procedure applies across seven in-scope functions: Internal Audit (IA), Human Resources (HR), Occupational Health & Safety (OHS), Food Safety & Quality Assurance (FSQA), Animal Care (AC), Legal, and Information Security (IS).
+
+THE 7-STEP INVESTIGATION PROCESS
+
+The Enterprise-Wide Investigative Procedure follows a structured 7-step process from initial intake through final closure. Each step builds on the previous one, ensuring a logical, thorough, and well-documented investigation.
+
+STEP 1: INTAKE & ACKNOWLEDGEMENT
+Purpose: Receive and formally document the initial complaint or report.
+- Complaint received through any reporting channel (EthicsLine, supervisor, HR, direct report, etc.)
+- Intake form completed with initial details: who, what, when, where
+- Acknowledgement sent to the reporter (if not anonymous) confirming receipt within 2 business days
+- Preliminary information gathered to support triage
+- Immediate safety or preservation actions taken if required
+
+STEP 2: TRIAGE & ASSIGN INVESTIGATOR
+Purpose: Assess the matter and determine the appropriate investigation level and investigator.
+- Review initial intake information to assess severity, risk, and complexity
+- Classify the matter as Level 1 (Significant), Level 2 (Minor), or Level 3 (No Formal Investigation)
+- Identify the appropriate function(s) and assign an investigator free of conflicts of interest
+- Determine whether Legal Counsel involvement is required
+- For Level 3 matters, document rationale and close the file
+
+STEP 3: PLAN INVESTIGATION
+Purpose: Develop a structured plan that guides the investigation activities.
+- Define the scope of the investigation: what allegations or issues will be examined
+- Identify the evidence to be collected (documents, records, electronic data, physical evidence)
+- List the witnesses to be interviewed and determine the interview order
+- Establish a timeline with target milestones and a completion date
+- Identify any immediate interim measures needed (e.g., separation of parties, access restrictions)
+
+STEP 4: COLLECT EVIDENCE & CONDUCT INTERVIEWS
+Purpose: Gather all relevant evidence and interview witnesses to establish the facts.
+- Collect documentary evidence: policies, logs, emails, records, video footage, etc.
+- Conduct interviews with the complainant, respondent, and witnesses
+- Use open-ended questions and follow a structured interview protocol
+- Document all interviews with detailed notes or recordings (where legally permitted)
+- Preserve and secure all evidence with a documented chain of custody
+
+STEP 5: ANALYZE & REACH CONCLUSIONS
+Purpose: Weigh the evidence and reach a conclusion on each allegation.
+- Review and analyze all collected evidence and interview statements
+- Assess credibility of accounts by considering consistency, corroboration, and plausibility
+- Apply the applicable standard of proof (balance of probabilities)
+- Reach a conclusion for each allegation: Substantiated, Unsubstantiated-Conclusive, or Unsubstantiated-Inconclusive
+- Identify any systemic issues, patterns, or contributing factors
+
+STEP 6: REPORT & COMMUNICATE
+Purpose: Document the findings in a formal report and communicate outcomes to relevant parties.
+- Prepare the investigation report following the SOP template and documentation standards
+- Include: summary of allegations, methodology, evidence reviewed, findings of fact, conclusions, and recommendations
+- Submit the report to the Investigation Lead for review and then to the Decision-Maker
+- Communicate outcomes to the complainant and respondent as appropriate
+- Ensure all communications respect confidentiality requirements
+
+STEP 7: CLOSE & ARCHIVE
+Purpose: Formally close the investigation file and ensure proper records retention.
+- Confirm that all corrective actions and recommendations have been communicated to the Decision-Maker
+- Complete the investigation closure checklist
+- Archive the complete investigation file (intake form, plan, evidence, interview notes, report)
+- Ensure records are stored securely and in compliance with retention policies (minimum 7-year retention period)
+- Conduct a post-investigation review or lessons learned, if applicable
+
+KEY TAKEAWAY
+Each step builds on the previous one. You will explore each step in depth across Modules 2 through 5 of this course. This overview provides the big picture so you can see how each stage connects to create a logical, thorough, and defensible investigation process.

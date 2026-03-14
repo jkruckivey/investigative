@@ -1,0 +1,134 @@
+THE THREE INVESTIGATION LEVELS
+Maple Leaf Foods — Enterprise-Wide Investigative Procedure
+
+OVERVIEW
+Not every report or complaint warrants the same level of investigative effort. The SOP defines three investigation levels to ensure that resources are allocated appropriately and that the response is proportionate to the nature and severity of the matter. During the Triage stage (Step 2 of the 7-step process), the Investigation Lead or Coordinator classifies the matter into one of the following levels.
+
+---
+
+LEVEL 1: SIGNIFICANT
+Complex, high-risk matters requiring a formal investigation team, legal involvement, and detailed reporting. These investigations typically involve senior personnel, significant financial exposure, potential regulatory implications, or serious harm to individuals or the organization.
+
+Characteristics:
+- Formal investigation team assembled
+- Legal Counsel consulted or directing
+- Detailed investigation plan required
+- Comprehensive written report
+- Typically completed within 30-60 days
+
+Examples:
+- Serious harassment or discrimination allegations
+- Fraud, theft, or financial misconduct
+- Major food safety incidents with potential public health impact
+- Workplace violence or threats
+- Significant regulatory violations
+- Matters involving senior leadership (VP+)
+- Data breaches affecting sensitive information
+
+Classification Criteria:
+- High severity on one or more dimensions of the severity assessment
+- Regulatory, legal, or safety implications
+- VP+ involvement
+- Complex or multi-function matter
+- Assigned to a senior investigator or external counsel with Legal oversight required
+
+---
+
+LEVEL 2: MINOR
+Lower-risk matters that can be handled by a single investigator using standard procedures. These investigations are less complex but still require a structured approach to fact-finding and documentation.
+
+Characteristics:
+- Single investigator assigned
+- Legal Counsel consulted as needed
+- Standard investigation plan
+- Summary written report
+- Typically completed within 14-30 days
+
+Examples:
+- Policy violations (attendance, conduct, use of company resources)
+- Minor interpersonal conflicts or conduct issues
+- Routine safety incidents without serious injury
+- Low-level compliance concerns
+- Non-critical process deviations
+
+Classification Criteria:
+- Moderate severity
+- Limited scope
+- No immediate regulatory or safety concerns
+- Straightforward fact pattern
+- Assigned to a trained internal investigator within the relevant function
+
+---
+
+LEVEL 3: NO FORMAL INVESTIGATION
+A preliminary review determines that no formal investigation is needed. The matter is documented, and the file is closed. This level is used when the initial assessment reveals insufficient basis for investigation or when the matter can be resolved through other means.
+
+Characteristics:
+- Preliminary review only
+- No formal investigation plan
+- Brief documentation of rationale for closure
+- Matter documented and archived
+- Typically resolved within 5-10 days
+
+Examples:
+- Anonymous tips lacking sufficient detail to pursue
+- Matters already resolved through other processes (e.g., mediation, performance management)
+- Issues that fall outside the scope of the SOP
+- Duplicate reports of an already-investigated matter
+- Matters referred to external authorities
+
+Classification Criteria:
+- Low severity across all dimensions
+- Can be resolved through management action, coaching, mediation, or policy clarification
+- Manager or HR business partner handles resolution; no formal investigation file opened
+
+---
+
+IMPORTANT: LEVELS CAN CHANGE
+An investigation that begins as Level 2 may be escalated to Level 1 if new information reveals greater complexity or risk. Similarly, a matter initially classified as Level 1 may be reclassified downward if the preliminary findings indicate lower risk than originally assessed. Any reclassification must be documented.
+
+IMPORTANT: EVEN LEVEL 3 MATTERS MUST BE DOCUMENTED
+Even when no formal investigation is conducted, the intake, preliminary review, and rationale for closure must be recorded and archived. This documentation protects the organization if the matter resurfaces or is challenged later.
+
+---
+
+THE FIVE SEVERITY DIMENSIONS USED TO CLASSIFY LEVELS
+Each complaint is evaluated against five severity dimensions, rated from 1 (Low) to 3 (High):
+
+1. Seriousness of Allegation
+   - Low: Minor policy deviation or interpersonal friction
+   - Moderate: Substantive policy violation or misconduct allegation
+   - High: Serious misconduct, safety threat, or potential criminal conduct
+
+2. Scope — Number of People Affected
+   - Low: Single individual affected
+   - Moderate: Small group or team affected
+   - High: Widespread impact across multiple teams, departments, or locations
+
+3. Regulatory / Legal Exposure
+   - Low: No regulatory implications
+   - Moderate: Possible regulatory interest; internal compliance concern
+   - High: Mandatory reporting obligation; active or likely regulatory involvement
+
+4. Reputational Risk
+   - Low: Minimal external visibility
+   - Moderate: Potential for limited media or stakeholder attention
+   - High: Significant public, media, or investor exposure
+
+5. Financial Impact
+   - Low: Negligible or no financial exposure
+   - Moderate: Moderate financial risk (e.g., fines, remediation costs)
+   - High: Major financial exposure (e.g., class action, product recall, large-scale fraud)
+
+A complaint does not need to score High on every dimension to warrant a Level 1 classification — a single High rating on a critical dimension (such as regulatory exposure or safety) may be sufficient.
+
+---
+
+SIX TRIGGERS FOR IMMEDIATE ESCALATION TO LEVEL 1 + LEGAL
+Regardless of severity scores, certain situations always require immediate escalation:
+1. Imminent physical danger
+2. Alleged criminal conduct
+3. VP+ level involvement
+4. Regulatory body involvement or mandatory reporting obligation
+5. Potential class action exposure
+6. Whistleblower retaliation claims

@@ -1,0 +1,91 @@
+THE HENDERSON FILE: YOUR ANCHOR CASE STUDY
+Maple Leaf Foods — Enterprise-Wide Investigative Procedure
+
+COURSE CONTEXT
+This course teaches the standardized investigative procedure that applies across all Maple Leaf Foods functions — HR, FSQA (Food Safety & Quality Assurance), OHS (Occupational Health & Safety), Internal Audit, Information Security, Animal Care, and Legal. Whether you investigate workplace conduct issues, food safety incidents, or occupational health and safety events, this SOP provides the common framework.
+
+The course is structured around five modules:
+- Module 1: The Investigative Framework (the big picture)
+- Module 2: Intake, Classification & Escalation (how complaints are received and triaged)
+- Module 3: Investigation Best Practices (evidence collection, interviews, analysis)
+- Module 4: Function-Specific Scenarios (applying the framework in HR, FSQA, or OHS)
+- Module 5: Documentation & Closure (reports, communication, records retention)
+
+Throughout the entire course, learners follow a single investigation from intake through closure: the Henderson File.
+
+---
+
+THE INITIAL COMPLAINT
+
+An anonymous complaint has been submitted to Maple Leaf Foods' EthicsLine hotline. The caller, who identified themselves only as "a concerned team member," provided the following information:
+
+Date Received: Monday, October 14
+Reporting Channel: EthicsLine Hotline (anonymous call)
+Facility: Henderson Road Processing Plant
+Subject of Complaint: Marcus Chen, Plant Supervisor
+
+The complainant alleges that Marcus Chen, a plant supervisor at the Henderson Road facility, has been falsifying production quality inspection logs for the past three months. According to the caller, Chen has been instructing line workers to skip certain inspection checkpoints during high-volume production runs, potentially compromising food safety standards.
+
+The caller stated: "I've seen him do it multiple times. When we're behind on production targets, he tells us to just check the boxes on the inspection forms without actually doing the checks. I'm worried about what's getting through."
+
+The caller did not provide their name or position but indicated they work on the production line at the Henderson Road plant.
+
+---
+
+WHY THIS CASE MATTERS
+
+The Henderson File is designed to illustrate how the investigative procedure works in practice across multiple dimensions:
+
+1. FOOD SAFETY RISK: The allegation involves falsified quality inspection logs at a processing plant that produces ready-to-eat meat products. This is not just a compliance issue — it's a potential public health concern.
+
+2. CROSS-FUNCTIONAL COMPLEXITY: This case involves FSQA (food safety), Internal Audit (falsified records), and potentially Legal (regulatory implications). It demonstrates how the lead-function and supporting-function model works in practice.
+
+3. ANONYMOUS REPORTING: The complaint comes through the EthicsLine and the reporter is anonymous. This raises important questions about confidentiality, the limits of follow-up, and how to handle incomplete information.
+
+4. CLASSIFICATION CHALLENGE: Learners must determine the appropriate investigation level. Given the food safety implications, potential regulatory exposure, and the seriousness of falsifying production records, this case presents clear indicators for Level 1 (Significant) classification.
+
+5. REAL-WORLD TENSIONS: The case reflects the real-world tension between production pressures and compliance — a scenario investigators across food manufacturing frequently encounter.
+
+---
+
+WHAT LEARNERS WILL DO WITH THE HENDERSON FILE
+
+At each stage of the course, learners return to the Henderson File to practice applying what they've learned:
+
+- MODULE 1: Initial reflection — What functions might be involved? What level might this be? What guiding principles are particularly relevant?
+
+- MODULE 2: Classification exercise — Walk through the 5-step Classification Framework to formally classify the Henderson complaint. Determine the investigation level, lead function, supporting functions, and whether Legal oversight is required.
+
+- MODULE 3: Interview simulation and evidence weighing — Practice interview techniques with Henderson File witnesses. Weigh five pieces of evidence (production logs with gaps, digital access logs, corroborating witness statements, Chen's unsupported denial, absence of product complaints) to reach a conclusion.
+
+- MODULE 5: Full case resolution — Review the complete investigation conclusion (Substantiated), see how outcomes are communicated to different stakeholders (Decision-Maker gets full report, complainant gets summary, respondent gets relevant findings), and learn how the file is properly closed and archived with 7-year minimum retention.
+
+---
+
+THE HENDERSON FILE RESOLUTION (SPOILER — FINAL MODULE)
+
+The investigation into Marcus Chen substantiated that he falsified production inspection logs. Key evidence included:
+- Production log gaps on 14 dates with blank or copied data fields
+- Digital access records showing Chen logged into the system when entries were created
+- Two independent witness statements with consistent accounts of Chen's verbal instructions to skip checkpoints
+- Physical evidence of skipped inspection checkpoints
+- Chen was unable to provide satisfactory explanation
+
+Conclusion: Substantiated — the balance of probabilities standard was met through multiple independent evidence sources.
+
+Recommended actions included disciplinary measures up to termination, mandatory supervisor retraining, enhanced inspection protocols with random audits and dual sign-off, and review of other shifts for similar practices.
+
+---
+
+GUIDING PRINCIPLES IN THE HENDERSON FILE
+Five foundational principles govern every investigation:
+
+1. FAIRNESS & IMPARTIALITY: Marcus Chen is presumed innocent until the evidence demonstrates otherwise. Both the anonymous complainant and Chen must be treated with respect throughout.
+
+2. CONFIDENTIALITY: The anonymous reporter's identity must be protected. Information is shared only on a need-to-know basis, balanced with legal and safety obligations.
+
+3. THOROUGHNESS & TIMELINESS: The investigation must be sufficiently deep to examine all evidence while maintaining reasonable completion timeframes (30-60 days for Level 1).
+
+4. CONSISTENCY: The Henderson File must be handled the same way any similar matter at any Maple Leaf Foods facility would be handled.
+
+5. LEGAL COMPLIANCE: The investigation must comply with all applicable legislation — employment law, food safety regulations, privacy law, and human rights legislation.

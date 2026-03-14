@@ -1,0 +1,96 @@
+ANALYSIS METHODOLOGY: BALANCE OF PROBABILITIES, CREDIBILITY ASSESSMENT, AND INVESTIGATION CONCLUSIONS
+Maple Leaf Foods — Enterprise-Wide Investigative Procedure
+
+This document covers the most conceptually important part of the investigative process: how investigators weigh evidence, assess credibility, and reach defensible conclusions.
+
+---
+
+PART 1: THE STANDARD OF PROOF
+
+Once all evidence has been collected and all interviews have been conducted, the investigator must analyze the totality of the evidence and reach a conclusion. The standard of proof applied in Maple Leaf Foods workplace investigations is the balance of probabilities, also known as the preponderance of evidence.
+
+BALANCE OF PROBABILITIES (51% THRESHOLD)
+The standard is met when the evidence shows that it is "more likely than not" that the alleged conduct occurred. This means the investigator must determine whether there is a greater than 50% probability that the allegation is true.
+
+This is a lower threshold than the criminal standard of "beyond a reasonable doubt" and is the standard used in civil matters and workplace investigations. Workplace investigations are administrative processes, not criminal proceedings. Investigators should not require the same degree of certainty that a criminal court would demand.
+
+Applying this standard requires the investigator to weigh all available evidence — both supporting and contradicting the allegation — and make a determination about what more likely than not occurred. It does not require absolute certainty. An investigator may conclude that conduct occurred even if some doubt remains, provided the overall weight of evidence tips the scales past the 51% threshold.
+
+---
+
+PART 2: CREDIBILITY ASSESSMENT
+
+In many investigations, the evidence will include conflicting accounts from different individuals. When testimonial evidence conflicts, the investigator must assess the relative credibility of each account. Five key factors guide this assessment:
+
+1. CORROBORATION
+Is the individual's account supported by other evidence? Testimony that is corroborated by documentary evidence, digital records, or other witness statements is generally given greater weight than uncorroborated testimony. An account that stands alone, with no supporting evidence, may still be credible but requires careful scrutiny.
+
+2. CONSISTENCY
+Is the individual's account internally consistent? Are there contradictions between what they said at different points in the interview or between their interview statement and other evidence? Minor inconsistencies are normal — human memory is imperfect. However, significant or unexplained contradictions on material points reduce credibility.
+
+3. DEMEANOR
+How did the individual present during the interview? While demeanor alone is never determinative, the interviewer may note observations such as whether the person appeared forthcoming, evasive, confident, or uncertain. Demeanor should be considered cautiously, as cultural differences, anxiety, and personality factors can all affect how someone presents in an interview.
+
+4. MOTIVE
+Does the individual have a reason to be less than truthful? Consider whether the person has a personal stake in the outcome of the investigation — such as a desire for revenge, fear of consequences, or loyalty to a particular party. The presence of a motive does not automatically discredit testimony, but it is a factor the investigator should consider when weighing the evidence.
+
+5. SPECIFICITY
+How detailed and specific is the individual's account? Testimony that includes precise details — dates, times, locations, specific words used — is generally more credible than vague or generalized accounts. Specific details can also be verified against other evidence, further strengthening or weakening the testimony.
+
+---
+
+PART 3: WEIGHING ALL EVIDENCE TOGETHER
+
+The analysis phase is not simply a matter of counting how many pieces of evidence support each side. The investigator must consider the quality, reliability, and relevance of each piece of evidence. A single, highly credible and well-corroborated witness statement may outweigh multiple pieces of weak or ambiguous evidence. Conversely, a strong documentary record may prevail over contradictory testimony.
+
+The investigator's analysis should be documented in the investigation report, explaining what evidence was considered, how conflicting evidence was weighed, and why the ultimate conclusion was reached. Transparency in the analytical process is essential to the defensibility of the investigation's findings.
+
+WARNING: AVOID CONFIRMATION BIAS
+Investigators must guard against the tendency to favor evidence that supports an early hypothesis while discounting evidence that contradicts it. Every piece of evidence should be evaluated on its merits, regardless of whether it supports or undermines the investigator's initial impressions. If you find yourself dismissing relevant evidence because it does not fit your theory, step back and reassess.
+
+---
+
+PART 4: THE THREE CONCLUSION CATEGORIES
+
+After analyzing all collected evidence and applying the balance of probabilities standard, the investigator must classify the outcome of the investigation into one of three conclusion categories. Each category has a specific meaning, and it is critical that investigators use them precisely and consistently.
+
+SUBSTANTIATED
+Definition: The investigation found that the allegation more likely than not occurred, based on available evidence.
+
+A substantiated finding means that after weighing all the evidence, the investigator concluded that there is a greater than 50% probability that the alleged conduct did in fact occur. This conclusion does not require proof beyond a reasonable doubt — it requires only that the weight of the evidence tips in favour of the allegation being true.
+
+When this conclusion applies:
+- Multiple witnesses corroborate the complainant's account and the respondent's denial is unsupported by other evidence
+- Documentary or digital evidence directly supports the allegation (e.g., access logs, emails, records)
+- The respondent admits to some or all of the alleged conduct
+- The overall body of evidence, considered together, makes it more likely than not that the conduct occurred
+
+UNSUBSTANTIATED — CONCLUSIVE
+Definition: The investigation found sufficient evidence to conclude that the alleged conduct, more likely than not, did NOT occur.
+
+This conclusion is reached when the evidence affirmatively demonstrates that the allegation is more likely false than true. This is different from simply not having enough evidence — it means the evidence actively points away from the allegation.
+
+When this conclusion applies:
+- The respondent has a verifiable alibi supported by independent evidence (e.g., access logs show they were not present)
+- Documentary evidence directly contradicts the allegation
+- Multiple independent witnesses credibly refute the complainant's account
+- The investigation reveals that the alleged events could not have occurred as described due to physical or logistical impossibility
+
+UNSUBSTANTIATED — INCONCLUSIVE
+Definition: The investigation could not determine whether the alleged conduct occurred due to insufficient or conflicting evidence.
+
+This conclusion is reached when the evidence is insufficient to tip the balance in either direction, or when the evidence is evenly split and the investigator cannot determine what more likely than not occurred. It does not mean the allegation is false — it means the evidence does not allow a definitive determination either way.
+
+When this conclusion applies:
+- It is a "he said / she said" situation with no corroborating evidence and both parties are equally credible
+- Key evidence has been lost, destroyed, or is otherwise unavailable
+- Witness accounts are contradictory and no other evidence resolves the conflict
+- The evidence is ambiguous and reasonably supports both interpretations
+
+---
+
+KEY PRINCIPLES
+
+1. CONCLUSIONS, NOT RECOMMENDATIONS: The investigator's role is to reach a conclusion about whether the alleged conduct occurred. The investigator typically does not determine what disciplinary or corrective action should follow — that decision rests with the Decision-Maker. The investigation report should present the conclusion clearly and the evidence supporting it, leaving the Decision-Maker to determine the appropriate response.
+
+2. PRECISION IN LANGUAGE: It is essential that investigators use the correct conclusion category and its precise definition. A "Substantiated" finding does not mean the investigator is 100% certain. An "Unsubstantiated — Inconclusive" finding does not mean the respondent is innocent. Using these terms precisely and explaining what they mean in the investigation report helps all stakeholders understand the outcome and its limitations.
