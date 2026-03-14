@@ -777,6 +777,16 @@ strong { font-weight: 600; }
   .btn { display: none; }
 }
 
+/* --- Content Videos --- */
+.page-video {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  background: #000;
+}
+
 /* --- Content Images --- */
 .page-image {
   width: 100%;
