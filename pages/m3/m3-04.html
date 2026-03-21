@@ -17,44 +17,29 @@
     </div>
 
     <h2>Core Interview Principles</h2>
-    <p>Investigative interviews are one of the most important tools available to an investigator. The quality of the information gathered depends directly on the skill, preparation, and professionalism of the interviewer. The following principles apply to every investigative interview conducted under Maple Leaf Foods' Enterprise-Wide Investigative Procedure.</p>
+    <p>Investigative interviews are one of the most important evidence-gathering tools available. The following principles apply to every interview. At the outset of each interview, inform the interviewee of the confidentiality expectations and that retaliation for participating is strictly prohibited.</p>
 
     <div class="card card-accent">
       <h3>Preparation</h3>
-      <p>Prepare questions in advance of every interview. Review all available evidence related to the interviewee before the session. Identify the specific facts you need to establish or clarify, and prepare a logical sequence of questions that will guide the conversation toward those facts. Being well-prepared demonstrates professionalism and ensures that no critical topics are overlooked.</p>
+      <p>Prepare questions in advance. Review all available evidence related to the interviewee, identify the specific facts you need to establish, and prepare a logical sequence of questions. Being well-prepared ensures no critical topics are overlooked.</p>
     </div>
 
     <div class="card card-accent">
       <h3>The Funnel Technique</h3>
-      <p>Start with open-ended, broad questions and gradually narrow to more specific, targeted inquiries. This approach&mdash;known as the funnel technique&mdash;encourages interviewees to share information freely in their own words before the interviewer focuses on particular details. Beginning with specific or pointed questions can make interviewees defensive and may limit the information they provide.</p>
-      <p><strong>Example progression:</strong></p>
-      <ul>
-        <li><em>Broad:</em> "Can you walk me through what happened on the morning of March 15th?"</li>
-        <li><em>Narrowing:</em> "You mentioned that you were in the production area. Who else was present?"</li>
-        <li><em>Specific:</em> "Did you observe anyone skipping any of the inspection steps during that shift?"</li>
-      </ul>
+      <p>Start with open-ended, broad questions and gradually narrow to specific inquiries. This encourages interviewees to share information freely before the interviewer focuses on particular details.</p>
+      <p><strong>Example:</strong> <em>"Can you walk me through what happened?"</em> &rarr; <em>"Who else was present?"</em> &rarr; <em>"Did you observe anyone skipping inspection steps?"</em></p>
     </div>
 
     <div class="card card-accent">
       <h3>Neutrality</h3>
-      <p>Remain neutral throughout the interview. Do not lead the interviewee toward a particular answer, express opinions about the allegations, or indicate whether you believe the conduct occurred. The investigator's role is to gather facts, not to advocate for a particular outcome. Leading questions, suggestive phrasing, or expressions of judgment can compromise the credibility of the interview and the investigation as a whole.</p>
+      <p>Do not lead the interviewee toward a particular answer or express opinions about the allegations. The investigator's role is to gather facts, not to advocate for a particular outcome.</p>
       <p><strong>Avoid:</strong> "Isn't it true that you saw Chen skip the inspection?"</p>
       <p><strong>Prefer:</strong> "What did you observe during the inspection process?"</p>
     </div>
 
     <div class="card card-accent">
-      <h3>Contemporaneous Documentation</h3>
-      <p>Document responses during the interview or immediately afterward. Contemporaneous notes are more reliable than notes prepared from memory hours or days later. Capture the substance of each response, including direct quotes where significant statements are made. Notes should reflect what was said, not the interviewer's interpretation of what was meant.</p>
-    </div>
-
-    <div class="card card-accent">
-      <h3>Interviewee Review</h3>
-      <p>After the interview, provide the interviewee with an opportunity to review the notes or a summary of their statements for accuracy. This step protects both the interviewee's rights and the integrity of the record. If the interviewee requests corrections, document both the original statement and the requested change.</p>
-    </div>
-
-    <div class="card card-accent">
-      <h3>Confidentiality</h3>
-      <p>At the outset of every interview, inform the interviewee of the confidentiality expectations. Explain that the investigation is confidential and that the interviewee should not discuss the matter with colleagues or other potential witnesses. This protects the integrity of the investigation and helps prevent retaliation, interference, or the contamination of other witnesses' accounts.</p>
+      <h3>Documentation &amp; Review</h3>
+      <p>Document responses during the interview or immediately afterward. Capture the substance of each response, including direct quotes for significant statements. After the interview, provide the interviewee with an opportunity to review their statements for accuracy. If corrections are requested, document both the original statement and the change.</p>
     </div>
 
     <h2>Interview Order</h2>
@@ -102,23 +87,96 @@
     </div>
 
     <h2>Practice: Spot the Problem</h2>
-    <p>Drag each interview question into the correct category. Appropriate questions are neutral and open-ended; problematic questions are leading, biased, or suggestive.</p>
-    <div id="question-sort"></div>
+    <p>For each interview question, decide whether it is appropriate or problematic.</p>
+    <div id="question-classify"></div>
 
     <script>
-      new DragSort({
-        buckets: ['Appropriate Questions', 'Problematic Questions'],
-        items: [
-          { text: '"Can you walk me through what happened that morning?"', correct: 'Appropriate Questions' },
-          { text: '"What did you observe during the inspection process?"', correct: 'Appropriate Questions' },
-          { text: '"Who else was present when this occurred?"', correct: 'Appropriate Questions' },
-          { text: '"Is there anything else you think I should know?"', correct: 'Appropriate Questions' },
-          { text: '"Don\'t you think David was being aggressive when he said that?"', correct: 'Problematic Questions' },
-          { text: '"Other witnesses already confirmed this happened — do you agree?"', correct: 'Problematic Questions' },
-          { text: '"Isn\'t it true that you saw Chen skip the safety inspection?"', correct: 'Problematic Questions' },
-          { text: '"Would you say the respondent has a history of this kind of behaviour?"', correct: 'Problematic Questions' }
-        ]
-      }).render('question-sort');
+    (function () {
+      var items = [
+        { text: '"Can you walk me through what happened that morning?"', correct: 'Appropriate', feedback: 'This is an open-ended question that lets the interviewee share their account freely.' },
+        { text: '"What did you observe during the inspection process?"', correct: 'Appropriate', feedback: 'A neutral, fact-seeking question that does not suggest a particular answer.' },
+        { text: '"Who else was present when this occurred?"', correct: 'Appropriate', feedback: 'A direct factual question that helps identify witnesses without leading.' },
+        { text: '"Don\'t you think David was being aggressive when he said that?"', correct: 'Problematic', feedback: 'This is a leading question that suggests the answer and expresses the interviewer\'s opinion.' },
+        { text: '"Other witnesses already confirmed this happened \u2014 do you agree?"', correct: 'Problematic', feedback: 'This pressures the interviewee to conform to others\' statements and compromises independence.' },
+        { text: '"Isn\'t it true that you saw Chen skip the safety inspection?"', correct: 'Problematic', feedback: 'A classic leading question that assumes the answer and directs the interviewee toward a conclusion.' }
+      ];
+
+      var categories = ['Appropriate', 'Problematic'];
+      var current = 0;
+      var score = 0;
+      var container = document.getElementById('question-classify');
+
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+      }
+
+      function showItem() {
+        if (current >= items.length) {
+          var pct = Math.round((score / items.length) * 100);
+          container.innerHTML =
+            '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '">' +
+            '<strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong>' +
+            '</div>' +
+            '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+          return;
+        }
+
+        var item = items[current];
+        var html = '<div class="card" style="margin-bottom:0.75rem;">';
+        html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Question ' + (current + 1) + ' of ' + items.length + '</p>';
+        html += '<p style="margin-bottom:1rem;"><strong>' + item.text + '</strong></p>';
+        html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+        for (var i = 0; i < categories.length; i++) {
+          html += '<button class="btn btn-secondary classify-btn" data-cat="' + categories[i] + '">' + categories[i] + '</button>';
+        }
+        html += '</div>';
+        html += '<div id="qc-feedback" class="mc-feedback" style="margin-top:0.75rem;"></div>';
+        html += '</div>';
+
+        container.innerHTML = html;
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var b = 0; b < buttons.length; b++) {
+          buttons[b].addEventListener('click', handleChoice);
+        }
+      }
+
+      function handleChoice() {
+        var chosen = this.getAttribute('data-cat');
+        var item = items[current];
+        var isCorrect = chosen === item.correct;
+
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].disabled = true;
+          if (buttons[i].getAttribute('data-cat') === item.correct) {
+            buttons[i].style.borderColor = 'var(--color-success)';
+            buttons[i].style.background = 'var(--color-success-light)';
+          }
+        }
+        if (!isCorrect) {
+          this.style.borderColor = 'var(--color-error)';
+          this.style.background = 'var(--color-error-light)';
+        }
+        if (isCorrect) score++;
+
+        var fb = document.getElementById('qc-feedback');
+        if (fb) {
+          fb.className = 'mc-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+          fb.innerHTML = isCorrect ? item.feedback : 'Not quite. ' + item.feedback;
+        }
+
+        current++;
+        var nextBtn = document.createElement('button');
+        nextBtn.className = 'btn btn-primary';
+        nextBtn.style.marginTop = '0.75rem';
+        nextBtn.textContent = current < items.length ? 'Next Question' : 'See Results';
+        nextBtn.addEventListener('click', showItem);
+        fb.parentNode.appendChild(nextBtn);
+      }
+
+      showItem();
+    })();
     </script>
 
   </div>

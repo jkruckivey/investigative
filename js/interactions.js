@@ -17,10 +17,13 @@ function MultipleChoice(config) {
   this.options = config.options || [];
   this.onComplete = config.onComplete || function () {};
   this.answered = false;
+  this.selectedIndex = -1;
+  this.containerId = '';
 }
 
 MultipleChoice.prototype.render = function (containerId) {
   var self = this;
+  this.containerId = containerId;
   var el = document.getElementById(containerId);
   if (!el) return;
 
@@ -37,32 +40,54 @@ MultipleChoice.prototype.render = function (containerId) {
     html += '</li>';
   }
   html += '</ul>';
+  html += '<button class="btn btn-primary mc-submit" id="' + containerId + '-submit" disabled>Submit</button>';
   html += '<div class="mc-feedback" id="' + containerId + '-feedback"></div>';
 
   el.innerHTML = html;
 
   var items = el.querySelectorAll('.mc-option');
   for (var j = 0; j < items.length; j++) {
-    items[j].addEventListener('click', function () { self._select(containerId, this); });
+    items[j].addEventListener('click', function () { self._highlight(this); });
     items[j].addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); self._select(containerId, this); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); self._highlight(this); }
     });
   }
+
+  document.getElementById(containerId + '-submit').addEventListener('click', function () {
+    self._submit();
+  });
 };
 
-MultipleChoice.prototype._select = function (containerId, optionEl) {
+MultipleChoice.prototype._highlight = function (optionEl) {
   if (this.answered) return;
+
+  var el = document.getElementById(this.containerId);
+  var items = el.querySelectorAll('.mc-option');
+  for (var i = 0; i < items.length; i++) {
+    items[i].classList.remove('selected');
+    items[i].setAttribute('aria-checked', 'false');
+  }
+  optionEl.classList.add('selected');
+  optionEl.setAttribute('aria-checked', 'true');
+  this.selectedIndex = parseInt(optionEl.getAttribute('data-index'));
+
+  var submitBtn = document.getElementById(this.containerId + '-submit');
+  if (submitBtn) submitBtn.disabled = false;
+};
+
+MultipleChoice.prototype._submit = function () {
+  if (this.answered || this.selectedIndex < 0) return;
   this.answered = true;
 
-  var idx = parseInt(optionEl.getAttribute('data-index'));
+  var idx = this.selectedIndex;
   var opt = this.options[idx];
   var isCorrect = !!opt.correct;
 
-  // Mark all options
-  var el = document.getElementById(containerId);
+  var el = document.getElementById(this.containerId);
   var items = el.querySelectorAll('.mc-option');
   for (var i = 0; i < items.length; i++) {
     items[i].style.pointerEvents = 'none';
+    items[i].classList.remove('selected');
     if (i === idx) {
       items[i].classList.add(isCorrect ? 'correct' : 'incorrect');
     }
@@ -71,8 +96,10 @@ MultipleChoice.prototype._select = function (containerId, optionEl) {
     }
   }
 
-  // Show feedback
-  var fb = document.getElementById(containerId + '-feedback');
+  var submitBtn = document.getElementById(this.containerId + '-submit');
+  if (submitBtn) submitBtn.disabled = true;
+
+  var fb = document.getElementById(this.containerId + '-feedback');
   if (fb) {
     fb.className = 'mc-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
     fb.innerHTML = opt.feedback || (isCorrect ? 'Correct!' : 'Not quite. The correct answer has been highlighted.');

@@ -18,38 +18,99 @@
 
     <p>Not every complaint follows the standard classification path. Certain conditions require <strong>immediate escalation to Level 1 + Legal</strong>, bypassing the standard severity assessment. In this activity, you will sort scenarios into the correct category based on what you learned about escalation triggers.</p>
 
-    <div class="callout callout-info">
-      <span class="callout-icon" aria-hidden="true">&#9432;</span>
-      <div>
-        <strong>Instructions:</strong> Drag each scenario from the "Items to Sort" column into the correct category: either "Immediate Escalation (Level 1 + Legal)" or "Standard Classification Process." Once all items are placed, you will see your results.
-      </div>
-    </div>
+    <p>For each scenario, decide whether it requires immediate escalation or follows the standard classification process.</p>
 
-    <div id="escalation-sort"></div>
+    <div id="escalation-classify"></div>
 
   </div>
 
   <script>
-    new DragSort({
-      items: [
-        { text: 'Employee alleges their supervisor committed physical assault', category: 'escalate' },
-        { text: 'Complaint involves the Vice President of Operations', category: 'escalate' },
-        { text: 'Anonymous tip alleging systematic regulatory fraud in reporting', category: 'escalate' },
-        { text: 'Worker reports an imminent chemical spill risk in the production area', category: 'escalate' },
-        { text: 'Whistleblower claims retaliation after filing a previous ethics report', category: 'escalate' },
-        { text: 'Employee complains about scheduling unfairness in shift assignments', category: 'standard' },
-        { text: 'Worker reports a minor slip hazard near the break room entrance', category: 'standard' },
-        { text: 'Team member reports a coworker tardiness pattern over the past month', category: 'standard' },
-        { text: 'Supervisor observes a single missed inspection step during routine audit', category: 'standard' }
-      ],
-      categories: [
-        { id: 'escalate', label: 'Immediate Escalation (Level 1 + Legal)' },
-        { id: 'standard', label: 'Standard Classification Process' }
-      ],
-      onComplete: function (correct, total) {
-        /* Practice activity - not scored */
+  (function () {
+    var items = [
+      { text: 'Employee alleges their supervisor committed physical assault', correct: 'Immediate Escalation', feedback: 'Physical assault involves criminal conduct and safety risk — immediate escalation required.' },
+      { text: 'Complaint involves the Vice President of Operations', correct: 'Immediate Escalation', feedback: 'Allegations involving VP+ level automatically trigger immediate escalation.' },
+      { text: 'Anonymous tip alleging systematic regulatory fraud in reporting', correct: 'Immediate Escalation', feedback: 'Systematic regulatory fraud has significant legal and compliance implications — escalate immediately.' },
+      { text: 'Employee complains about scheduling unfairness in shift assignments', correct: 'Standard Process', feedback: 'Scheduling disputes are lower-risk matters that follow the standard classification path.' },
+      { text: 'Worker reports a minor slip hazard near the break room entrance', correct: 'Standard Process', feedback: 'A minor hazard without imminent risk follows the standard classification process.' },
+      { text: 'Supervisor observes a single missed inspection step during routine audit', correct: 'Standard Process', feedback: 'A single missed step during routine audit is a standard matter, not an escalation trigger.' }
+    ];
+
+    var categories = ['Immediate Escalation', 'Standard Process'];
+    var current = 0;
+    var score = 0;
+    var container = document.getElementById('escalation-classify');
+
+    for (var i = items.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+    }
+
+    function showItem() {
+      if (current >= items.length) {
+        var pct = Math.round((score / items.length) * 100);
+        container.innerHTML =
+          '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '">' +
+          '<strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong>' +
+          '</div>' +
+          '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+        return;
       }
-    }).render('escalation-sort');
+
+      var item = items[current];
+      var html = '<div class="card" style="margin-bottom:0.75rem;">';
+      html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Scenario ' + (current + 1) + ' of ' + items.length + '</p>';
+      html += '<p style="margin-bottom:1rem;"><strong>' + item.text + '</strong></p>';
+      html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+      for (var i = 0; i < categories.length; i++) {
+        html += '<button class="btn btn-secondary classify-btn" data-cat="' + categories[i] + '">' + categories[i] + '</button>';
+      }
+      html += '</div>';
+      html += '<div id="esc-feedback" class="mc-feedback" style="margin-top:0.75rem;"></div>';
+      html += '</div>';
+
+      container.innerHTML = html;
+      var buttons = container.querySelectorAll('.classify-btn');
+      for (var b = 0; b < buttons.length; b++) {
+        buttons[b].addEventListener('click', handleChoice);
+      }
+    }
+
+    function handleChoice() {
+      var chosen = this.getAttribute('data-cat');
+      var item = items[current];
+      var isCorrect = chosen === item.correct;
+
+      var buttons = container.querySelectorAll('.classify-btn');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-cat') === item.correct) {
+          buttons[i].style.borderColor = 'var(--color-success)';
+          buttons[i].style.background = 'var(--color-success-light)';
+        }
+      }
+      if (!isCorrect) {
+        this.style.borderColor = 'var(--color-error)';
+        this.style.background = 'var(--color-error-light)';
+      }
+      if (isCorrect) score++;
+
+      var fb = document.getElementById('esc-feedback');
+      if (fb) {
+        fb.className = 'mc-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+        fb.innerHTML = isCorrect ? item.feedback : 'Not quite. ' + item.feedback;
+      }
+
+      current++;
+      var nextBtn = document.createElement('button');
+      nextBtn.className = 'btn btn-primary';
+      nextBtn.style.marginTop = '0.75rem';
+      nextBtn.textContent = current < items.length ? 'Next Scenario' : 'See Results';
+      nextBtn.addEventListener('click', showItem);
+      fb.parentNode.appendChild(nextBtn);
+    }
+
+    showItem();
+  })();
   </script>
 </body>
 </html>

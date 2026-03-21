@@ -442,6 +442,9 @@ strong { font-weight: 600; }
 .mc-feedback.correct { background: var(--color-success-light); border: 1px solid #a3d9c9; }
 .mc-feedback.incorrect { background: var(--color-error-light); border: 1px solid #f5b3b3; }
 
+.mc-submit { margin-top: 0.75rem; }
+.mc-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
 /* Drag & Sort */
 .drag-container { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
 
