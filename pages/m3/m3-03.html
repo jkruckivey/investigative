@@ -78,82 +78,102 @@
       }).render('evidence-types');
     </script>
 
-    <h2>Chain of Custody Requirements</h2>
-    <p>Chain of custody refers to the documented trail that records the collection, transfer, handling, and storage of evidence throughout the investigation. Maintaining an unbroken chain of custody is essential to demonstrating that evidence has not been tampered with, altered, or compromised.</p>
-
-    <p>For each piece of evidence collected, the investigator must document:</p>
-
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Element</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>What was collected</strong></td>
-          <td>A clear description of the item or document, including any identifying numbers or labels</td>
-        </tr>
-        <tr>
-          <td><strong>When it was collected</strong></td>
-          <td>The date and time the evidence was obtained</td>
-        </tr>
-        <tr>
-          <td><strong>From whom / where</strong></td>
-          <td>The source or custodian of the evidence and the location from which it was obtained</td>
-        </tr>
-        <tr>
-          <td><strong>By whom</strong></td>
-          <td>The name of the person who collected or received the evidence</td>
-        </tr>
-        <tr>
-          <td><strong>How it was stored</strong></td>
-          <td>The storage method and location used to secure the evidence</td>
-        </tr>
-        <tr>
-          <td><strong>Any transfers</strong></td>
-          <td>A log of every handoff, including dates, times, and the names of individuals involved in the transfer</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="callout callout-error">
-      <span class="callout-icon" aria-hidden="true">&#9888;</span>
-      <div>
-        <strong>Preservation Obligations:</strong> Once an investigation is initiated, the organization has an obligation to preserve all evidence that may be relevant to the matter. This includes issuing preservation notices (sometimes called litigation holds) to custodians of potentially relevant records. Failure to preserve evidence can result in adverse inferences in legal proceedings, regulatory sanctions, and damage to the credibility of the investigation. <strong>Never delete, alter, or allow the routine destruction of records that may be relevant to an active investigation.</strong>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <span class="callout-icon" aria-hidden="true">&#9432;</span>
-      <div>
-        <strong>Coordinating with IT and Records Management:</strong> Digital evidence and electronically stored documents are often subject to automated retention and deletion policies. As soon as an investigation is initiated, coordinate with Information Security and Records Management to ensure that relevant data is excluded from routine purges and preserved for the duration of the investigation.
-      </div>
-    </div>
-
     <h2>Practice: Classify the Evidence</h2>
-    <p>Drag each example into the correct evidence category.</p>
-    <div id="evidence-sort"></div>
+    <p>For each example, select the correct evidence category.</p>
+    <div id="evidence-classify"></div>
+
     <script>
-      new DragSort({
-        categories: [
-          { id: 'documentary', label: 'Documentary' },
-          { id: 'physical', label: 'Physical' },
-          { id: 'digital', label: 'Digital' },
-          { id: 'testimonial', label: 'Testimonial' }
-        ],
-        items: [
-          { text: 'Emails between two employees', category: 'documentary' },
-          { text: 'Damaged safety equipment', category: 'physical' },
-          { text: 'Badge access logs', category: 'digital' },
-          { text: 'Witness interview statement', category: 'testimonial' },
-          { text: 'Production inspection report', category: 'documentary' },
-          { text: 'Surveillance camera footage', category: 'digital' },
-          { text: 'Product sample from a contaminated batch', category: 'physical' },
-          { text: 'Complainant\'s account of events', category: 'testimonial' }
-        ]
-      }).render('evidence-sort');
+    (function () {
+      var items = [
+        { text: 'Emails between two employees', correct: 'Documentary', feedback: 'Emails are written records — a classic form of documentary evidence.' },
+        { text: 'Damaged safety equipment', correct: 'Physical', feedback: 'Tangible objects involved in an incident are physical evidence.' },
+        { text: 'Badge access logs', correct: 'Digital', feedback: 'Electronic system records like badge logs are digital evidence.' },
+        { text: 'Witness interview statement', correct: 'Testimonial', feedback: 'Statements from individuals during interviews are testimonial evidence.' },
+        { text: 'Production inspection report', correct: 'Documentary', feedback: 'Written inspection reports are documentary evidence.' },
+        { text: 'Surveillance camera footage', correct: 'Digital', feedback: 'Video recordings stored electronically are digital evidence.' },
+        { text: 'Product sample from a contaminated batch', correct: 'Physical', feedback: 'Tangible product samples are physical evidence.' },
+        { text: 'Complainant\'s account of events', correct: 'Testimonial', feedback: 'A person\'s account of what happened is testimonial evidence.' }
+      ];
+
+      var categories = ['Documentary', 'Physical', 'Digital', 'Testimonial'];
+      var current = 0;
+      var score = 0;
+      var container = document.getElementById('evidence-classify');
+
+      // Shuffle
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+      }
+
+      function showItem() {
+        if (current >= items.length) {
+          var pct = Math.round((score / items.length) * 100);
+          container.innerHTML =
+            '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '">' +
+            '<strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong>' +
+            '</div>' +
+            '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+          return;
+        }
+
+        var item = items[current];
+        var html = '<div class="card" style="margin-bottom:0.75rem;">';
+        html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Item ' + (current + 1) + ' of ' + items.length + '</p>';
+        html += '<p style="margin-bottom:1rem;"><strong>' + item.text + '</strong></p>';
+        html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+        for (var i = 0; i < categories.length; i++) {
+          html += '<button class="btn btn-secondary classify-btn" data-cat="' + categories[i] + '">' + categories[i] + '</button>';
+        }
+        html += '</div>';
+        html += '<div id="ec-feedback" class="mc-feedback" style="margin-top:0.75rem;"></div>';
+        html += '</div>';
+
+        container.innerHTML = html;
+
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var b = 0; b < buttons.length; b++) {
+          buttons[b].addEventListener('click', handleChoice);
+        }
+      }
+
+      function handleChoice() {
+        var chosen = this.getAttribute('data-cat');
+        var item = items[current];
+        var isCorrect = chosen === item.correct;
+
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].disabled = true;
+          if (buttons[i].getAttribute('data-cat') === item.correct) {
+            buttons[i].style.borderColor = 'var(--color-success)';
+            buttons[i].style.background = 'var(--color-success-light)';
+          }
+        }
+        if (!isCorrect) {
+          this.style.borderColor = 'var(--color-error)';
+          this.style.background = 'var(--color-error-light)';
+        }
+
+        if (isCorrect) score++;
+
+        var fb = document.getElementById('ec-feedback');
+        if (fb) {
+          fb.className = 'mc-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+          fb.innerHTML = isCorrect ? item.feedback : 'Not quite. The correct answer is <strong>' + item.correct + '</strong>. ' + item.feedback;
+        }
+
+        current++;
+        var nextBtn = document.createElement('button');
+        nextBtn.className = 'btn btn-primary';
+        nextBtn.style.marginTop = '0.75rem';
+        nextBtn.textContent = current < items.length ? 'Next Item' : 'See Results';
+        nextBtn.addEventListener('click', showItem);
+        fb.parentNode.appendChild(nextBtn);
+      }
+
+      showItem();
+    })();
     </script>
 
   </div>

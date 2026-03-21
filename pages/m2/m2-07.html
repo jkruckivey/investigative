@@ -104,42 +104,6 @@
       </ul>
     </div>
 
-    <h2>Your Turn: Confirm the Classification</h2>
-    <p>Complete the fields below to confirm the Henderson File classification. This reinforces the key decisions made at each stage of the framework.</p>
-
-    <div id="henderson-template"></div>
-
   </div>
-
-  <script>
-    new FillTemplate({
-      intro: 'Based on the walkthrough above, fill in the correct classification details for the Henderson complaint.',
-      fields: [
-        {
-          label: 'Investigation Level (enter "Level 1", "Level 2", or "Level 3")',
-          type: 'text',
-          expected: ['Level 1', 'level 1', '1'],
-          feedback: 'Correct. The Henderson complaint is classified as Level 1 (Significant) due to high severity across all dimensions.'
-        },
-        {
-          label: 'Lead Investigative Function',
-          type: 'select',
-          options: ['HR', 'FSQA', 'OHS', 'Internal Audit', 'Information Security', 'Animal Care', 'Legal'],
-          expected: 'FSQA',
-          feedback: 'Correct. FSQA leads because the core allegation involves food safety and quality inspection records.'
-        },
-        {
-          label: 'Supporting Function',
-          type: 'select',
-          options: ['HR', 'FSQA', 'OHS', 'Internal Audit', 'Information Security', 'Animal Care', 'Legal'],
-          expected: 'Internal Audit',
-          feedback: 'Correct. Internal Audit supports the investigation due to the records falsification component.'
-        }
-      ],
-      onComplete: function (earned, possible) {
-        /* Practice activity - not scored for assessment */
-      }
-    }).render('henderson-template');
-  </script>
 </body>
 </html>

@@ -89,23 +89,101 @@
     </div>
 
     <h2>Practice: Who Gets What?</h2>
-    <p>Drag each piece of information to the recipient who should receive it. Some items may seem like they could go to multiple people — choose the recipient for whom it is <strong>most specifically intended</strong>.</p>
-    <div id="comm-sort"></div>
+    <p>For each piece of information, select the recipient who should receive it. Some items may seem like they could go to multiple people — choose the recipient for whom it is <strong>most specifically intended</strong>.</p>
+    <div id="comm-classify"></div>
 
     <script>
-      new DragSort({
-        buckets: ['Decision-Maker', 'Complainant', 'Respondent'],
-        items: [
-          { text: 'The full investigation report with all findings, analysis, and recommendations', correct: 'Decision-Maker' },
-          { text: 'Detailed witness statements and interview transcripts', correct: 'Decision-Maker' },
-          { text: 'Recommendation for specific corrective or disciplinary action', correct: 'Decision-Maker' },
-          { text: 'A summary of whether the allegation was substantiated or not', correct: 'Complainant' },
-          { text: 'Notice of workplace safety measures put in place to protect them', correct: 'Complainant' },
-          { text: 'The specific findings and conclusion related to the allegation against them', correct: 'Respondent' },
-          { text: 'Details of the corrective or disciplinary action that will be imposed on them', correct: 'Respondent' },
-          { text: 'An explanation of their right to respond to the findings before action is taken', correct: 'Respondent' }
-        ]
-      }).render('comm-sort');
+    (function () {
+      var items = [
+        { text: 'The full investigation report with all findings, analysis, and recommendations', correct: 'Decision-Maker', feedback: 'The decision-maker receives the complete report to determine what actions to take.' },
+        { text: 'Detailed witness statements and interview transcripts', correct: 'Decision-Maker', feedback: 'Witness statements are part of the full report shared only with the decision-maker to protect witness confidentiality.' },
+        { text: 'Recommendation for specific corrective or disciplinary action', correct: 'Decision-Maker', feedback: 'The decision-maker reviews recommendations and decides what corrective actions to implement.' },
+        { text: 'A summary of whether the allegation was substantiated or not', correct: 'Complainant', feedback: 'The complainant receives a summary of the outcome but not the full report.' },
+        { text: 'Notice of workplace safety measures put in place to protect them', correct: 'Complainant', feedback: 'The complainant is informed of any actions that directly affect their safety or working conditions.' },
+        { text: 'The specific findings and conclusion related to the allegation against them', correct: 'Respondent', feedback: 'The respondent is told the findings and conclusion relevant to the allegation against them.' },
+        { text: 'Details of the corrective or disciplinary action that will be imposed on them', correct: 'Respondent', feedback: 'The respondent must be informed of any corrective or disciplinary action they will face.' },
+        { text: 'An explanation of their right to respond to the findings before action is taken', correct: 'Respondent', feedback: 'The respondent has the right to respond to findings before final action is determined.' }
+      ];
+
+      var recipients = ['Decision-Maker', 'Complainant', 'Respondent'];
+      var current = 0;
+      var score = 0;
+      var container = document.getElementById('comm-classify');
+
+      // Shuffle
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+      }
+
+      function showItem() {
+        if (current >= items.length) {
+          var pct = Math.round((score / items.length) * 100);
+          container.innerHTML =
+            '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '">' +
+            '<strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong>' +
+            '</div>' +
+            '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+          return;
+        }
+
+        var item = items[current];
+        var html = '<div class="card" style="margin-bottom:0.75rem;">';
+        html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Item ' + (current + 1) + ' of ' + items.length + '</p>';
+        html += '<p style="margin-bottom:1rem;"><strong>' + item.text + '</strong></p>';
+        html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+        for (var i = 0; i < recipients.length; i++) {
+          html += '<button class="btn btn-secondary classify-btn" data-recipient="' + recipients[i] + '">' + recipients[i] + '</button>';
+        }
+        html += '</div>';
+        html += '<div id="comm-feedback" class="mc-feedback" style="margin-top:0.75rem;"></div>';
+        html += '</div>';
+
+        container.innerHTML = html;
+
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var b = 0; b < buttons.length; b++) {
+          buttons[b].addEventListener('click', handleChoice);
+        }
+      }
+
+      function handleChoice() {
+        var chosen = this.getAttribute('data-recipient');
+        var item = items[current];
+        var isCorrect = chosen === item.correct;
+
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].disabled = true;
+          if (buttons[i].getAttribute('data-recipient') === item.correct) {
+            buttons[i].style.borderColor = 'var(--color-success)';
+            buttons[i].style.background = 'var(--color-success-light)';
+          }
+        }
+        if (!isCorrect) {
+          this.style.borderColor = 'var(--color-error)';
+          this.style.background = 'var(--color-error-light)';
+        }
+
+        if (isCorrect) score++;
+
+        var fb = document.getElementById('comm-feedback');
+        if (fb) {
+          fb.className = 'mc-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+          fb.innerHTML = isCorrect ? item.feedback : 'Not quite. This goes to the <strong>' + item.correct + '</strong>. ' + item.feedback;
+        }
+
+        current++;
+        var nextBtn = document.createElement('button');
+        nextBtn.className = 'btn btn-primary';
+        nextBtn.style.marginTop = '0.75rem';
+        nextBtn.textContent = current < items.length ? 'Next Item' : 'See Results';
+        nextBtn.addEventListener('click', showItem);
+        fb.parentNode.appendChild(nextBtn);
+      }
+
+      showItem();
+    })();
     </script>
 
   </div>

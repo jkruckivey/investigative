@@ -121,23 +121,105 @@
     </div>
 
     <h2>Classify the Complaint</h2>
-    <p>Read each scenario and drag it into the correct investigation level.</p>
-    <div id="level-sort"></div>
+    <p>Read each scenario and select the correct investigation level.</p>
+    <div id="level-classify"></div>
 
     <script>
-      new DragSort({
-        buckets: ['Level 1 — Significant', 'Level 2 — Standard', 'Level 3 — No Formal Investigation'],
-        items: [
-          { text: 'A plant manager is accused of accepting bribes from a supplier in exchange for passing substandard product', correct: 'Level 1 — Significant' },
-          { text: 'An employee reports that their supervisor made a sexually explicit comment in front of colleagues', correct: 'Level 1 — Significant' },
-          { text: 'An anonymous EthicsLine tip alleges a VP directed staff to falsify safety inspection records', correct: 'Level 1 — Significant' },
-          { text: 'A worker reports a co-worker consistently leaving their station without authorization, causing minor production delays', correct: 'Level 2 — Standard' },
-          { text: 'A team lead is accused of favouring certain employees when assigning overtime shifts', correct: 'Level 2 — Standard' },
-          { text: 'An anonymous tip is received with no names, dates, locations, or specific details that could be investigated', correct: 'Level 3 — No Formal Investigation' },
-          { text: 'A complaint about parking lot assignments is submitted; the matter is already being handled by Facilities', correct: 'Level 3 — No Formal Investigation' },
-          { text: 'A worker reports feeling "generally uncomfortable" but declines to provide any specific incidents or details', correct: 'Level 3 — No Formal Investigation' }
-        ]
-      }).render('level-sort');
+    (function () {
+      var scenarios = [
+        { text: 'A plant manager is accused of accepting bribes from a supplier in exchange for passing substandard product', correct: 'Level 1', feedback: 'Correct — bribery and fraud involving a plant manager is a high-risk matter requiring a formal investigation team and legal involvement.' },
+        { text: 'An employee reports that their supervisor made a sexually explicit comment in front of colleagues', correct: 'Level 1', feedback: 'Correct — serious harassment allegations are classified as Level 1 due to the severity and potential legal implications.' },
+        { text: 'An anonymous EthicsLine tip alleges a VP directed staff to falsify safety inspection records', correct: 'Level 1', feedback: 'Correct — allegations involving senior leadership and falsified safety records represent significant risk to the organization.' },
+        { text: 'A worker reports a co-worker consistently leaving their station without authorization, causing minor production delays', correct: 'Level 2', feedback: 'Correct — a routine conduct issue that can be handled by a single investigator using standard procedures.' },
+        { text: 'A team lead is accused of favouring certain employees when assigning overtime shifts', correct: 'Level 2', feedback: 'Correct — favouritism in shift assignments is a lower-risk matter that warrants investigation but does not require a full investigation team.' },
+        { text: 'An anonymous tip is received with no names, dates, locations, or specific details that could be investigated', correct: 'Level 3', feedback: 'Correct — without sufficient detail to pursue, the matter is documented and closed with no formal investigation.' },
+        { text: 'A complaint about parking lot assignments is submitted; the matter is already being handled by Facilities', correct: 'Level 3', feedback: 'Correct — the matter falls outside the scope of the SOP and is already being resolved through another process.' },
+        { text: 'A worker reports feeling "generally uncomfortable" but declines to provide any specific incidents or details', correct: 'Level 3', feedback: 'Correct — without specific incidents or details, there is insufficient basis for a formal investigation.' }
+      ];
+
+      var levels = ['Level 1', 'Level 2', 'Level 3'];
+      var levelLabels = { 'Level 1': 'Level 1 — Significant', 'Level 2': 'Level 2 — Standard', 'Level 3': 'Level 3 — No Formal Investigation' };
+      var current = 0;
+      var score = 0;
+      var container = document.getElementById('level-classify');
+
+      // Shuffle scenarios
+      for (var i = scenarios.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = scenarios[i]; scenarios[i] = scenarios[j]; scenarios[j] = tmp;
+      }
+
+      function showScenario() {
+        if (current >= scenarios.length) {
+          var pct = Math.round((score / scenarios.length) * 100);
+          container.innerHTML =
+            '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '">' +
+            '<strong>' + score + ' of ' + scenarios.length + ' correct (' + pct + '%)</strong>' +
+            '</div>' +
+            '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+          return;
+        }
+
+        var s = scenarios[current];
+        var html = '<div class="card" style="margin-bottom:0.75rem;">';
+        html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Scenario ' + (current + 1) + ' of ' + scenarios.length + '</p>';
+        html += '<p style="margin-bottom:1rem;"><strong>' + s.text + '</strong></p>';
+        html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+        for (var i = 0; i < levels.length; i++) {
+          html += '<button class="btn btn-secondary classify-btn" data-level="' + levels[i] + '">' + levelLabels[levels[i]] + '</button>';
+        }
+        html += '</div>';
+        html += '<div id="classify-feedback" class="mc-feedback" style="margin-top:0.75rem;"></div>';
+        html += '</div>';
+
+        container.innerHTML = html;
+
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var b = 0; b < buttons.length; b++) {
+          buttons[b].addEventListener('click', handleChoice);
+        }
+      }
+
+      function handleChoice() {
+        var chosen = this.getAttribute('data-level');
+        var s = scenarios[current];
+        var isCorrect = chosen === s.correct;
+
+        // Disable all buttons and highlight
+        var buttons = container.querySelectorAll('.classify-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].disabled = true;
+          if (buttons[i].getAttribute('data-level') === s.correct) {
+            buttons[i].style.borderColor = 'var(--color-success)';
+            buttons[i].style.background = 'var(--color-success-light)';
+          }
+        }
+        if (!isCorrect) {
+          this.style.borderColor = 'var(--color-error)';
+          this.style.background = 'var(--color-error-light)';
+        }
+
+        if (isCorrect) score++;
+
+        // Show feedback
+        var fb = document.getElementById('classify-feedback');
+        if (fb) {
+          fb.className = 'mc-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+          fb.innerHTML = isCorrect ? s.feedback : 'Not quite. The correct answer is <strong>' + levelLabels[s.correct] + '</strong>. ' + s.feedback.replace('Correct — ', '');
+        }
+
+        // Next button
+        current++;
+        var nextBtn = document.createElement('button');
+        nextBtn.className = 'btn btn-primary';
+        nextBtn.style.marginTop = '0.75rem';
+        nextBtn.textContent = current < scenarios.length ? 'Next Scenario' : 'See Results';
+        nextBtn.addEventListener('click', showScenario);
+        fb.parentNode.appendChild(nextBtn);
+      }
+
+      showScenario();
+    })();
     </script>
 
   </div>
