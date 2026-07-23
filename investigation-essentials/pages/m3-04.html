@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity: Choose the Best Question</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3 &mdash; I: Investigate the Facts</div>
+      <h1>Activity: Choose the Best Question</h1>
+      <p class="page-subtitle">Open, closed, or leading?</p>
+    </div>
+
+    <p>Sort each interview question by type. <strong>Open</strong> questions invite a full account; <strong>closed</strong> questions get a short/yes-no answer; <strong>leading</strong> questions suggest the answer and should be avoided. This activity is for practice and is not scored.</p>
+
+    <div id="activity"></div>
+
+  </div>
+
+  <script>
+  (function () {
+    var items = [
+      { text: '"Can you walk me through what happened on your shift?"', correct: 'Open', feedback: 'Open — it invites a full account in the person’s own words.' },
+      { text: '"What did you see at the handwashing station?"', correct: 'Open', feedback: 'Open — neutral and fact-seeking, with no answer suggested.' },
+      { text: '"Were you on line 3 yesterday?"', correct: 'Closed', feedback: 'Closed — a useful yes/no to pin down a fact, but it won’t get you a full account on its own.' },
+      { text: '"What time did you finish the check?"', correct: 'Closed', feedback: 'Closed — it targets one specific detail. Fine for confirming facts, not for opening a conversation.' },
+      { text: '"You saw him skip the check, didn’t you?"', correct: 'Leading', feedback: 'Leading — it tells the person the answer you expect. Avoid this.' },
+      { text: '"Everyone knows the line was rushed, so you had to cut corners, right?"', correct: 'Leading', feedback: 'Leading — it plants an excuse and an assumption. Avoid this.' }
+    ];
+
+    var categories = ['Open', 'Closed', 'Leading'];
+    var current = 0, score = 0;
+    var container = document.getElementById('activity');
+
+    for (var i = items.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = items[i]; items[i] = items[j]; items[j] = t;
+    }
+
+    function show() {
+      if (current >= items.length) {
+        var pct = Math.round((score / items.length) * 100);
+        container.innerHTML = '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '"><strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong></div>' +
+          '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+        return;
+      }
+      var s = items[current];
+      var html = '<div class="card" style="margin-bottom:0.75rem;">';
+      html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Question ' + (current + 1) + ' of ' + items.length + '</p>';
+      html += '<p style="margin-bottom:1rem;"><strong>' + s.text + '</strong></p>';
+      html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+      for (var k = 0; k < categories.length; k++) {
+        html += '<button class="btn btn-secondary choice-btn" data-cat="' + categories[k] + '">' + categories[k] + '</button>';
+      }
+      html += '</div><div id="fb" class="mc-feedback" style="margin-top:0.75rem;"></div></div>';
+      container.innerHTML = html;
+      var btns = container.querySelectorAll('.choice-btn');
+      for (var b = 0; b < btns.length; b++) { btns[b].addEventListener('click', choose); }
+    }
+
+    function choose() {
+      var chosen = this.getAttribute('data-cat');
+      var s = items[current];
+      var ok = chosen === s.correct;
+      var btns = container.querySelectorAll('.choice-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+        if (btns[i].getAttribute('data-cat') === s.correct) { btns[i].style.borderColor = 'var(--color-success)'; btns[i].style.background = 'var(--color-success-light)'; }
+      }
+      if (!ok) { this.style.borderColor = 'var(--color-error)'; this.style.background = 'var(--color-error-light)'; }
+      if (ok) score++;
+      var fb = document.getElementById('fb');
+      fb.className = 'mc-feedback show ' + (ok ? 'correct' : 'incorrect');
+      fb.innerHTML = (ok ? '' : 'Not quite. ') + s.feedback;
+      current++;
+      var next = document.createElement('button');
+      next.className = 'btn btn-primary'; next.style.marginTop = '0.75rem';
+      next.textContent = current < items.length ? 'Next Question' : 'See Results';
+      next.addEventListener('click', show);
+      fb.parentNode.appendChild(next);
+    }
+
+    show();
+  })();
+  </script>
+</body>
+</html>

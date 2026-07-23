@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity: Investigate or Coach?</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 1: Understanding Your Role</div>
+      <h1>Activity: Investigate or Coach?</h1>
+      <p class="page-subtitle">Practice choosing the right response</p>
+    </div>
+
+    <p>Read each situation and choose the most appropriate first response: <strong>Coach</strong>, <strong>Investigate</strong>, or <strong>Escalate to HR</strong>. This activity is for practice and is not scored.</p>
+
+    <div id="activity"></div>
+
+  </div>
+
+  <script>
+  (function () {
+    var scenarios = [
+      { text: 'An employee forgot to initial one production check yesterday. They realized it themselves and told you right away. It has not happened before.', correct: 'Coach', feedback: 'A one-off, self-reported slip with no dispute about the facts. A quick coaching conversation is the right response.' },
+      { text: 'A quality technician reports seeing an employee skip handwashing after the washroom. The employee denies it. A second employee saw something but is unsure of the details.', correct: 'Investigate', feedback: 'The facts are disputed and there may be a GMP breach. You need to gather evidence and hear the accounts — that is an investigation.' },
+      { text: 'An employee tells you their team lead has been making sexual comments toward them on the night shift.', correct: 'Escalate to HR', feedback: 'Allegations of harassment are serious and sensitive. Escalate to HR immediately rather than handling it yourself.' },
+      { text: 'An employee did not call the attendance line before their shift and was absent. They say they left a voicemail; the records show no call.', correct: 'Investigate', feedback: 'There is a factual dispute about whether the procedure was followed. Gather the evidence before concluding — investigate.' },
+      { text: 'A new employee mixed up two similar labels once during their first week and flagged it immediately. They have not been signed off on the task yet.', correct: 'Coach', feedback: 'This looks like a training/onboarding gap, not misconduct. Coach and make sure the sign-off happens — no formal investigation needed yet.' },
+      { text: 'An employee tells you a coworker threatened to hurt them if they reported a safety issue.', correct: 'Escalate to HR', feedback: 'A threat of violence plus possible retaliation is serious. Escalate to HR (and address any immediate safety risk) right away.' }
+    ];
+
+    var categories = ['Coach', 'Investigate', 'Escalate to HR'];
+    var current = 0, score = 0;
+    var container = document.getElementById('activity');
+
+    for (var i = scenarios.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = scenarios[i]; scenarios[i] = scenarios[j]; scenarios[j] = t;
+    }
+
+    function show() {
+      if (current >= scenarios.length) {
+        var pct = Math.round((score / scenarios.length) * 100);
+        container.innerHTML = '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '"><strong>' + score + ' of ' + scenarios.length + ' correct (' + pct + '%)</strong></div>' +
+          '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+        return;
+      }
+      var s = scenarios[current];
+      var html = '<div class="card" style="margin-bottom:0.75rem;">';
+      html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Situation ' + (current + 1) + ' of ' + scenarios.length + '</p>';
+      html += '<p style="margin-bottom:1rem;"><strong>' + s.text + '</strong></p>';
+      html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+      for (var k = 0; k < categories.length; k++) {
+        html += '<button class="btn btn-secondary choice-btn" data-cat="' + categories[k] + '">' + categories[k] + '</button>';
+      }
+      html += '</div><div id="fb" class="mc-feedback" style="margin-top:0.75rem;"></div></div>';
+      container.innerHTML = html;
+      var btns = container.querySelectorAll('.choice-btn');
+      for (var b = 0; b < btns.length; b++) { btns[b].addEventListener('click', choose); }
+    }
+
+    function choose() {
+      var chosen = this.getAttribute('data-cat');
+      var s = scenarios[current];
+      var ok = chosen === s.correct;
+      var btns = container.querySelectorAll('.choice-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+        if (btns[i].getAttribute('data-cat') === s.correct) { btns[i].style.borderColor = 'var(--color-success)'; btns[i].style.background = 'var(--color-success-light)'; }
+      }
+      if (!ok) { this.style.borderColor = 'var(--color-error)'; this.style.background = 'var(--color-error-light)'; }
+      if (ok) score++;
+      var fb = document.getElementById('fb');
+      fb.className = 'mc-feedback show ' + (ok ? 'correct' : 'incorrect');
+      fb.innerHTML = (ok ? '' : 'Not quite. The best first response is <strong>' + s.correct + '</strong>. ') + s.feedback;
+      current++;
+      var next = document.createElement('button');
+      next.className = 'btn btn-primary'; next.style.marginTop = '0.75rem';
+      next.textContent = current < scenarios.length ? 'Next Situation' : 'See Results';
+      next.addEventListener('click', show);
+      fb.parentNode.appendChild(next);
+    }
+
+    show();
+  })();
+  </script>
+</body>
+</html>

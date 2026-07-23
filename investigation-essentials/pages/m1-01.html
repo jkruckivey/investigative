@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is a Workplace Investigation?</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 1: Understanding Your Role</div>
+      <h1>What Is a Workplace Investigation?</h1>
+      <p class="page-subtitle">Your job is to determine the facts &mdash; not to prove wrongdoing</p>
+    </div>
+
+    <div style="height:180px; display:flex; align-items:center; justify-content:center; background:#eef2f7; border:1px dashed #b9c3d0; border-radius:6px; color:#8a97a8; font-size:0.85rem; margin-bottom:1.5rem;">
+      [Image placeholder &mdash; supervisor reviewing records]
+    </div>
+
+    <p>A workplace investigation is a structured process for gathering and reviewing facts so you can understand what actually happened before you decide what to do about it. As a frontline supervisor, you carry out these fact-finding steps regularly &mdash; often without calling it an "investigation."</p>
+
+    <div class="callout callout-info">
+      <span class="callout-icon" aria-hidden="true">&#9432;</span>
+      <div><strong>The mindset that matters most:</strong> your role is not to prove that someone did something wrong. Your role is to determine the facts, fairly and objectively, and let those facts guide the outcome.</div>
+    </div>
+
+    <h2>Common Types of Investigations</h2>
+    <p>The same FIND process applies across all of them. Click each type to see what it typically involves.</p>
+
+    <div id="types"></div>
+
+    <script>
+      new ClickReveal({ items: [
+        { title: 'Attendance', content: '<p>Missed shifts, late arrivals, or failure to follow the call-in / attendance reporting procedure. Evidence is usually documented: attendance records, call logs, and the reporting policy.</p>' },
+        { title: 'Performance', content: '<p>Repeated errors, missed targets, or work that does not meet standard. Often overlaps with training and process issues &mdash; not always misconduct.</p>' },
+        { title: 'Conduct', content: '<p>Behaviour concerns such as policy breaches, disrespectful behaviour, or dishonesty. Usually involves witness accounts alongside any records.</p>' },
+        { title: 'Food Safety', content: '<p>Missed checks, temperature deviations, sanitation gaps, or contamination concerns. Carries public-health risk, so facts and documentation matter especially.</p>' },
+        { title: 'GMP (Good Manufacturing Practices)', content: '<p>Breaches of hygiene, gowning, handwashing, or line-clearance requirements. Often supported by GMP procedures, training records, and observation.</p>' },
+        { title: 'Safety Incidents', content: '<p>Injuries, near-misses, or unsafe shortcuts. The goal is to understand root causes and prevent recurrence, not simply to assign blame.</p>' }
+      ]}).render('types');
+    </script>
+
+    <div class="callout callout-warning" style="margin-top:1.5rem;">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div><strong>Key takeaway:</strong> whatever the type, the supervisor's job is the same &mdash; determine the facts before deciding.</div>
+    </div>
+
+  </div>
+</body>
+</html>

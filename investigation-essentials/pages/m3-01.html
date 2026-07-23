@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gathering Evidence Objectively</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3 &mdash; I: Investigate the Facts</div>
+      <h1>Gathering Evidence Objectively</h1>
+      <p class="page-subtitle">Gather first. Conclude later.</p>
+    </div>
+
+    <p>Once the issue is framed, you gather the information needed to answer it. The goal is to collect the facts objectively &mdash; before forming a view. Different concerns call for different evidence, but most of it is already recorded somewhere in the plant.</p>
+
+    <h2>Where the Facts Live</h2>
+    <p>Click each source to see when it is useful.</p>
+    <div id="sources"></div>
+
+    <script>
+      new ClickReveal({ items: [
+        { title: 'Attendance records', content: '<p>Call-in logs, timekeeping, and shift schedules. Useful for attendance and any question about who was present when.</p>' },
+        { title: 'Training records', content: '<p>What the employee was trained on, when, and whether they were signed off. Critical for telling a skills/training gap apart from misconduct.</p>' },
+        { title: 'Production records', content: '<p>Run logs, line assignments, changeover and shift notes. They establish what was running, by whom, and when.</p>' },
+        { title: 'Quality records', content: '<p>Inspection sheets, verification logs, hold/reject reports, and customer complaints. Central to food safety and quality matters.</p>' },
+        { title: 'Witness statements', content: '<p>Accounts from people who saw or heard something relevant. Valuable, but weigh them against the records &mdash; memory is imperfect.</p>' },
+        { title: 'CCTV', content: '<p>Where available and permitted, footage can confirm or rule out what was observed. Check retention timelines &mdash; footage is often overwritten quickly.</p>' },
+        { title: 'Policies and procedures', content: '<p>The written standard the conduct is measured against &mdash; the attendance policy, GMP procedure, or food safety work instruction. Without it, you cannot say whether a standard was breached.</p>' }
+      ]}).render('sources');
+    </script>
+
+    <div class="callout callout-warning" style="margin-top:1.5rem;">
+      <span class="callout-icon" aria-hidden="true">&#9888;</span>
+      <div><strong>Gather first. Conclude later.</strong> Collect the relevant evidence before you form a view. Acting early can preserve evidence (e.g. request CCTV before it is overwritten) without committing you to a conclusion.</div>
+    </div>
+
+  </div>
+</body>
+</html>

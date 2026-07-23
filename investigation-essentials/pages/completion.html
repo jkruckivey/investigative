@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Complete</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Investigation Essentials for Frontline Supervisors</div>
+      <h1>Course Complete</h1>
+      <p class="page-subtitle">Your final result</p>
+    </div>
+
+    <div id="results-container"><p>Calculating your final score...</p></div>
+
+    <script>
+      (function () {
+        var container = document.getElementById('results-container');
+        var scoringRef = null;
+        try { scoringRef = parent.scoring; } catch (e) {}
+        if (!scoringRef && window.scoring) { scoringRef = window.scoring; }
+
+        if (!scoringRef) {
+          container.innerHTML = '<div class="callout callout-warning"><span class="callout-icon" aria-hidden="true">&#9888;</span><div><strong>Unable to load your score.</strong> Please view this page within the course framework.</div></div>';
+          return;
+        }
+
+        var all = scoringRef.getAllScores();
+        var finalScore = all.final, passed = all.passed;
+        try { scoringRef.reportFinalScore(); } catch (e) {}
+
+        var html = '<div class="score-display"><div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + finalScore + '%</div><div class="score-label">Capstone Score</div></div>';
+
+        if (passed) {
+          html += '<div class="card card-success"><h3 style="margin-top:0;">Congratulations &mdash; You Passed!</h3>' +
+            '<p>You completed <strong>Investigation Essentials for Frontline Supervisors</strong> with a score of <strong>' + finalScore + '%</strong>, meeting the ' + scoringRef.PASS_THRESHOLD + '% passing threshold.</p>' +
+            '<p>You can now use the FIND model to gather facts, assess evidence, document findings, and make fair, consistent decisions on attendance, performance, conduct, food safety, GMP, and safety concerns.</p>' +
+            '<p>Your completion has been recorded.</p></div>';
+        } else {
+          html += '<div class="card card-warning"><h3 style="margin-top:0;">Not Yet Passed</h3>' +
+            '<p>Your score of <strong>' + finalScore + '%</strong> is below the ' + scoringRef.PASS_THRESHOLD + '% passing threshold. Revisit the capstone from the <strong>Capstone</strong> tab and try again &mdash; review the modules where you were unsure first.</p></div>';
+        }
+
+        html += '<div class="henderson-block" style="margin-top:1.5rem;"><div class="henderson-label">Remember</div>' +
+          '<p style="margin-bottom:0;"><strong>FIND before you decide.</strong> Whether you are dealing with attendance, performance, conduct, GMP, food safety, or safety concerns, the FIND model helps you conduct fair, consistent, and defensible investigations that focus on facts, not assumptions.</p></div>';
+
+        container.innerHTML = html;
+      })();
+    </script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity: Evidence Challenge</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 3 &mdash; I: Investigate the Facts</div>
+      <h1>Activity: Evidence Challenge</h1>
+      <p class="page-subtitle">Which evidence is relevant to this concern?</p>
+    </div>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Scenario</div>
+      <p>A Quality Technician reports seeing an employee leave the washroom and return to the production line without completing the required handwashing and sanitizing process. The employee denies it. Another employee saw something but is unsure of the details.</p>
+    </div>
+
+    <p>Drag each item into <strong>Relevant</strong> or <strong>Not needed</strong> for investigating this GMP concern. This activity is for practice and is not scored.</p>
+
+    <div id="evidence"></div>
+
+    <script>
+      new DragSort({
+        buckets: ['Relevant', 'Not needed'],
+        items: [
+          { text: 'The GMP handwashing procedure', correct: 'Relevant' },
+          { text: "The employee's training record for GMP", correct: 'Relevant' },
+          { text: 'The Quality Technician’s account of what they saw', correct: 'Relevant' },
+          { text: 'CCTV covering the washroom entrance and line (if available)', correct: 'Relevant' },
+          { text: 'The second employee’s account', correct: 'Relevant' },
+          { text: 'The employee’s attendance record from last month', correct: 'Not needed' },
+          { text: 'The plant’s annual production targets', correct: 'Not needed' }
+        ],
+        onComplete: function (correct, total) {
+          var el = document.getElementById('evidence-result');
+          if (el) {
+            el.innerHTML += '<div class="callout callout-info" style="margin-top:0.75rem;"><span class="callout-icon" aria-hidden="true">&#9432;</span><div>Relevant evidence answers the framed question: was the handwashing procedure followed on this occasion? Attendance history and production targets tell you nothing about that.</div></div>';
+          }
+        }
+      }).render('evidence');
+    </script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity: Finding or Opinion?</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 5 &mdash; D: Document and Decide</div>
+      <h1>Activity: Finding or Opinion?</h1>
+      <p class="page-subtitle">Only evidence-based findings belong in your documentation</p>
+    </div>
+
+    <p>For each statement, decide whether it is an <strong>Evidence-based finding</strong>, an <strong>Assumption</strong>, or a <strong>Personal opinion</strong>. Only evidence-based findings belong in an investigation record. This activity is for practice and is not scored.</p>
+
+    <div id="activity"></div>
+
+  </div>
+
+  <script>
+  (function () {
+    var items = [
+      { text: 'The temperature verification form was signed but the check was not completed during the 2:00 pm run.', correct: 'Evidence-based finding', feedback: 'A finding — it states what the evidence shows, specifically and factually.' },
+      { text: 'The call-in line has no record of a call before the start of the employee’s shift.', correct: 'Evidence-based finding', feedback: 'A finding — drawn directly from the record.' },
+      { text: 'He probably just forgot &mdash; he’s been distracted lately.', correct: 'Assumption', feedback: 'An assumption — it guesses at a cause without evidence.' },
+      { text: 'She must have known the labels were wrong.', correct: 'Assumption', feedback: 'An assumption — it infers knowledge that hasn’t been established.' },
+      { text: 'This employee has a bad attitude.', correct: 'Personal opinion', feedback: 'A personal opinion — a characterization, not a fact. It has no place in the record.' },
+      { text: 'He’s just not cut out for this job.', correct: 'Personal opinion', feedback: 'A personal opinion — subjective and not supported by evidence.' }
+    ];
+
+    var categories = ['Evidence-based finding', 'Assumption', 'Personal opinion'];
+    var current = 0, score = 0;
+    var container = document.getElementById('activity');
+
+    for (var i = items.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = items[i]; items[i] = items[j]; items[j] = t;
+    }
+
+    function show() {
+      if (current >= items.length) {
+        var pct = Math.round((score / items.length) * 100);
+        container.innerHTML = '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '"><strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong></div>' +
+          '<div class="callout callout-info" style="margin-top:0.75rem;"><span class="callout-icon" aria-hidden="true">&#9432;</span><div>When you document, keep only the evidence-based findings. Leave assumptions and opinions out &mdash; they are what make a record indefensible.</div></div>' +
+          '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
+        return;
+      }
+      var s = items[current];
+      var html = '<div class="card" style="margin-bottom:0.75rem;">';
+      html += '<p style="margin-bottom:0.25rem; font-size:0.8rem; color:var(--color-text-light);">Statement ' + (current + 1) + ' of ' + items.length + '</p>';
+      html += '<p style="margin-bottom:1rem;"><strong>' + s.text + '</strong></p>';
+      html += '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">';
+      for (var k = 0; k < categories.length; k++) {
+        html += '<button class="btn btn-secondary choice-btn" data-cat="' + categories[k] + '">' + categories[k] + '</button>';
+      }
+      html += '</div><div id="fb" class="mc-feedback" style="margin-top:0.75rem;"></div></div>';
+      container.innerHTML = html;
+      var btns = container.querySelectorAll('.choice-btn');
+      for (var b = 0; b < btns.length; b++) { btns[b].addEventListener('click', choose); }
+    }
+
+    function choose() {
+      var chosen = this.getAttribute('data-cat');
+      var s = items[current];
+      var ok = chosen === s.correct;
+      var btns = container.querySelectorAll('.choice-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+        if (btns[i].getAttribute('data-cat') === s.correct) { btns[i].style.borderColor = 'var(--color-success)'; btns[i].style.background = 'var(--color-success-light)'; }
+      }
+      if (!ok) { this.style.borderColor = 'var(--color-error)'; this.style.background = 'var(--color-error-light)'; }
+      if (ok) score++;
+      var fb = document.getElementById('fb');
+      fb.className = 'mc-feedback show ' + (ok ? 'correct' : 'incorrect');
+      fb.innerHTML = (ok ? '' : 'Not quite. ') + s.feedback;
+      current++;
+      var next = document.createElement('button');
+      next.className = 'btn btn-primary'; next.style.marginTop = '0.75rem';
+      next.textContent = current < items.length ? 'Next Statement' : 'See Results';
+      next.addEventListener('click', show);
+      fb.parentNode.appendChild(next);
+    }
+
+    show();
+  })();
+  </script>
+</body>
+</html>
