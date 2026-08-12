@@ -39,7 +39,10 @@
         onComplete: function (correct, total) {
           var el = document.getElementById('analysis-result');
           if (el) {
-            el.innerHTML += '<div class="callout callout-info" style="margin-top:0.75rem;"><span class="callout-icon" aria-hidden="true">&#9432;</span><div>The supervisor’s belief that this employee loaded the wrong labels is an <strong>assumption</strong> until evidence supports it &mdash; and the shift notes suggest the real issue may be a handover or verification gap, not one person. This is why we narrow down before deciding.</div></div>';
+            el.innerHTML += '<div class="callout callout-info" style="margin-top:0.75rem;">
+      <div class="callout-label">Note</div>
+      <div>The supervisor’s belief that this employee loaded the wrong labels is an <strong>assumption</strong> until evidence supports it &mdash; and the shift notes suggest the real issue may be a handover or verification gap, not one person. This is why we narrow down before deciding.</div>
+    </div>';
           }
         }
       }).render('analysis');
