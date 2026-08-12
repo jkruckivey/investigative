@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone: Work the FIND Model</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Capstone &mdash; FIND the Facts</div>
+      <h1>Work the FIND Model</h1>
+      <p class="page-subtitle">The Missing Temperature Check &mdash; scored</p>
+    </div>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Recap</div>
+      <p>A required temperature check was not completed. The employee signed the form but says they were called away to a line issue. Production ran for two hours before it was noticed.</p>
+    </div>
+
+    <p>Make the best choice at each FIND stage. You will earn 1 point per stage &mdash; 4 in total. You need <strong>80%</strong> to pass.</p>
+
+    <div id="sim"></div>
+    <div id="d-stage"></div>
+    <div id="capstone-result" style="margin-top:1.25rem;"></div>
+
+  </div>
+
+  <script>
+    (function () {
+      var TOTAL = 4;
+      var branchPoints = 0;
+
+      function reportScore(earned) {
+        var reported = false;
+        try {
+          if (parent && parent !== window && parent.scoring && parent.scoring.setModuleScore) {
+            parent.scoring.setModuleScore('capstone', earned, TOTAL);
+            reported = true;
+          }
+        } catch (e) {}
+        if (!reported) {
+          try { parent.postMessage({ type: 'moduleScore', module: 'capstone', earned: earned, possible: TOTAL }, '*'); } catch (e2) {}
+        }
+      }
+
+      function showFinal(earned) {
+        reportScore(earned);
+        var pct = Math.round((earned / TOTAL) * 100);
+        var passed = pct >= 80;
+        var html = '<div class="score-display"><div class="score-value ' + (passed ? 'pass' : 'fail') + '">' + pct + '%</div><div class="score-label">' + earned + ' of ' + TOTAL + ' FIND stages correct</div></div>';
+        if (passed) {
+          html += '<div class="card card-success"><h3>Passed</h3><p>You applied the FIND model well &mdash; framing the issue neutrally, gathering the right facts, narrowing to what the evidence supports, and deciding fairly. Continue to the debrief.</p></div>';
+        } else {
+          html += '<div class="card card-error"><h3>Not Yet Passed</h3><p>You scored ' + pct + '%, below the 80% needed to pass. Review where your choices jumped ahead of the evidence, then try again.</p>' +
+                  '<button class="btn btn-primary btn-large" style="margin-top:1rem;width:100%;" onclick="window.location.href=window.location.pathname;">Retry Capstone</button></div>';
+        }
+        var r = document.getElementById('capstone-result');
+        r.innerHTML = html; r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // D stage — final decision (MultipleChoice)
+      function renderDStage() {
+        var ds = document.getElementById('d-stage');
+        ds.innerHTML = '<h2>D &mdash; Document and Decide</h2>' +
+          '<div class="scenario-block"><div class="scenario-label">What the evidence shows</div>' +
+          '<p style="margin-bottom:0;">The monitoring system logged no temperature reading for the run in question. A line-jam log confirms the employee was pulled away to clear a jam at that time. There was no process requiring coverage before leaving a check, and the employee had not been trained on one. The form was signed although the verification did not occur.</p></div>' +
+          '<div id="d-q"></div>';
+        new MultipleChoice({
+          question: 'Based on these facts, what is the most appropriate decision?',
+          options: [
+            {
+              text: 'Document the finding, address the food safety risk on the affected product, fix the process (require coverage/handover before leaving a check) and retrain employees, and also apply coaching and/or disciplinary accountability for signing off on an incomplete check.',
+              correct: true,
+              feedback: 'Correct. It is supported by the evidence, addresses the food safety risk, fixes the root cause (no coverage process, no training), and still holds the signing to account &mdash; through coaching and/or disciplinary action, applied consistently.'
+            },
+            {
+              text: 'Terminate the employee immediately for falsifying food safety records.',
+              correct: false,
+              feedback: 'Not the best decision. "Falsification" implies deliberate intent that the evidence does not establish &mdash; the employee was pulled to a line issue and there was no coverage process. Termination treats this as intentional misconduct and skips the root-cause fix; accountability should reflect what the evidence actually shows.'
+            },
+            {
+              text: 'Take no action, since the employee was called away to a genuine line issue.',
+              correct: false,
+              feedback: 'Not appropriate. There is a real food safety risk to address, and signing for a check that did not happen still matters. Being called away explains the circumstances but does not close the matter.'
+            },
+            {
+              text: 'Quietly complete the check now and move on without documenting anything.',
+              correct: false,
+              feedback: 'Not appropriate. The original product still carries risk, and if it isn’t documented, it didn’t happen. This leaves the organization exposed and fixes nothing.'
+            }
+          ],
+          onComplete: function (correct, points) {
+            var earned = branchPoints + (points || 0);
+            showFinal(earned);
+          }
+        }).render('d-q');
+      }
+
+      // F, I, N stages — BranchScenario
+      new BranchScenario({
+        start: 'F', maxPoints: 3,
+        scenes: {
+          'F': {
+            text: '<strong>F &mdash; Frame the Issue</strong><br><br>How do you frame the concern before gathering anything?',
+            choices: [
+              { label: 'A. "Who do we discipline for falsifying the temperature form?"', next: 'I', points: 0, feedback: '<strong>Too soon.</strong> This assumes falsification and jumps to discipline before any facts are gathered.' },
+              { label: 'B. "Was the required temperature check completed and documented during the run, and if not, what were the circumstances?"', next: 'I', points: 1, feedback: '<strong>Well framed.</strong> Neutral, specific, and answerable with records and accounts. It doesn’t assume the answer.' },
+              { label: 'C. "How much product do we need to put on hold?"', next: 'I', points: 0, feedback: '<strong>Important, but not the framing.</strong> That is a containment action to run in parallel &mdash; it isn’t the investigation question.' }
+            ]
+          },
+          'I': {
+            text: '<strong>I &mdash; Investigate the Facts</strong><br><br>What is your best first move to gather the facts?',
+            choices: [
+              { label: 'A. Review the temperature monitoring and production/line logs, and speak with the employee and anyone who covered the line.', next: 'N', points: 1, feedback: '<strong>Good.</strong> You gather objective records and the relevant accounts before forming a view.' },
+              { label: 'B. Sit the employee down and get them to admit they falsified the form.', next: 'N', points: 0, feedback: '<strong>Presumes guilt.</strong> This leads the person toward a confession instead of gathering facts.' },
+              { label: 'C. Accept the signed form &mdash; it says the check was done, so there’s nothing to investigate.', next: 'N', points: 0, feedback: '<strong>Ignores the discrepancy.</strong> The concern is precisely that the signature may not reflect what happened.' }
+            ]
+          },
+          'N': {
+            text: '<strong>N &mdash; Narrow Down What Happened</strong><br><br>The monitoring system shows no reading logged for the run. A line-jam log confirms the employee was pulled away to clear a jam at that time. The employee was never trained to arrange coverage before leaving a check. How do you narrow it down?',
+            choices: [
+              { label: 'A. Conclude the employee deliberately falsified records and stop there.', next: 'end', points: 0, feedback: '<strong>Overreaches.</strong> The evidence shows the check wasn’t done and the form was signed, but "deliberate falsification" assumes intent the facts don’t establish.' },
+              { label: 'B. Establish that the check was not completed and the form was signed without it &mdash; with contributing factors of being pulled to a line issue and having no coverage process or training, while the signing still needs to be addressed.', next: 'end', points: 1, feedback: '<strong>Right.</strong> You separate the established facts from assumptions and identify the likely root causes without excusing the signing.' },
+              { label: 'C. Put it down to simple human error and close it with no further steps.', next: 'end', points: 0, feedback: '<strong>Too quick.</strong> There is a food safety risk and a signing issue to resolve &mdash; this can’t just be closed.' }
+            ]
+          },
+          'end': {
+            end: true,
+            text: '<strong>F, I, and N complete.</strong> Now make the final decision below.'
+          }
+        },
+        onComplete: function (total, max) {
+          branchPoints = total;
+          renderDStage();
+          document.getElementById('d-stage').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }).render('sim');
+    })();
+  </script>
+</body>
+</html>

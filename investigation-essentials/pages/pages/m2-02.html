@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity: Frame the Question</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 2 &mdash; F: Frame the Issue</div>
+      <h1>Activity: Frame the Question</h1>
+      <p class="page-subtitle">Pick the best-framed investigation question</p>
+    </div>
+
+    <p>For each concern, choose the version that is objective, specific, and answerable with evidence. This activity is for practice and is not scored.</p>
+
+    <h2>Concern 1</h2>
+    <p><em>"That new operator is careless &mdash; they keep messing up the line."</em></p>
+    <div id="q1"></div>
+
+    <h2>Concern 2</h2>
+    <p><em>"Someone skipped a food safety check and now we have a problem."</em></p>
+    <div id="q2"></div>
+
+    <h2>Concern 3</h2>
+    <p><em>"He obviously didn't wash his hands &mdash; he never does."</em></p>
+    <div id="q3"></div>
+
+    <script>
+      new MultipleChoice({
+        question: 'Which is the best-framed investigation question?',
+        options: [
+          { text: 'Why is this operator so careless on the line?', correct: false, feedback: 'This assumes carelessness and asks "why" before establishing what happened. It is not neutral.' },
+          { text: 'Which production errors occurred, on what dates, and had the operator been trained and signed off on the task?', correct: true, feedback: 'Specific, neutral, and answerable with records and training documentation. It points you at what to verify.' },
+          { text: 'How do we discipline this operator for the errors?', correct: false, feedback: 'This jumps to the outcome before any facts are gathered. Framing comes first.' }
+        ]
+      }).render('q1');
+
+      new MultipleChoice({
+        question: 'Which is the best-framed investigation question?',
+        options: [
+          { text: 'Who is responsible for the food safety problem?', correct: false, feedback: 'This looks for someone to blame rather than establishing what happened.' },
+          { text: 'Was the required check completed and documented, and if not, what were the circumstances?', correct: true, feedback: 'Neutral and specific. It asks what happened and leaves room for the circumstances (which the facts will reveal).' },
+          { text: 'How bad is the food safety problem going to be for us?', correct: false, feedback: 'This is about consequences, not the facts of what occurred.' }
+        ]
+      }).render('q2');
+
+      new MultipleChoice({
+        question: 'Which is the best-framed investigation question?',
+        options: [
+          { text: 'Did the employee complete the required handwashing and sanitizing procedure after leaving the washroom on the shift in question?', correct: true, feedback: 'Specific to the conduct, the standard, and the occasion — and answerable with observation, CCTV, and the procedure.' },
+          { text: 'Why does this employee never wash his hands?', correct: false, feedback: 'This assumes a pattern ("never") that has not been established, and assumes the answer.' },
+          { text: 'Is this employee a GMP risk to the whole plant?', correct: false, feedback: 'Too broad and speculative — it is not answerable with evidence about a specific event.' }
+        ]
+      }).render('q3');
+    </script>
+
+    <div class="callout callout-info" style="margin-top:1.5rem;">
+      <div class="callout-label">Note</div>
+      <div><strong>Notice the pattern:</strong> the best questions name the specific conduct, the date or occasion, and the standard &mdash; and never assume the answer.</div>
+    </div>
+
+  </div>
+</body>
+</html>

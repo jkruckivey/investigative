@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity: Case Analysis</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/interactions.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <div class="page-header">
+      <div class="module-label">Module 4 &mdash; N: Narrow Down What Happened</div>
+      <h1>Activity: Case Analysis</h1>
+      <p class="page-subtitle">Sort the statements: fact, assumption, or root cause?</p>
+    </div>
+
+    <div class="scenario-block">
+      <div class="scenario-label">Scenario &mdash; Quality Defect</div>
+      <p>Multiple packages are rejected due to incorrect labels. A supervisor believes a specific employee loaded the wrong labels. The employee says the labels were already loaded when they arrived. Shift notes indicate a label change occurred earlier in the day.</p>
+    </div>
+
+    <p>Drag each statement into <strong>Established fact</strong>, <strong>Unsupported assumption</strong>, or <strong>Possible root cause</strong>. This activity is for practice and is not scored.</p>
+
+    <div id="analysis"></div>
+
+    <script>
+      new DragSort({
+        buckets: ['Established fact', 'Unsupported assumption', 'Possible root cause'],
+        items: [
+          { text: 'Packages were rejected for incorrect labels', correct: 'Established fact' },
+          { text: 'Shift notes record a label change earlier in the day', correct: 'Established fact' },
+          { text: 'This employee loaded the wrong labels', correct: 'Unsupported assumption' },
+          { text: 'The employee is careless', correct: 'Unsupported assumption' },
+          { text: 'The label change wasn’t clearly communicated at shift handover', correct: 'Possible root cause' },
+          { text: 'No verification step confirmed the correct labels after the change', correct: 'Possible root cause' }
+        ],
+        onComplete: function (correct, total) {
+          var el = document.getElementById('analysis-result');
+          if (el) {
+            el.innerHTML += '<div class="callout callout-info" style="margin-top:0.75rem;">
+      <div class="callout-label">Note</div>
+      <div>The supervisor’s belief that this employee loaded the wrong labels is an <strong>assumption</strong> until evidence supports it &mdash; and the shift notes suggest the real issue may be a handover or verification gap, not one person. This is why we narrow down before deciding.</div>
+    </div>';
+          }
+        }
+      }).render('analysis');
+    </script>
+
+  </div>
+</body>
+</html>
