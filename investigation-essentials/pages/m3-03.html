@@ -40,10 +40,7 @@
         onComplete: function (correct, total) {
           var el = document.getElementById('evidence-result');
           if (el) {
-            el.innerHTML += '<div class="callout callout-info" style="margin-top:0.75rem;">
-      <div class="callout-label">Note</div>
-      <div>Relevant evidence answers the framed question: was the handwashing procedure followed on this occasion? Attendance history and production targets tell you nothing about that.</div>
-    </div>';
+            el.innerHTML += '<div class="callout callout-info" style="margin-top:0.75rem;"><div class="callout-label">Note</div><div>Relevant evidence answers the framed question: was the handwashing procedure followed on this occasion? Attendance history and production targets tell you nothing about that.</div></div>';
           }
         }
       }).render('evidence');

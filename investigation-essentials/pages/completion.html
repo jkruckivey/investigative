@@ -25,10 +25,7 @@
         if (!scoringRef && window.scoring) { scoringRef = window.scoring; }
 
         if (!scoringRef) {
-          container.innerHTML = '<div class="callout callout-warning">
-      <div class="callout-label">Note</div>
-      <div><strong>Unable to load your score.</strong> Please view this page within the course framework.</div>
-    </div>';
+          container.innerHTML = '<div class="callout callout-warning"><div class="callout-label">Note</div><div><strong>Unable to load your score.</strong> Please view this page within the course framework.</div></div>';
           return;
         }
 

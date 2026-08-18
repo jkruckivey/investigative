@@ -45,10 +45,7 @@
       if (current >= items.length) {
         var pct = Math.round((score / items.length) * 100);
         container.innerHTML = '<div class="card ' + (pct >= 70 ? 'card-success' : 'card-warning') + '"><strong>' + score + ' of ' + items.length + ' correct (' + pct + '%)</strong></div>' +
-          '<div class="callout callout-info" style="margin-top:0.75rem;">
-      <div class="callout-label">Note</div>
-      <div>When you document, keep only the evidence-based findings. Leave assumptions and opinions out &mdash; they are what make a record indefensible.</div>
-    </div>' +
+          '<div class="callout callout-info" style="margin-top:0.75rem;"><div class="callout-label">Note</div><div>When you document, keep only the evidence-based findings. Leave assumptions and opinions out &mdash; they are what make a record indefensible.</div></div>' +
           '<button class="btn btn-secondary" style="margin-top:0.75rem;" onclick="location.reload()">Try Again</button>';
         return;
       }
